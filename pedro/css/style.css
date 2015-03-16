@@ -663,7 +663,7 @@ ul.f-list span.f-text {
 }
 /*--footer-middle--*/
 .footer-middle{
-	padding:2% 0;
+	padding:0.1% 0;
 }
 .footer-middle{
 	background: rgb(57,160,185);
@@ -890,7 +890,7 @@ ul.f-list1 li a:hover {
 /*--footer-bottom--*/
 .footer-bottom{
 	background:#0b4b5a;
-	padding:2% 0;
+	padding: 1% 0;
 }
 .copy{
 	float:left;
