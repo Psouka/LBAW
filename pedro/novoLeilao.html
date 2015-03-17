@@ -108,7 +108,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	   <div class="header-bottom-right">
          <div class="search">	  
-				<input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+				<input type="text" name="s" class="textbox" value="Pesquisa" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 				<input type="submit" value="Subscribe" id="submit" name="submit">
 				<div id="response"> </div>
 		 </div>
@@ -116,48 +116,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      <div class="clear"></div>
      </div>
 	</div>
-        <div class="login">
-          	<div class="wrap">
-				<div class="col_1_of_login span_1_of_login">
-					<h4 class="title">Novos Utilizadores</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan</p>
-					<div class="button1">
-					   <a href="register.html"><input type="submit" name="Submit" value="Criar nova Conta"></a>
-					 </div>
-					 <div class="clear"></div>
-				</div>
-				<div class="col_1_of_login span_1_of_login">
-				<div class="login-title">
-	           		<h4 class="title">Utilizadores Registados</h4>
-					<div id="loginbox" class="loginbox">
-						<form action="" method="post" name="login" id="login-form">
-						  <fieldset class="input">
-						    <p id="login-form-username">
-						      <label for="modlgn_username">Email</label>
-						      <input id="modlgn_username" type="text" name="email" class="inputbox" size="18" autocomplete="off">
-						    </p>
-						    <p id="login-form-password">
-						      <label for="modlgn_passwd">Password</label>
-						      <input id="modlgn_passwd" type="password" name="password" class="inputbox" size="18" autocomplete="off">
-						    </p>
-						    <div class="remember">
-							    <p id="login-form-remember">
-							      <label for="modlgn_remember"><a href="#">Esqueceu-se da Password? </a></label>
-							   </p>
-							    <input type="submit" name="Submit" class="button" value="Login"><div class="clear"></div>
-							 </div>
-						  </fieldset>
-						 </form>
+    <div class="login">
+       <div class="wrap">
+	    <ul class="breadcrumb breadcrumb__t"><a class="home" href="#">Home</a>  / Novo Leilão</ul>
+		   <div class="content-top">
+			   <form method="post" action="contact-post.html">
+					<div>
+                     	<input type="text" class="text" value="Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+					 	<input type="text" class="text" value="Quantidade" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Quantidade';}" style="margin-left: 10px">
 					</div>
-			    </div>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-     <div class="footer">
-		<div class="footer-middle">
+					<br>
+                     	<p class= "code"> Data e Hora de termino: <p>
+					 	<input type="date" class="text" value="Data" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" style="margin-left: 10px">
+					 	<input type="time" class="text" value="Data" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" style="margin-left: 10px">
+					<div class="text">
+						<br>
+						<p class= "code"> Utilize #Hashtags para definir Tags: <p>
+	                   <textarea value="Descrição:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Descrição:</textarea>
+	                </div>
+	                <div class="submit">
+	               		<input type="submit" value="Criar Leilão">
+	                </div>
+               </form>
+            </div>
+       </div> 
+    </div>
+    <div class="footer">
+        <div class="footer-middle">
 			<div class="wrap">
-			 <div class="section group example">
+			  <div class="section group example">
 			  <div class="col_1_of_f_1 span_1_of_f_1">
 				 <div class="section group example">
 				   <div class="col_1_of_f_2 span_1_of_f_2">
@@ -239,17 +226,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="footer-bottom">
 			<div class="wrap">
-	            <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
+				<div class="copy">
+			        <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
 		        </div>
-			  <div class="f-list2">
+				<div class="f-list2">
 				<ul>
 					<li class="active"><a href="about.html">About Us</a></li> |
 					<li><a href="delivery.html">Delivery & Returns</a></li> |
 					<li><a href="delivery.html">Terms & Conditions</a></li> |
-					<li><a href="contact.html">Contact Us</a></li> 
+					<li><a href="#">Contact Us</a></li> 
 				</ul>
-			  </div>
+				</div>
 				<div class="clear"></div>
 		      </div>
 			</div>
