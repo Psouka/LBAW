@@ -118,18 +118,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
           <div class="register_account">
           	<div class="wrap">
-    	      <h4 class="title">Criar uma conta</h4>
+    	      <h4 class="title">Alterar Informações Pessoais</h4>
     		   <form>
     			 <div class="col_1_of_2 span_1_of_2">
-		   			 <div><input type="text" value="Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}"></div>
-		    			<div><input type="text" value="Nacionalidade" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}"></div>
-		    			<div><input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}"></div>
-		    			<div><input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"></div>
+		   			 <div>
+		   			 	<p class = "code"> Nome Actual: Exemplo1</p>
+		   			 	<input type="text" value="Novo Nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Novo Nome1;}"></div>
+		    			<div>
+		    				<br>
+		    				<p class = "code"> Nacionalidade Actual: Exemplo1</p>
+		    				<input type="text" value="Nova Nacionalidade" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nova Nacionalidade';}"></div>
+		    			<div>
+		    				<br>
+		    				<p class = "code"> E-Mail Actual: Exemplo1@teste.com</p>
+		    				<input type="text" value="Novo E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Novo E-Mail';}"></div>
+		    				<br>
+		    				<p class = "code"> Nova Palavra-Chave</p>
+		    			<div><input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"></div>
+		    			<p class = "code"> Confirme Palavra-Chave</p>
+		    			<div><input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"></div>
 		    	 </div>
 		    	  <div class="col_1_of_2 span_1_of_2">	
-		    		<div><input type="text" value="Endereço" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></div>
+		    	  	<br>
+		    				<p class = "code"> Endereço Actual: Exemplo Enderenço</p>
+		    		<div><input type="text" value="Novo Endereço" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Novo Endereço';}"></div>
+<br>
+		    				<p class = "code"> País Actual: Exemplo País</p>
 		    		<div><select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
-		            <option value="null">Selecione País</option>         
+		            <option value="null">Selecione Novo País</option>         
 		            <option value="AX">Åland Islands</option>
 		            <option value="AF">Afghanistan</option>
 		            <option value="AL">Albania</option>
@@ -324,16 +340,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		            <option value="ST">Sao Tome and Principe</option>
 		            <option value="SA">Saudi Arabia</option>
 		            <option value="SN">Senegal</option>
-		         </select></div>		        
-		          <div><input type="text" value="Cidade" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}"></div>
+		         </select></div>
+		         <br>
+		    				<p class = "code"> Cidade Actual: Exemplo Cidade</p>		        
+		          <div><input type="text" value="Nova Cidade" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nova Cidade';}"></div>
 		           <div>
 		          </div>
+		          <br>
+		    				<p class = "code"> Endereço e Numero Actual: 4580 - 919998877</p>
 		          	<input type="text" value="" class="code"> - <input type="text" value="" class="number">
-		          		<p class="code">Codigo Posta + Contacto Telefone</p>
 		          </div>
-		      <button class="grey">Submeter</button>
-		    <p class="terms">Ao clicar em 'Subemter' está a concordar com os <a href="#">Termos &amp; Condições</a>.</p>
-		    <div class="clear"></div>
+		      <button id ="editButton" class="grey" >Alterar Informações</button>
+		    <div class="clear" ></div>
 		    </form>
     	</div>
     </div>

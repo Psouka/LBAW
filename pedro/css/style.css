@@ -3135,3 +3135,25 @@ ul.delivery-list li a:hover{
 
 
 .newBit {width: 80px; height: 20px}
+
+
+input[type="password"], .register_account form select {
+  font-size: 0.95em;
+  color: #777;
+  padding: 8px;
+  outline: none;
+  margin: 10px 0;
+  width: 91%;
+  font-family: 'Exo 2', sans-serif;
+  border: none;
+  box-shadow: 0 0 2px #aaa;
+  -webkit-box-shadow: 0 0 2px #aaa;
+  -moz-box-shadow: 0 0 2px #aaa;
+  -o-box-shadow: 0 0 2px #aaa;
+}
+
+
+button.grey#editButton {
+    float: right;
+    padding:10px 10px;
+}
