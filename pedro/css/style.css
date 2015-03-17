@@ -3219,3 +3219,19 @@ input[type="file"] {
   -moz-box-shadow: 0 0 2px #aaa;
   -o-box-shadow: 0 0 2px #aaa;
 }
+
+
+input[type="email"] {
+  font-size: 0.95em;
+  color: #777;
+  padding: 8px;
+  outline: none;
+  margin: 10px 0;
+  width: 93%;
+  font-family: 'Exo 2', sans-serif;
+  border: none;
+  box-shadow: 0 0 2px #aaa;
+  -webkit-box-shadow: 0 0 2px #aaa;
+  -moz-box-shadow: 0 0 2px #aaa;
+  -o-box-shadow: 0 0 2px #aaa;
+}
