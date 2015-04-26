@@ -1,0 +1,16 @@
+@media (max-width: 1400px)
+{
+    .window-right
+    {
+        float: none !important;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1400px)
+{
+    .window-right
+    {
+        float: right !important;
+    }
+}

@@ -1,0 +1,137 @@
+/*!
+ * Start Bootstrap - Shop Item HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+/* --- Extra --- */
+
+.profile-pic
+{
+    max-height: 300px;
+    max-width: 300px;
+    float: none;
+}
+
+.page-header
+{
+    margin: 10px;
+}
+
+.no-margin
+{
+    margin: 0px;
+}
+
+.small-margin-top
+{
+    margin-top: 10px;
+}
+
+.small-margin-bottom
+{
+    margin-bottom: 1em;
+}
+
+.large-margin-top
+{
+    margin-top: 80px;
+}
+
+.no-padding
+{
+    padding: 0px;
+}
+
+.span-padding
+{
+    padding-right: 5px;
+}
+
+.medium-padding-vertical
+{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.medium-large-padding-top
+{
+    padding-top: 50px;
+}
+
+.large-padding-top
+{
+    padding-top: 80px;
+}
+
+@media (max-width: 768px)
+{
+    .large-padding-top
+    {
+        padding-top: 0px;
+    }
+    
+    .medium-padding-vertical
+    {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+#small-padding-horizontal
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#byLetter > a, #byLetter > a:visited
+{
+    color: white;
+}
+
+#byLetter > a:hover
+{
+    font-weight: bold;
+}
+
+#byLetter > .active
+{
+    text-decoration: underline;
+}
+
+#page-content
+{
+    margin-bottom: 3em;
+}
+
+.panel-title > span
+{
+    margin-left: 2px;
+}
