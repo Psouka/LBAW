@@ -5,5 +5,5 @@
     $categories = getAllCategories ();
     $smarty->assign ('categories', $categories);
 
-    $smarty->display ('create-item.tpl');
+    $smarty->display ('auctions/create-item.tpl');
 ?>
