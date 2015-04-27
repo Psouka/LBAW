@@ -7,9 +7,18 @@
         ("
             INSERT INTO utilizador (utilizador, palavrapasse, nomeproprio, sobrenome, genero, email, telefone, datanascimento, dataregisto)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            RETURNING idutilizador
         ");
-        $currentdate = date("Y-m-d");        
+        $currentdate = date("Y-m-d");
         $stmt->execute(array($username, sha1($password), $firstname, $lastname, $genre, $email, $mobile, $birthdate, $currentdate));
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $conn->prepare
+        ("
+            INSERT INTO utilizadornormal
+            VALUES (?)
+        ");
+        $stmt->execute(array($result['idutilizador']));
     }
 
     function assignSessionAttr ()

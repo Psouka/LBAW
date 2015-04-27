@@ -29,6 +29,7 @@
     if (isLoginCorrect($username, $password))
     {
         $_SESSION['username'] = $username;
+        assignSessionAttr ();
     }
 
     header ('Location: ' . $BASE_URL);

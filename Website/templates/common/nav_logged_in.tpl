@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav window-right">
                 <li>
-                    <a href="{$BASE_URL}profile.php?id={$USERID}">{$FIRSTNAME}</a>
+                    <a href="{$BASE_URL}profile.php?id={$USERID}">{$FIRSTNAME} + {$USERNAME} + {$USERID}</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}settings.php">Settings</a>
