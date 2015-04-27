@@ -9,8 +9,6 @@
 
     $expirationDate = $_POST['expirationDate']; 
     $dataDePublicacao = date('Y-m-d');
-    
-    echo '<h1>' . $USERID . '</h1>';
 
     global $conn;
     $stmt = $conn->prepare
@@ -18,9 +16,9 @@
         INSERT INTO leilao (idleiloeiro, nome, descricao, precoinicial, precocompraimediata, datadepublicacao, datalimite)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     ");
-    $stmt->execute(array($USERID, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
+    $stmt->execute(array($_SESSION['userid'], $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
 
-    // header ('Location: ' . $BASE_URL);
+    header ('Location: ' . $BASE_URL);
 
 /*
     $stmt = $conn->prepare
