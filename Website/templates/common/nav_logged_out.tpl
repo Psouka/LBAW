@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<link href="{$BASE_URL}templates/css/header.css" rel="stylesheet">
+<link href="{$BASE_URL}css/header.css" rel="stylesheet">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
