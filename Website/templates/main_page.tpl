@@ -15,11 +15,9 @@
                     </div>
                     <div class="panel-collapse collapse in" id="collapseFour">
                         <div class="list-group">
-                            <a href="#" class="list-group-item"><span class="badge">1</span> First Item</a>
-                            <a href="#" class="list-group-item"><span class="badge">2</span> Second Item</a>
-                            <a href="#" class="list-group-item"><span class="badge">3</span> Third Item</a>
-                            <a href="#" class="list-group-item"><span class="badge">4</span> Fourth Item</a>
-                            <a href="#" class="list-group-item"><span class="badge">5</span> Fifth Item</a>
+                            {foreach $categories as $categorie}
+                                <a href="#" class="list-group-item">{$categorie.tipo}</a>
+                            {/foreach}
                         </div>
                     </div>
                 </div>

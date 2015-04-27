@@ -43,7 +43,7 @@
         
         <!-- Login Form -->
         <div class="col-md-6">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/register.php" method="post">
                 <fieldset>
 
                     <!-- Login -->
@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="Username" class="form-control">
+                            <input type="text" placeholder="username" class="form-control">
                         </div>
                     </div>
                     
