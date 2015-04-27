@@ -8,6 +8,7 @@
 
     $row = $stmt->fetch()
 
-    return $row['idUtilizador'];
+    $_SESSION['idUser'] = $row['idUtilizador'];
+
     }
 ?>
