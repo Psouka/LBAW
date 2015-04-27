@@ -41,74 +41,76 @@
             </form>
         </div>
         
-        <!-- Login Form -->
+        <!-- Register Form -->
         <div class="col-md-6">
             <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/register.php" method="post">
                 <fieldset>
 
-                    <!-- Login -->
+                    <!-- Register -->
                     <legend class="text-left">Register</legend>
 
                     <!-- Text input -->
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="username" class="form-control">
+                            <input type="text" placeholder="Username" name="username" class="form-control">
                         </div>
                     </div>
-                    
+
                     <!-- Text input -->
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" placeholder="Password" class="form-control">
+                            <input type="password" placeholder="Password" name="password" class="form-control">
                         </div>
                     </div>
                     
                     <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label text-left" for="textinput">Name</label>
+                        <label class="col-sm-2 control-label" for="textinput">Firstname</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="Name" class="form-control">
+                            <input type="text" placeholder="Firstname" name="firstname" class="form-control">
                         </div>
                     </div>
                     
                     <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Surname</label>
+                        <label class="col-sm-2 control-label" for="textinput">Lastname</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="Surname" class="form-control">
+                            <input type="text" placeholder="Lastname" name="lastname" class="form-control">
                         </div>
                     </div>
                     
+                    <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="card-number">E-mail</label>
+                        <label class="col-sm-2 control-label" for="textinput">Genre</label>
+                        <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Male" checked>Male</label></div>
+                        <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Female">Female</label></div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Text input -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">E-mail</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="address@domain.com"></textarea>
+                            <input type="email" placeholder="E-mail" name="email" class="form-control">
                         </div>
                     </div>
                     
-                    <!-- Radio input -->
+                    <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Sex</label>
-                        <div class="col-sm-10 input-group">
-                            <div class="radio">
-                                <label class="col-sm-5">
-                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked>
-                                    Male
-                                </label>
-                                <label class="col-sm-5">
-                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="female">
-                                    Female
-                                </label>
-                            </div>
+                        <label class="col-sm-2 control-label" for="textinput">Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input type="number" placeholder="9** *** ***" name="mobile" class="form-control">
                         </div>
                     </div>
                     
+                    <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="expiry-month">Birth date</label>
+                        <label class="col-sm-2 control-label" for="textinput">Birthdate</label>
                         <div class="col-sm-10">
-                            {include file='common/datepicker.tpl'}
+                            <input type="date" placeholder="**/**/**" name="birthdate" class="form-control">
                         </div>
                     </div>
 

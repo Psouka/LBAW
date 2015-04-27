@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav window-right">
                 <li>
-                    <a href="{$BASE_URL}profile.php">{$USERNAME}</a>
+                    <a href="{$BASE_URL}profile.php?id={$USERID}">{$FIRSTNAME}</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}settings.php">Settings</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}create-item.php">Create auction</a>
+                    <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
