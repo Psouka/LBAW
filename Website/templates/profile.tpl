@@ -23,7 +23,7 @@
         <a href="#">10 <span class="glyphicon glyphicon-thumbs-up"></span></a> 
         <a href="#">0 <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
       </p>
-      Member since {$profile.dataRegisto}
+      Member since {$dataRegisto}
     </div>
   </div>
 

@@ -86,12 +86,12 @@ function categoriasUtilizador($id)
  $stmt = $conn->prepare("
     SELECT tipo, Categoria.idCategoria AS idCat , Leilao.idCategoria AS idCatLeilao, idLeiloeiro
     FROM Categoria, Leilao
-    WHERE  idLeiloeiro = ? AND idCat = idCatLeilao
+    WHERE  idLeiloeiro = ? AND Categoria.idCategoria = Leilao.idCategoria
     ");
  $stmt->execute(array($id));
- $row = $stmt->fetch();
+ 
+ return $stmt->fetch();
 
- return array_column($row, 'tipo');
 
 }
 

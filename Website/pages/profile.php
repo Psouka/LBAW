@@ -6,6 +6,10 @@ $profile = "";
 if(isset($_GET['id'])) {
 
 	$profile = getProfile($_GET['id']);
+
+	$dataRegisto =  date("Y-m-d", time($profile['dataRegisto']));
+	$smarty->assign ('dataRegisto', $dataRegisto);
+
 	$smarty->assign ('profile', $profile);
 
 
