@@ -8,7 +8,7 @@
     if (isLoginCorrect($username, $password))
     {
         $_SESSION['username'] = $username;
-        assignSessionAttr ();
+        assignSessionAttr();
     }
 
     header ('Location: ' . $BASE_URL);

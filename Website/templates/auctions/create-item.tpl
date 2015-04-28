@@ -2,7 +2,7 @@
 
 <!-- Main Page Content -->
 <div class="container">
-    <form class="form-horizontal" role="form" action="{$BASE_URL}actions/auctions/create.php" method="post">
+    <form class="form-horizontal" role="form" action="{$BASE_URL}actions/auctions/create.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Create Auction</legend>
             <div class="form-group">
@@ -43,6 +43,13 @@
                     </select>
                 </div>
             </div>
+
+             <div class="form-group">
+                    <label class="col-sm-3 control-label" for="card-holder-name">Image<p><small>2:1 Size Ratio Recommended</small></p></label>
+                    <div class="col-sm-9 input-group" id="small-padding-horizontal">
+                        <input type="file" name="upload[]" multiple>
+                    </div>
+                </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
