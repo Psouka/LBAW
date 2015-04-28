@@ -1,21 +1,43 @@
 ﻿--Categorias
 
+INSERT INTO Categoria(tipo)
+VALUES('Informática');
 
 INSERT INTO Categoria(tipo)
-VALUES('Desporto');
+VALUES('Telemóveis');
 
 INSERT INTO Categoria(tipo)
-VALUES('Agricula');
+VALUES('Electrodomésticos');
 
 INSERT INTO Categoria(tipo)
-VALUES('Telecomunicações');
+VALUES('Imagem e Som');
 
 INSERT INTO Categoria(tipo)
-VALUES('AudioVisual');
+VALUES('Brinquedos');
 
 INSERT INTO Categoria(tipo)
-VALUES('Outros');
+VALUES('Desporto e lazer');
 
+INSERT INTO Categoria(tipo)
+VALUES('Moda');
+
+INSERT INTO Categoria(tipo)
+VALUES('Saúde e Beleza');
+
+INSERT INTO Categoria(tipo)
+VALUES('Auto e Moto');
+
+INSERT INTO Categoria(tipo)
+VALUES('Videojogos');
+
+INSERT INTO Categoria(tipo)
+VALUES('Casa e decoração');
+
+INSERT INTO Categoria(tipo)
+VALUES('Mobiliário');
+
+INSERT INTO Categoria(tipo)
+VALUES('Livros');
 
 -- Paises
 INSERT INTO Pais(nome)

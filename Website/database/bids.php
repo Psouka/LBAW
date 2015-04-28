@@ -1,14 +1,14 @@
 <?php
-    function getAllCategories ()
+    function getBidsByAuctionId ($auctionid)
     {
         global $conn;
         $stmt = $conn->prepare
         ("
             SELECT *
-            FROM categoria
+            FROM licitacao
+            WHERE idleilao = ?
         ");
-        
-        $stmt->execute ();
+        $stmt->execute(array($auctionid));
         return $stmt->fetchAll ();
     }
 ?>

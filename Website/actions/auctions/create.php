@@ -5,7 +5,7 @@
     $description = $_POST['description'];
     $startingBid = $_POST['startingBid']; 
     $buyout = $_POST['buyout']; 
-    $category = $_POST['category']; 
+    $category = $_POST['category'];
 
     $expirationDate = $_POST['expirationDate']; 
     $dataDePublicacao = date('Y-m-d');
@@ -13,10 +13,10 @@
     global $conn;
     $stmt = $conn->prepare
     ("
-        INSERT INTO leilao (idleiloeiro, nome, descricao, precoinicial, precocompraimediata, datadepublicacao, datalimite)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO leilao (idleiloeiro, idcategoria, nome, descricao, precoinicial, precocompraimediata, datadepublicacao, datalimite)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ");
-    $stmt->execute(array($_SESSION['userid'], $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
+    $stmt->execute(array($_SESSION['userid'], $category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
 
     header ('Location: ' . $BASE_URL);
 

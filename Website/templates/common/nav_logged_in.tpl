@@ -22,7 +22,7 @@
                     <a href="{$BASE_URL}profile.php?id={$USERID}">{$FIRSTNAME} + {$USERNAME} + {$USERID}</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}settings.php">Settings</a>
+                    <a href="{$BASE_URL}settings.php" style="pointer-events: none;">Settings</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}pages/create-item.php">Create auction</a>

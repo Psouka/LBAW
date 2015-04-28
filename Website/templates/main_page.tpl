@@ -64,7 +64,7 @@
                         <img src="http://placehold.it/300x150" alt="">
                         <div class="caption">
                             <h4 class="pull-right">$24.99</h4>
-                            <h4><a href="item.php">First Product</a>
+                            <h4><a href="pages/item.php">First Product</a>
                             </h4>
                             <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>

@@ -38,7 +38,7 @@
                 <div class="col-sm-9">
                     <select class="form-control" name="category">
                         {foreach $categories as $categorie}
-                            <option>{$categorie.tipo}</option>
+                            <option value="{$categorie.idcategoria}">{$categorie.tipo}</option>
                         {/foreach}
                     </select>
                 </div>

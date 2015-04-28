@@ -101,6 +101,7 @@ ALTER TABLE public.UtilizadorNormal CLUSTER ON UtilizadorNormal_index;
 CREATE TABLE Leilao(
 	idLeilao BIGSERIAL PRIMARY KEY,
 	idLeiloeiro BIGINT REFERENCES UtilizadorNormal(idUtilizadorNormal),
+	idCategoria BIGINT REFERENCES Categoria(idCategoria),
 	nome VARCHAR(20) NOT NULL,
 	descricao TEXT NOT NULL,
 	precoInicial MONEY NOT NULL, 
