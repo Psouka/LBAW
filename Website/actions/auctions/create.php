@@ -13,9 +13,9 @@ $dataDePublicacao = date('Y-m-d');
 global $conn;
 $stmt = $conn->prepare
 ("
-    INSERT INTO leilao (idleiloeiro, idcategoria, nome, descricao, precoinicial, precocompraimediata, datadepublicacao, datalimite)
+    INSERT INTO Leilao (idLeiloeiro, idCategoria, nome, descricao, precoinicial, precocompraimediata, datadepublicacao, datalimite)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    RETURNING idleilao
+    RETURNING idLeilao
     ");
 $stmt->execute(array($_SESSION['userid'], $category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ if (!is_dir($upload_dir)) {
 
 $num_files = count($_FILES['upload']['name']);
 
-echo 'Nr Files' . $num_files . '.';
+echo 'id Leilao criado ' . $idLeilao . ' .';
 
 for ($i=0; $i < $num_files; $i++) {
     $upload_file = $upload_dir . urlencode(basename($_FILES['upload']['name'][$i]));
