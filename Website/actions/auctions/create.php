@@ -18,9 +18,8 @@ $stmt = $conn->prepare
     RETURNING idLeilao
     ");
 $stmt->execute(array($_SESSION['userid'], $category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate));
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-$idLeilao = $result['idLeilao'];
-
+$idL = $stmt->fetch(PDO::FETCH_ASSOC);
+$idLeilao = $idL['idleilao'];
 
 
 $upload_dir= '../../images/Users/'. $_SESSION['username'] . '/' ;
@@ -46,11 +45,10 @@ for ($i=0; $i < $num_files; $i++) {
                     VALUES (?, ?, ?)
                     ");
 
+            echo '\n saving file: ' . urlencode(basename($_FILES['upload']['name'][$i])) . '\n';
+
             $stmt->execute(array($idLeilao, $upload_file,urlencode(basename($_FILES['upload']['name'][$i]))));
 
-
-
-                echo "hooray";
             } else {
                 print $error_message[$_FILES['upload']['error'][$i]];
             }
