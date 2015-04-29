@@ -26,6 +26,7 @@
             $_SESSION['error_messages'][] = 'Error creating user';
     }
 
+    // Faz login.
     if (isLoginCorrect($username, $password))
     {
         $_SESSION['username'] = $username;

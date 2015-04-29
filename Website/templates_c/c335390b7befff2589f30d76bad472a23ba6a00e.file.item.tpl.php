@@ -1,4 +1,35 @@
-{include file='common/header.tpl'}
+<?php /* Smarty version Smarty-3.1.15, created on 2015-04-28 13:24:07
+         compiled from "/opt/lbaw/lbaw1443/public_html/proto/templates/auctions/item.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1460007382553eb173a946a8-90940599%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'c335390b7befff2589f30d76bad472a23ba6a00e' => 
+    array (
+      0 => '/opt/lbaw/lbaw1443/public_html/proto/templates/auctions/item.tpl',
+      1 => 1430220243,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1460007382553eb173a946a8-90940599',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_553eb173b4dda0_28719319',
+  'variables' => 
+  array (
+    'categories' => 0,
+    'category' => 0,
+    'auction' => 0,
+    'bidders' => 0,
+    'bidder' => 0,
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_553eb173b4dda0_28719319')) {function content_553eb173b4dda0_28719319($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 
 <!-- Page Content -->
 <div class="container">
@@ -15,13 +46,19 @@
                     </div>
                     <div class="panel-collapse collapse in" id="collapseOne">
                         <div class="list-group">
-                            {foreach $categories as $category}
-                                {if $category.idcategoria == $auction.idcategoria}
-                                    <a href="#" class="list-group-item active">{$category.tipo}</a>
-                                {else}
-                                    <a href="#" class="list-group-item">{$category.tipo}</a>
-                                {/if}
-                            {/foreach}
+                            <?php  $_smarty_tpl->tpl_vars['category'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['category']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['categories']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['category']->key => $_smarty_tpl->tpl_vars['category']->value) {
+$_smarty_tpl->tpl_vars['category']->_loop = true;
+?>
+                                <?php if ($_smarty_tpl->tpl_vars['category']->value['idcategoria']==$_smarty_tpl->tpl_vars['auction']->value['idcategoria']) {?>
+                                    <a href="#" class="list-group-item active"><?php echo $_smarty_tpl->tpl_vars['category']->value['tipo'];?>
+</a>
+                                <?php } else { ?>
+                                    <a href="#" class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['category']->value['tipo'];?>
+</a>
+                                <?php }?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -36,13 +73,19 @@
                     </div>
                     <div class="panel-collapse collapse in" id="collapseTwo">
                         <div class="list-group">
-                            {if count($bidders) == 0}
-                                <a href="#" class="list-group-item">No bidders</a>
-                            {else}
-                                {foreach $bidders as $bidder}
-                                    <a href="#" class="list-group-item"><span class="badge">{$bidder.preco}</span> {$bidder.nomeproprio}</a>
-                                {/foreach}
-                            {/if}
+                            <?php  $_smarty_tpl->tpl_vars['bidder'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['bidder']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['bidders']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['bidder']->key => $_smarty_tpl->tpl_vars['bidder']->value) {
+$_smarty_tpl->tpl_vars['bidder']->_loop = true;
+?>
+                                <a href="#" class="list-group-item"><span class="badge"><?php echo $_smarty_tpl->tpl_vars['bidder']->value['preco'];?>
+</span> <?php echo $_smarty_tpl->tpl_vars['bidder']->value['nomeproprio'];?>
+</a>
+                            <?php } ?>
+                            
+                            
+                            <!--a href="#" class="list-group-item active"><span class="badge">15.50 <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></span> First Bidder</a>
+                            <a href="#" class="list-group-item"><span class="badge">11.99 <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></span> Second Bidder</a-->
                         </div>
                     </div>
                 </div>
@@ -55,14 +98,21 @@
                 <img class="img-responsive" src="http://placehold.it/800x400" alt="">
                 <div class="caption-full">
                     <h4 class="pull-right text-right">
-                        <small class="pull-right">Buyout: {$auction.precocompraimediata}</small>
+                        <small class="pull-right">Buyout: <?php echo $_smarty_tpl->tpl_vars['auction']->value['precocompraimediata'];?>
+</small>
                         <br>
-                        <small class="ratings no-padding">{count($bidders)} bids</small>
+                        <small class="ratings no-padding"><?php echo count($_smarty_tpl->tpl_vars['bidders']->value);?>
+ bids</small>
                     </h4>
-                    <h4><a href="{$BASE_URL}profile.php?id={$auction.idleiloeiro}">{$auction.nomeproprio}</a>'s <a href="">{$auction.nome}</a></h4>
-                    <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> DD:HH:SS</h4>
+                    <h4><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+profile.php?id=<?php echo $_smarty_tpl->tpl_vars['auction']->value['idleiloeiro'];?>
+"><?php echo $_smarty_tpl->tpl_vars['auction']->value['nomeproprio'];?>
+</a>'s <a href=""><?php echo $_smarty_tpl->tpl_vars['auction']->value['nome'];?>
+</a></h4>
+                    <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> 07:59</h4>
 
-                    <p>{$auction.descricao}</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['auction']->value['descricao'];?>
+</p>
                     <br>
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Place bid...">
@@ -72,16 +122,24 @@
                     </div><!-- /input-group -->
                 </div>
                 <div class="ratings">
-                    <h4>{$auction.nomeproprio}'s rating: </h4>
+                    <h4><?php echo $_smarty_tpl->tpl_vars['auction']->value['nomeproprio'];?>
+'s rating: </h4>
                     <a href="#" class="pull-right">Report this auction</a>
                     <p>
-                        {for $index = 1 to $auction.rating}
+                        <?php $_smarty_tpl->tpl_vars['index'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['index']->step = 1;$_smarty_tpl->tpl_vars['index']->total = (int) ceil(($_smarty_tpl->tpl_vars['index']->step > 0 ? $_smarty_tpl->tpl_vars['auction']->value['rating']+1 - (1) : 1-($_smarty_tpl->tpl_vars['auction']->value['rating'])+1)/abs($_smarty_tpl->tpl_vars['index']->step));
+if ($_smarty_tpl->tpl_vars['index']->total > 0) {
+for ($_smarty_tpl->tpl_vars['index']->value = 1, $_smarty_tpl->tpl_vars['index']->iteration = 1;$_smarty_tpl->tpl_vars['index']->iteration <= $_smarty_tpl->tpl_vars['index']->total;$_smarty_tpl->tpl_vars['index']->value += $_smarty_tpl->tpl_vars['index']->step, $_smarty_tpl->tpl_vars['index']->iteration++) {
+$_smarty_tpl->tpl_vars['index']->first = $_smarty_tpl->tpl_vars['index']->iteration == 1;$_smarty_tpl->tpl_vars['index']->last = $_smarty_tpl->tpl_vars['index']->iteration == $_smarty_tpl->tpl_vars['index']->total;?>
                             <span class="glyphicon glyphicon-star"></span>
-                        {/for}
-                        {for $index = 1 to 5 - $auction.rating}
+                        <?php }} ?>
+                        <?php $_smarty_tpl->tpl_vars['index'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['index']->step = 1;$_smarty_tpl->tpl_vars['index']->total = (int) ceil(($_smarty_tpl->tpl_vars['index']->step > 0 ? 5-$_smarty_tpl->tpl_vars['auction']->value['rating']+1 - (1) : 1-(5-$_smarty_tpl->tpl_vars['auction']->value['rating'])+1)/abs($_smarty_tpl->tpl_vars['index']->step));
+if ($_smarty_tpl->tpl_vars['index']->total > 0) {
+for ($_smarty_tpl->tpl_vars['index']->value = 1, $_smarty_tpl->tpl_vars['index']->iteration = 1;$_smarty_tpl->tpl_vars['index']->iteration <= $_smarty_tpl->tpl_vars['index']->total;$_smarty_tpl->tpl_vars['index']->value += $_smarty_tpl->tpl_vars['index']->step, $_smarty_tpl->tpl_vars['index']->iteration++) {
+$_smarty_tpl->tpl_vars['index']->first = $_smarty_tpl->tpl_vars['index']->iteration == 1;$_smarty_tpl->tpl_vars['index']->last = $_smarty_tpl->tpl_vars['index']->iteration == $_smarty_tpl->tpl_vars['index']->total;?>
                             <span class="glyphicon glyphicon-star-empty"></span>
-                        {/for}
-                        {$auction.rating} stars
+                        <?php }} ?>
+                        <?php echo $_smarty_tpl->tpl_vars['auction']->value['rating'];?>
+ stars
                     </p>
                 </div>
             </div>
@@ -208,4 +266,5 @@
 </div>
 <!-- /.container -->
 
-{include file='common/footer.tpl'}
+<?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php }} ?>
