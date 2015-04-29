@@ -11,13 +11,23 @@
     $expirationDate = $_POST['expirationDate']; 
     $dataDePublicacao = date('Y-m-d');
 
-    $photo = $_FILES['photo'];
-    $extension = end (explode (".", $photo["name"]));
+    //$photo = $_FILES['photo'];
+    //$extension = end (explode (".", $photo["name"]));
+
+    $upload_dir= '../../images/Users/'. $_SESSION['username'] . '/Leiloes/' ;
+
+    if (!is_dir($upload_dir)) {
+    mkdir($upload_dir, 0744, true);
+}
+
+$num_files = count($_FILES['upload']['name']);
+
+
 
     try
     {
         $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
-        /*
+        
             $upload_dir= '../../images/users/'. $_SESSION['username'] . '/' ;
             for ($index = 0 ; $index < count($_FILES['upload']['name']) ; $i++)
             {
@@ -34,7 +44,7 @@
                 else
                     print $error_message[$_FILES['upload']['error'][$i]];
             }
-        */
+        
     }
     catch (PDOException $e)
     {

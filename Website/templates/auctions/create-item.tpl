@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <!--div class="form-group">
+            <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">Image
                     <p><small>2:1 Size Ratio Recommended</small>
                     </p>
@@ -52,7 +52,7 @@
                 <div class="col-sm-9 input-group" id="small-padding-horizontal">
                     <input type="file" name="upload[]" multiple>
                 </div>
-            </div-->
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
