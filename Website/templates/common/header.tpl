@@ -8,7 +8,7 @@
         <meta name="author" content="lbaw1443">
         <link rel="shortcut icon" href="{$BASE_URL}images/shortcut.ico">
 
-        <title>Leilões da Bairrada</title>
+        <title>{$TITLE}</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">

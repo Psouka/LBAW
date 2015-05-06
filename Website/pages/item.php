@@ -20,7 +20,7 @@
         // bidders[utilizador->id, utilizador->nome, licitacao->preco]
         $bidders = getBiddersByAuctionId ($auctionid);
         $smarty->assign ('bidders', $bidders);
-
+		$smarty->assign('TITLE', 'Auction: ' . $auction['nome']);
         $smarty->display ('auctions/item.tpl');
     }
     else

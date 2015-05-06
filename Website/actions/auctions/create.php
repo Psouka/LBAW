@@ -14,13 +14,14 @@
     //$photo = $_FILES['photo'];
     //$extension = end (explode (".", $photo["name"]));
 
-    $upload_dir= '../../images/Users/'. $_SESSION['username'] . '/Leiloes/' ;
+    $upload_dir= '../../images/auctions/'. $_SESSION['username'] . '/' ;
 
-    if (!is_dir($upload_dir)) {
-    mkdir($upload_dir, 0744, true);
-}
+    if (!is_dir($upload_dir))
+	{
+		mkdir($upload_dir, 0744, true);
+	}
 
-$num_files = count($_FILES['upload']['name']);
+	$num_files = count($_FILES['upload']['name']);
 
 
 
@@ -28,21 +29,20 @@ $num_files = count($_FILES['upload']['name']);
     {
         $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
         
-            $upload_dir= '../../images/users/'. $_SESSION['username'] . '/' ;
-            for ($index = 0 ; $index < count($_FILES['upload']['name']) ; $i++)
+            for ($index = 0 ; $index < $num_files ; $index++)
             {
-                $upload_file = $upload_dir . urlencode(basename($_FILES['upload']['name'][$i]));
-                if (@is_uploaded_file($_FILES['upload']['tmp_name'][$i]))
+                $upload_file = $upload_dir . urlencode(basename($_FILES['upload']['name'][$index]));
+                if (@is_uploaded_file($_FILES['upload']['tmp_name'][$index]))
                 {
-                    if (@move_uploaded_file($_FILES['upload']['tmp_name'][$i], $upload_file))
+                    if (@move_uploaded_file($_FILES['upload']['tmp_name'][$index], $upload_file))
                     {
                         addImageToAuction ($idleilao, $upload_file);
                     }
                     else
-                        print $error_message[$_FILES['upload']['error'][$i]];
+                        print $error_message[$_FILES['upload']['error'][$index]];
                 }
                 else
-                    print $error_message[$_FILES['upload']['error'][$i]];
+                    print $error_message[$_FILES['upload']['error'][$index]];
             }
         
     }
@@ -54,5 +54,5 @@ $num_files = count($_FILES['upload']['name']);
         exit;
     }
 
-    header ('Location: ' . $BASE_URL);
+    header ('Location: ' . $BASE_URL . 'pages/item.php?id=' . $idleilao);
 ?>

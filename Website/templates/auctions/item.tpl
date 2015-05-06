@@ -59,7 +59,7 @@
                         <br>
                         <small class="ratings no-padding">{count($bidders)} bids</small>
                     </h4>
-                    <h4><a href="{$BASE_URL}profile.php?id={$auction.idleiloeiro}">{$auction.nomeproprio}</a>'s <a href="">{$auction.nome}</a></h4>
+                    <h4><a href="{$BASE_URL}pages/profile.php?id={$auction.idleiloeiro}">{$auction.nomeproprio}</a>'s <a href="">{$auction.nome}</a></h4>
                     <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> DD:HH:SS</h4>
 
                     <p>{$auction.descricao}</p>

@@ -4,6 +4,6 @@
 
     $categories = getAllCategories ();
     $smarty->assign ('categories', $categories);
-
+	$smarty->assign('TITLE', 'Create Auction');
     $smarty->display ('auctions/create-item.tpl');
 ?>
