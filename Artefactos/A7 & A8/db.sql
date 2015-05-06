@@ -32,7 +32,7 @@ CREATE TABLE Pais(
 	);
 CREATE INDEX Pais_index ON public.Pais USING btree(idPais ASC NULLS LAST);
 
-	
+
 CREATE TABLE Cidade(
 	idCidade BIGSERIAL PRIMARY KEY,
 	idPais BIGINT REFERENCES Pais(idPais),
@@ -65,7 +65,8 @@ CREATE INDEX ImagemUtilizador_index ON public.ImagemUtilizador USING btree(idIma
 CREATE TABLE Utilizador(
 	idUtilizador BIGSERIAL PRIMARY KEY,
 	utilizador VARCHAR(20) UNIQUE NOT NULL,
-	palavrapasse VARCHAR(40) NOT NULL,
+	saltpasse  VARCHAR(100) NOT NULL,
+	palavrapasse VARCHAR(100) NOT NULL,
 	nomeProprio VARCHAR(20) NOT NULL,
 	sobrenome VARCHAR(20) NOT NULL,
 	genero VARCHAR(9) NOT NULL,
@@ -104,7 +105,7 @@ CREATE TABLE Leilao(
 	idCategoria BIGINT REFERENCES Categoria(idCategoria),
 	nome VARCHAR(20) NOT NULL,
 	descricao TEXT NOT NULL,
-	precoInicial MONEY NOT NULL, 
+	precoInicial MONEY NOT NULL,
 	precoCompraImediata MONEY,
 	dataDePublicacao TIMESTAMP NOT NULL,
 	dataLimite TIMESTAMP NOT NULL,
@@ -112,7 +113,7 @@ CREATE TABLE Leilao(
 	);
 CREATE INDEX Leilao_index ON public.Leilao USING btree(idLeilao ASC NULLS LAST);
 
-	
+
 CREATE TABLE Licitacao(
 	idLicitacao BIGSERIAL PRIMARY KEY,
 	idLeilao BIGINT REFERENCES Leilao(idLeilao),

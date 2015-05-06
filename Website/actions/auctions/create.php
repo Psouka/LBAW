@@ -4,11 +4,11 @@
 
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $startingBid = $_POST['startingBid']; 
-    $buyout = $_POST['buyout']; 
+    $startingBid = $_POST['startingBid'];
+    $buyout = $_POST['buyout'];
     $category = $_POST['category'];
 
-    $expirationDate = $_POST['expirationDate']; 
+    $expirationDate = $_POST['expirationDate'];
     $dataDePublicacao = date('Y-m-d');
 
     //$photo = $_FILES['photo'];
@@ -28,7 +28,7 @@
     try
     {
         $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
-        
+
             for ($index = 0 ; $index < $num_files ; $index++)
             {
                 $upload_file = $upload_dir . urlencode(basename($_FILES['upload']['name'][$index]));
@@ -44,7 +44,7 @@
                 else
                     print $error_message[$_FILES['upload']['error'][$index]];
             }
-        
+
     }
     catch (PDOException $e)
     {
