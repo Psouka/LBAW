@@ -1,58 +1,64 @@
 <?php
-    include_once ('../../config/init.php');
-    include_once ('../../database/auctions.php');
+include_once ('../../config/init.php');
+include_once ('../../database/auctions.php');
 
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $startingBid = $_POST['startingBid'];
-    $buyout = $_POST['buyout'];
-    $category = $_POST['category'];
+$title = $_POST['title'];
+$description = $_POST['description'];
+$startingBid = $_POST['startingBid'];
+$buyout = $_POST['buyout'];
+$category = $_POST['category'];
 
-    $expirationDate = $_POST['expirationDate'];
-    $dataDePublicacao = date('Y-m-d');
+$expirationDate = $_POST['expirationDate'];
+$dataDePublicacao = date('Y-m-d');
 
     //$photo = $_FILES['photo'];
     //$extension = end (explode (".", $photo["name"]));
 
-    $upload_dir= '../../images/auctions/'. $_SESSION['username'] . '/' ;
+$upload_dir= '../../images/auctions/'. $_SESSION['username'] . '/' ;
 
-    if (!is_dir($upload_dir))
-	{
-		mkdir($upload_dir, 0744, true);
-	}
+if (!is_dir($upload_dir))
+{
+  mkdir($upload_dir, 0744, true);
+}
 
-	$num_files = count($_FILES['upload']['name']);
+$num_files = count($_FILES['upload']['name']);
 
 
 
-    try
+try
+{
+    $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
+
+    for ($index = 0 ; $index < $num_files ; $index++)
     {
-        $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
 
-            for ($index = 0 ; $index < $num_files ; $index++)
+    $ext = end(explode('.', urlencode(basename($_FILES['upload']['name'][$index]))));
+
+    if(!strcasecmp($ext,'png') &&  !strcasecmp($ext,'jpg') &&  !strcasecmp($ext,'bmp')  &&  !strcasecmp($ext,'gif'))
+        continue;
+
+        $upload_file = $upload_dir .  $idleilao . '_' . $index  . '.' . $ext;
+        if (@is_uploaded_file($_FILES['upload']['tmp_name'][$index]))
+        {
+            if (@move_uploaded_file($_FILES['upload']['tmp_name'][$index], $upload_file))
             {
-                $upload_file = $upload_dir . urlencode(basename($_FILES['upload']['name'][$index]));
-                if (@is_uploaded_file($_FILES['upload']['tmp_name'][$index]))
-                {
-                    if (@move_uploaded_file($_FILES['upload']['tmp_name'][$index], $upload_file))
-                    {
-                        addImageToAuction ($idleilao, $upload_file);
-                    }
-                    else
-                        print $error_message[$_FILES['upload']['error'][$index]];
-                }
-                else
-                    print $error_message[$_FILES['upload']['error'][$index]];
+                addImageToAuction ($idleilao, $upload_file);
             }
-
-    }
-    catch (PDOException $e)
-    {
-        $_SESSION['error_messages'][] = 'Error creating auction: ' . $e->getMessage();
-        $_SESSION['form_values'] = $_POST;
-        header ('Location: ' . $BASE_URL . 'pages/404.php');
-        exit;
+            else
+                print $error_message[$_FILES['upload']['error'][$index]];
+        }
+        else
+            print $error_message[$_FILES['upload']['error'][$index]];
     }
 
-    header ('Location: ' . $BASE_URL . 'pages/item.php?id=' . $idleilao);
+}
+catch (PDOException $e)
+{
+    $_SESSION['error_messages'][] = 'Error creating auction: ' . $e->getMessage();
+    $_SESSION['form_values'] = $_POST;
+    header ('Location: ' . $BASE_URL . 'pages/404.php');
+    exit;
+}
+
+header ('Location: ' . $BASE_URL . 'pages/item.php?id=' . $idleilao);
 ?>
