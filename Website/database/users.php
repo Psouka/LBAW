@@ -83,7 +83,21 @@ function getUserById ($userid)
   WHERE idutilizador = ?
   ");
   $stmt->execute(array($userid));
-  return $stmt->fetchAll ();
+  return $stmt->fetchAll();
 }
+
+function getAdress($adressid)
+{
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  SELECT *
+  FROM Morada
+  WHERE idMorada = ?
+  ");
+  $stmt->execute(array($adressid));
+  return $stmt->fetchAll();
+}
+
 
 ?>

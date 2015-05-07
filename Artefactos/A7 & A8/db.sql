@@ -76,7 +76,9 @@ CREATE TABLE Utilizador(
 	dataNascimento DATE NOT NULL,
 	dataRegisto DATE NOT NULL,
 	idImagemPerfil BIGINT REFERENCES ImagemUtilizador(idImagemUtilizador),
-	idImagemCapa BIGINT REFERENCES ImagemUtilizador(idImagemUtilizador)
+	idImagemCapa BIGINT REFERENCES ImagemUtilizador(idImagemUtilizador),
+	idMorada BIGINT REFERENCES Morada(idMorada),
+	idShip BIGINT REFERENCES Morada(idMorada)
 	CHECK ( age(dataNascimento) >= interval '18' year)
 	);
 CREATE INDEX Utilizador_index ON public.Utilizador USING btree(idUtilizador ASC NULLS LAST,idImagemPerfil ASC NULLS LAST,idImagemCapa ASC NULLS LAST);
