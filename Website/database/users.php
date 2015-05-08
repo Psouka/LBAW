@@ -102,45 +102,45 @@ function getAdress($adressid)
 function editProfile()
 {
 
-  $oldData =  getUserById($SESSION['userid']);
+  $oldData =  getUserById($_SESSION['userid']);
+
   $oldData = $oldData[0];
 
 
-
-  if(isset($_POST['first-name']))
+  if(isset($_POST['first-name']) && $_POST['first-name'] != "")
   $newFirstName = $_POST['first-name'];
   else
   $newFirstName =$oldData['nomeproprio'];
 
 
-  if(isset($_POST['last-name']))
+  if(isset($_POST['last-name']) && $_POST['last-name'] != "")
   $newLastName = $_POST['last-name'];
   else
   $newLastName =$oldData['sobrenome'];
 
-  if(isset($_POST['optionsRadios']))
+  if(isset($_POST['optionsRadios']) && $_POST['optionsRadios'] != "")
   $newGender = $_POST['optionsRadios'];
   else
   $newGender =$oldData['genero'];
 
-  if(isset($_POST['birthDate']))
+  if(isset($_POST['birthDate']) && $_POST['birthDate'] != "")
   $newBirthDate = $_POST['birthDate'];
   else
   $newBirthDate =$oldData['datanascimento'];
 
-  if(isset($_POST['email']))
+  if(isset($_POST['email'])  && $_POST['email'] != "")
   $newEmail = $_POST['email'];
   else
   $newEmail =$oldData['email'];
 
-  if(isset($_POST['phoneNumber']))
+  if(isset($_POST['phoneNumber'])  && $_POST['phoneNumber'] != "")
   $newPhone = $_POST['phoneNumber'];
   else
   $newPhone =$oldData['telefone'];
 
   if(isset($_POST['password']) && isset($_POST['confirmpassword']))
   {
-    if($_POST['confirmpassword'] === $_POST['password'])
+    if($_POST['confirmpassword'] === $_POST['password'] && $_POST['confirmpassword'] != "")
     $newPassword = $_POST['password'];
     else
     $newPassword =$oldData['palavrapasse'];
@@ -148,11 +148,13 @@ function editProfile()
   else
   $newPassword =$oldData['palavrapasse'];
 
-  $newPic = $oldData['idImagemPerfil'];
 
-  $newCover = $oldData['idImagemCapa'];
+  $newPic =1;
+
+  $newCover = 2;
 
 
+  echo  $newFirstName .'|'. $newLastName .'|'. $newGender .'|'. $newBirthDate .'|'. $newEmail .'|'. $newPhone .'|'. $newPassword .'|'.$newPic .'|'. $newCover .'|'. $_SESSION['userid'];
 
   global $conn;
   $stmt = $conn->prepare
@@ -162,7 +164,7 @@ function editProfile()
   WHERE idutilizador = ?
   ");
 
-  $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover));
+  $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover, $_SESSION['userid']));
 
 }
 
