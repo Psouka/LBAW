@@ -23,7 +23,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Sex</label>
         <div class="col-sm-4 input-group">
-          {if $profile.genero eq 'Male'}
+          {if ($profile.genero eq 'Male') OR ($profile.genero eq 'male')}
           <div class="radio">
             <label>
               <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked>
@@ -97,6 +97,13 @@
     <label class="col-sm-3 control-label" for="card-holder-name">Cover Picture<p><small>1040x250 Size Recommended</small></p></label>
     <div class="col-sm-9 input-group" id="small-padding-horizontal">
       <input type="file" id="cover-pic">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="card-number">Description</label>
+    <div class="col-sm-6">
+      <textarea name="descricao" placeholder="{$profile.descricao}" class="form-control" rows="3"></textarea>
     </div>
   </div>
 

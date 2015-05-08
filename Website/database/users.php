@@ -138,10 +138,20 @@ function editProfile()
   else
   $newPhone =$oldData['telefone'];
 
+
+  if(isset($_POST['descricao'])  && $_POST['descricao'] != "")
+  $newDescricao = $_POST['descricao'];
+  else
+  $newDescricao = $oldData['descricao'];
+
   if(isset($_POST['password']) && isset($_POST['confirmpassword']))
   {
     if($_POST['confirmpassword'] === $_POST['password'] && $_POST['confirmpassword'] != "")
-    $newPassword = $_POST['password'];
+    {
+      $salt = uniqid(mt_rand(), true);
+      //  $salt = sprintf("$2a$%02d$", $cost) . $salt;
+      $hash = hash('sha256',$salt.  $_POST['password'] .$salt);
+    }
     else
     $newPassword =$oldData['palavrapasse'];
   }
@@ -160,12 +170,54 @@ function editProfile()
   $stmt = $conn->prepare
   ("
   UPDATE utilizador
-  SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
+  SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, descricao = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
   WHERE idutilizador = ?
   ");
 
-  $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover, $_SESSION['userid']));
+  $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newDescricao,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover, $_SESSION['userid']));
 
+}
+
+function createResidence($line1, $line2, $city, $postCode){
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  INSERT INTO Morada(idCidade,linha1,linha2,codPostal)
+  VALUES(?,?,?,?);
+  RETURNING idMorada
+  ");
+  $stmt->execute(array($city,$line1,$line2,$postCode));
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $result['idMorada'];
+}
+
+function changeResidence(){
+
+  $idMorada = createResidence($_POST['line'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
+
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  UPDATE utilizador
+  SET idmorada = ?
+  WHERE idutilizador = ?
+  ");
+  $stmt->execute(array($idMorada,$_SESSION['userid']));
+
+}
+
+function changeShiping(){
+
+  $idMorada = createResidence($_POST['line'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
+
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  UPDATE utilizador
+  SET idship = ?
+  WHERE idutilizador = ?
+  ");
+  $stmt->execute(array($idMorada,$_SESSION['userid']));
 }
 
 ?>
