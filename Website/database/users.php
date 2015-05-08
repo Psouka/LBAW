@@ -4,7 +4,7 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
 {
 
   $salt = uniqid(mt_rand(), true);
-//  $salt = sprintf("$2a$%02d$", $cost) . $salt;
+  //  $salt = sprintf("$2a$%02d$", $cost) . $salt;
   $hash = hash('sha256',$salt. $password .$salt);
 
 
@@ -73,7 +73,7 @@ function getUsers ()
   return $stmt->fetchAll ();
 }
 
-function getUserById ($userid)
+function getUserById($userid)
 {
   global $conn;
   $stmt = $conn->prepare
@@ -99,5 +99,71 @@ function getAdress($adressid)
   return $stmt->fetchAll();
 }
 
+function editProfile(){
+
+  $oldData =  getUserById($SESSION['userid']);
+  $oldData = $oldData[0];
+
+
+  $newFirstName, $newLastName, $newGender, $newBirthDate, $newEmail, $newPhone, $newPassword, $newPic, $newCover;
+
+  if(isset($_POST['first-name']))
+  $newFirstName = $_POST['first-name'];
+  else
+  $newFirstName =$oldData['nomeproprio'];
+
+
+  if(isset($_POST['last-name']))
+  $newLastName = $_POST['last-name'];
+  else
+  $newLastName =$oldData['sobrenome'];
+
+  if(isset($_POST['optionsRadios']))
+  $newGender = $_POST['optionsRadios'];
+  else
+  $newGender =$oldData['genero'];
+
+  if(isset($_POST['birthDate']))
+  $newBirthDate = $_POST['birthDate'];
+  else
+  $newBirthDate =$oldData['datanascimento'];
+
+  if(isset($_POST['email']))
+  $newEmail = $_POST['email'];
+  else
+  $newEmail =$oldData['email'];
+
+  if(isset($_POST['phoneNumber']))
+  $newPhone = $_POST['phoneNumber'];
+  else
+  $newPhone =$oldData['telefone'];
+
+  if(isset($_POST['password']) && isset($_POST['confirmpassword']))
+  {
+    if( && $_POST['confirmpassword'] === $_POST['password'])
+    $newPassword = $_POST['password'];)
+    else
+    $newPassword =$oldData['palavrapasse'];
+  }
+  else
+  $newPassword =$oldData['palavrapasse'];
+
+  $newPic = $oldData['idImagemPerfil'];
+
+  $newCover = $oldData['idImagemCapa'];;
+
+
+
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  UPDATE utilizador
+  SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
+  WHERE idutilizador = ?
+  ");
+
+  $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover));
+
+}
 
 ?>

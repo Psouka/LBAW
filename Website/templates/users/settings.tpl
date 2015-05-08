@@ -5,7 +5,7 @@
 
 <div class="container">
 
-  <form class="form-horizontal" role="form">
+  <form class="form-horizontal" action="{$BASE_URL}actions/users/saveSettings.php" method="post" role="form">
     <fieldset>
       <legend>Settings</legend>
 
@@ -50,12 +50,12 @@
         </div>
       </div>
 
-      <!-- div class="form-group">
+      <div class="form-group">
       <label class="col-sm-3 control-label" for="expiry-month">Birth date</label>
       <div class="col-sm-4">
-      <input type="date" placeholder="Expiration date" name="expirationDate" class="form-control">
+      <input type="date" placeholder="Expiration date" name="birthDate" class="form-control" value="{$profile.dataNascimento}">
     </div>
-  </div -->
+  </div >
 
   <div class="form-group">
     <label class="col-sm-3 control-label" for="card-number">E-mail</label>
@@ -67,7 +67,22 @@
   <div class="form-group">
     <label class="col-sm-3 control-label" for="card-number">Phone No</label>
     <div class="col-sm-6">
-      <input type="tel" class="form-control" name="field2" id="card-number" placeholder="{$profile.telefone}"></textarea>
+      <input type="tel" class="form-control" name="phoneNumber" id="card-number" placeholder="{$profile.telefone}"></textarea>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="card-number">New Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" name="password" id="password"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="card-number">Confirm Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" name="confirmpassword" id="password"></textarea>
     </div>
   </div>
 
@@ -98,135 +113,28 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/saveSettings.php" method="post">
       <fieldset>
 
         <!-- Form Name -->
         <legend>Where I am</legend>
+        <input type="hidden" name="from" value="1">
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Line 1</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Address Line 1" class="form-control">
-          </div>
-        </div>
+        {include file='common/default_adress.tpl'}
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Line 2</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Address Line 2" class="form-control">
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">City</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="City" class="form-control">
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">State</label>
-          <div class="col-sm-4">
-            <input type="text" placeholder="State" class="form-control">
-          </div>
-
-          <label class="col-sm-2 control-label" for="textinput">Postcode</label>
-          <div class="col-sm-4">
-            <input type="text" placeholder="Post Code" class="form-control">
-          </div>
-        </div>
-
-
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Country</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Country" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <div class="pull-right">
-              <button type="submit" class="btn btn-default">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
-        
       </fieldset>
     </form>
   </div><!-- /.col-lg-12 -->
 
 
   <div class="col-md-6">
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/saveSettings.php" method="post">
       <fieldset>
 
         <!-- Form Name -->
         <legend>Where I ship from</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Line 1</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Address Line 1" class="form-control">
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Line 2</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Address Line 2" class="form-control">
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">City</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="City" class="form-control">
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">State</label>
-          <div class="col-sm-4">
-            <input type="text" placeholder="State" class="form-control">
-          </div>
-
-          <label class="col-sm-2 control-label" for="textinput">Postcode</label>
-          <div class="col-sm-4">
-            <input type="text" placeholder="Post Code" class="form-control">
-          </div>
-        </div>
-
-
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="textinput">Country</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Country" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <div class="pull-right">
-              <button type="submit" class="btn btn-default">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
+        <input type="hidden" name="ship" value="1">
+        {include file='common/default_adress.tpl'}
 
       </fieldset>
     </form>
