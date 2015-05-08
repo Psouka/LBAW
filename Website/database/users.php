@@ -99,13 +99,13 @@ function getAdress($adressid)
   return $stmt->fetchAll();
 }
 
-function editProfile(){
+function editProfile()
+{
 
   $oldData =  getUserById($SESSION['userid']);
   $oldData = $oldData[0];
 
 
-  $newFirstName, $newLastName, $newGender, $newBirthDate, $newEmail, $newPhone, $newPassword, $newPic, $newCover;
 
   if(isset($_POST['first-name']))
   $newFirstName = $_POST['first-name'];
@@ -140,8 +140,8 @@ function editProfile(){
 
   if(isset($_POST['password']) && isset($_POST['confirmpassword']))
   {
-    if( && $_POST['confirmpassword'] === $_POST['password'])
-    $newPassword = $_POST['password'];)
+    if($_POST['confirmpassword'] === $_POST['password'])
+    $newPassword = $_POST['password'];
     else
     $newPassword =$oldData['palavrapasse'];
   }
@@ -150,7 +150,7 @@ function editProfile(){
 
   $newPic = $oldData['idImagemPerfil'];
 
-  $newCover = $oldData['idImagemCapa'];;
+  $newCover = $oldData['idImagemCapa'];
 
 
 
