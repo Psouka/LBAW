@@ -1,3 +1,6 @@
+<script src="{$BASE_URL}javascript/jquery.js"></script>
+<script src="{$BASE_URL}javascript/cities.js"></script>
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-sm-2 control-label" for="textinput">Line 1</label>
@@ -18,7 +21,11 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="textinput">Country</label>
   <div class="col-sm-10">
-    <input type="text" name="country" placeholder="Country" class="form-control" required>
+    <select id="country" name="country" class="form-control">
+      {foreach $countries as $country}
+      <option value="{$country.idpais}">{$country.nome}</option>
+      {/foreach}
+</select>
   </div>
 </div>
 
@@ -27,7 +34,8 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="textinput">City</label>
   <div class="col-sm-10">
-    <input type="text" name="city" placeholder="City" class="form-control" required>
+    <select id="city" name="city" class="form-control">
+    </select>
   </div>
 </div>
 

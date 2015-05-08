@@ -126,7 +126,6 @@
         <!-- Form Name -->
         <legend>Where I am</legend>
         <input type="hidden" name="from" value="1">
-
         {include file='common/default_adress.tpl'}
 
       </fieldset>
