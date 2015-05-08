@@ -12,8 +12,8 @@ $(document).ready(function(){
         $('#city').empty();
 
         $.each(data, function(i, value) {
-                   $('#city').append($('<option>').text(value.nome).attr('value', value.idCidade));
-               });
+          $('#city').append($('<option>').text(value.nome).attr('value', value.idcidade));
+        });
       }
     });
 

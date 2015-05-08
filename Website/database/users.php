@@ -163,9 +163,6 @@ function editProfile()
 
   $newCover = 2;
 
-
-  echo  $newFirstName .'|'. $newLastName .'|'. $newGender .'|'. $newBirthDate .'|'. $newEmail .'|'. $newPhone .'|'. $newPassword .'|'.$newPic .'|'. $newCover .'|'. $_SESSION['userid'];
-
   global $conn;
   $stmt = $conn->prepare
   ("
@@ -183,7 +180,7 @@ function createResidence($line1, $line2, $city, $postCode){
   $stmt = $conn->prepare
   ("
   INSERT INTO Morada(idCidade,linha1,linha2,codPostal)
-  VALUES(?,?,?,?);
+  VALUES(?,?,?,?)
   RETURNING idMorada
   ");
   $stmt->execute(array($city,$line1,$line2,$postCode));
@@ -193,7 +190,7 @@ function createResidence($line1, $line2, $city, $postCode){
 
 function changeResidence(){
 
-  $idMorada = createResidence($_POST['line'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
+  $idMorada = createResidence($_POST['line1'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
 
   global $conn;
   $stmt = $conn->prepare
@@ -208,7 +205,7 @@ function changeResidence(){
 
 function changeShiping(){
 
-  $idMorada = createResidence($_POST['line'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
+  $idMorada = createResidence($_POST['line1'], $_POST['line2'], $_POST['city'], $_POST['postcode']);
 
   global $conn;
   $stmt = $conn->prepare
