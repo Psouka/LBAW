@@ -181,11 +181,11 @@ function createResidence($line1, $line2, $city, $postCode){
   ("
   INSERT INTO Morada(idCidade,linha1,linha2,codPostal)
   VALUES(?,?,?,?)
-  RETURNING idMorada
+  RETURNING idmorada
   ");
   $stmt->execute(array($city,$line1,$line2,$postCode));
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
-  return $result['idMorada'];
+  return $result['idmorada'];
 }
 
 function changeResidence(){
