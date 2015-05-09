@@ -126,7 +126,7 @@
         <!-- Form Name -->
         <legend>Where I am</legend>
         <input type="hidden" name="from" value="1">
-        {include file='common/default_adress.tpl'}
+        {include file='common/default_adress_1.tpl'}
 
       </fieldset>
     </form>
@@ -140,7 +140,7 @@
         <!-- Form Name -->
         <legend>Where I ship from</legend>
         <input type="hidden" name="ship" value="1">
-        {include file='common/default_adress.tpl'}
+        {include file='common/default_adress_2.tpl'}
 
       </fieldset>
     </form>
