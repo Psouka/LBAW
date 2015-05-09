@@ -1,5 +1,5 @@
 <?php
-include_once ('../config/init.php');
+
 
 function getCountries()
 {
@@ -11,6 +11,7 @@ function getCountries()
 
 if(isset($_GET['idPais']))
 {
+  include_once ('../config/init.php');
   //retorna cidades do país dado
 
   global $conn;
@@ -22,5 +23,32 @@ if(isset($_GET['idPais']))
 
 }
 
+function createImage($file,$path,$name){
+
+  if (!is_dir('../../' .$path))
+  {
+    echo 'tentar criar pasta';
+    mkdir('../../' .$path, 0744, true);
+  }
+  else
+  echo 'where';
+
+
+  $info = pathinfo($file['name']);
+$ext = $info['extension']; // get the extension of the file
+$newname = $name .'.'. $ext;
+
+$target = $path  .$newname;
+if( @move_uploaded_file( $file['tmp_name'], '../../' . $target))
+{
+  echo 'truetrue';
+  return $target;
+}
+else
+echo 'sadDay';
+
+
+
+}
 
 ?>

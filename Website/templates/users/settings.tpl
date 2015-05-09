@@ -5,7 +5,7 @@
 
 <div class="container">
 
-  <form class="form-horizontal" action="{$BASE_URL}actions/users/saveSettings.php" method="post" role="form">
+  <form class="form-horizontal" action="{$BASE_URL}actions/users/saveSettings.php" method="post" role="form" enctype="multipart/form-data">
     <fieldset>
       <legend>Settings</legend>
 
@@ -89,14 +89,14 @@
   <div class="form-group">
     <label class="col-sm-3 control-label" for="card-holder-name">Profile Picture<p><small>1:1 Size Ratio Recommended</small></p></label>
     <div class="col-sm-9 input-group" id="small-padding-horizontal">
-      <input type="file" id="profile-pic">
+      <input type="file" name="profilePic" id="profile-pic">
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label" for="card-holder-name">Cover Picture<p><small>1040x250 Size Recommended</small></p></label>
     <div class="col-sm-9 input-group" id="small-padding-horizontal">
-      <input type="file" id="cover-pic">
+      <input type="file" name="coverPic" id="cover-pic">
     </div>
   </div>
 

@@ -99,6 +99,26 @@ function getAdress($adressid)
   return $stmt->fetchAll();
 }
 
+function createImagemUtilizador($file,$name)
+{
+  echo $BASE_URL;
+  include_once ('util.php');
+
+  $path = $BASE_URL . createImage($file,'images/users/'.$_SESSION['username'].'/',$name);
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  INSERT INTO imagemutilizador (localizacao)
+  VALUES ( ?)
+  RETURNING idimagemutilizador
+  ");
+  $stmt->execute(array($path));
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $result['idimagemutilizador'];
+
+}
+
+
 function editProfile()
 {
 
@@ -159,9 +179,29 @@ function editProfile()
   $newPassword =$oldData['palavrapasse'];
 
 
-  $newPic =1;
+  if(!empty($_FILES['profilePic']['tmp_name']))
+  {
+    echo '1';
+    $newPic = createImagemUtilizador($_FILES['profilePic'],'perfilImage');
+  }
+  else if($oldData['idImagemPerfil'] == "")
+  {
+    echo '2';
+    $newPic = 1;
+  }
+  else
+  {
+    echo '3';
+    $newPic = $oldData['idImagemPerfil'];
+  }
 
+
+  if(!empty($_FILES['coverPic']['tmp_name']))
+  $newCover = createImagemUtilizador($_FILES['coverPic'],'coverImage');
+  else if($oldData['idImagemCapa'] == "")
   $newCover = 2;
+  else
+  $newCover = $oldData['idImagemCapa'];
 
   global $conn;
   $stmt = $conn->prepare

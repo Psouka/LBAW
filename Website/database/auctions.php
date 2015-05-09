@@ -31,7 +31,7 @@
         global $conn;
         $stmt = $conn->prepare
         ("
-            SELECT leilao.idleilao, leilao.idleiloeiro, utilizador.nomeproprio, utilizador.rating, leilao.nome, leilao.descricao, leilao.precoinicial, leilao.precocompraimediata, leilao.datadepublicacao, leilao.datalimite
+            SELECT leilao.idleilao, leilao.idleiloeiro, utilizador.nomeproprio, leilao.nome, leilao.descricao, leilao.precoinicial, leilao.precocompraimediata, leilao.datadepublicacao, leilao.datalimite
             FROM leilao, utilizador
             WHERE leilao.idleilao = ? AND leilao.idleiloeiro = utilizador.idutilizador
         ");

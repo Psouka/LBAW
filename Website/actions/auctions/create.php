@@ -14,20 +14,19 @@ $dataDePublicacao = date('Y-m-d');
     //$photo = $_FILES['photo'];
     //$extension = end (explode (".", $photo["name"]));
 
-$upload_dir= '../../images/auctions/'. $_SESSION['username'] . '/' ;
-
-if (!is_dir($upload_dir))
-{
-  mkdir($upload_dir, 0744, true);
-}
 
 $num_files = count($_FILES['upload']['name']);
-
-
 
 try
 {
     $idleilao = createAuction ($category, $title, $description, $startingBid, $buyout, $dataDePublicacao, $expirationDate);
+
+    $upload_dir= 'images/auctions/'. $_SESSION['username'] . '/' . $idleilao . '/' ;
+
+    if (!is_dir('../../' .$upload_dir))
+    {
+      mkdir('../../' . $upload_dir, 0744, true);
+    }
 
     for ($index = 0 ; $index < $num_files ; $index++)
     {
@@ -37,12 +36,12 @@ try
     if(!strcasecmp($ext,'png') &&  !strcasecmp($ext,'jpg') &&  !strcasecmp($ext,'bmp')  &&  !strcasecmp($ext,'gif'))
         continue;
 
-        $upload_file = $upload_dir .  $idleilao . '_' . $index  . '.' . $ext;
+        $upload_file = '../../' . $upload_dir . $index  . '.' . $ext;
         if (@is_uploaded_file($_FILES['upload']['tmp_name'][$index]))
         {
             if (@move_uploaded_file($_FILES['upload']['tmp_name'][$index], $upload_file))
             {
-                addImageToAuction ($idleilao, $upload_file);
+                addImageToAuction ($idleilao, $BASE_URL . $upload_dir  . $index  . '.' . $ext);
             }
             else
                 print $error_message[$_FILES['upload']['error'][$index]];
