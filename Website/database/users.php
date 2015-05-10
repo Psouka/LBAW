@@ -92,8 +92,8 @@ function getAdress($adressid)
   $stmt = $conn->prepare
   ("
   SELECT *
-  FROM Morada
-  WHERE idMorada = ?
+  FROM morada
+  WHERE idmorada = ?
   ");
   $stmt->execute(array($adressid));
   return $stmt->fetchAll();
@@ -255,6 +255,29 @@ function changeShiping(){
   WHERE idutilizador = ?
   ");
   $stmt->execute(array($idMorada,$_SESSION['userid']));
+}
+
+function getimagemUtilizador($id){
+ global $conn;
+ $stmt = $conn->prepare("
+    SELECT idimagemutilizador, localizacao
+    FROM imagemutilizador
+    WHERE imagemutilizador = ?
+    ");
+ $stmt->execute(array($id));
+ return $stmt->fetch()['localizacao'];
+}
+
+function getcategoriasUtilizador($id){
+ global $conn;
+ $stmt = $conn->prepare("
+    SELECT DISTINCT tipo, categoria.idcategoria, leilao.idcategoria, idleiloeiro
+    FROM categoria, leilao
+    WHERE  idleiloeiro = ? AND categoria.idcategoria = leilao.idcategoria
+    ");
+ $stmt->execute(array($id));
+
+ return $stmt->fetchAll();
 }
 
 ?>
