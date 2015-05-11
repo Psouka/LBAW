@@ -57,14 +57,20 @@
       <img class="img-responsive" src="http://placehold.it/600x300" alt="">
       <div class="caption-full">
         <h4 class="pull-right text-right">
-          <small class="pull-right">€ 24.99</small>
+          <small class="pull-right">
+            {if $biggerAuction.preco eq 0}
+            {$biggerAuction.precoinicial}
+            {else}
+            {$biggerAuction.preco}
+            {/if}
+          </small>
           <br>
-          <small class="ratings no-padding">3 bids</small>
+          <small class="ratings no-padding">{$biggerAuction.count}</small>
         </h4>
-        <h4><a href="#">Featured Product</a></h4>
-        <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> 07:59</h4>
+        <h4><a href="#">{$biggerAuction.nome}</a></h4>
+        <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {$biggerAuction.datalimite}</h4>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla ... </p>
+        <p>{$biggerAuction.descricao} </p>
         <br>
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Place bid...">

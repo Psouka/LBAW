@@ -11,10 +11,10 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
   global $conn;
   $stmt = $conn->prepare
   ("
-  INSERT INTO utilizador ( utilizador, saltpasse, palavrapasse, nomeproprio, sobrenome, genero, email, telefone, datanascimento, dataregisto)
-  VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  RETURNING idutilizador
-  ");
+    INSERT INTO utilizador ( utilizador, saltpasse, palavrapasse, nomeproprio, sobrenome, genero, email, telefone, datanascimento, dataregisto)
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    RETURNING idutilizador
+    ");
   $currentdate = date("Y-m-d");
   $stmt->execute(array($username,$salt,$hash, $firstname, $lastname, $genre, $email, $mobile, $birthdate, $currentdate));
 
@@ -22,9 +22,9 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
 
   $stmt = $conn->prepare
   ("
-  INSERT INTO utilizadornormal
-  VALUES (?)
-  ");
+    INSERT INTO utilizadornormal
+    VALUES (?)
+    ");
   $stmt->execute(array($result['idutilizador']));
 }
 
@@ -33,10 +33,10 @@ function assignSessionAttr ()
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT idUtilizador , utilizador, nomeProprio
-  FROM Utilizador
-  WHERE utilizador = ?
-  ");
+    SELECT idUtilizador , utilizador, nomeProprio
+    FROM Utilizador
+    WHERE utilizador = ?
+    ");
   $stmt->execute(array($_SESSION['username']));
   $row = $stmt->fetch();
 
@@ -49,10 +49,10 @@ function isLoginCorrect($username, $password)
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT *
-  FROM utilizador
-  WHERE utilizador = ?
-  ");
+    SELECT *
+    FROM utilizador
+    WHERE utilizador = ?
+    ");
   $stmt->execute(array($username));
   $row = $stmt->fetch();
 
@@ -66,9 +66,9 @@ function getUsers ()
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT *
-  FROM utilizador
-  ");
+    SELECT *
+    FROM utilizador
+    ");
   $stmt->execute();
   return $stmt->fetchAll ();
 }
@@ -78,10 +78,10 @@ function getUserById($userid)
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT *
-  FROM utilizador
-  WHERE idutilizador = ?
-  ");
+    SELECT *
+    FROM utilizador
+    WHERE idutilizador = ?
+    ");
   $stmt->execute(array($userid));
   return $stmt->fetch();
 }
@@ -91,10 +91,10 @@ function getAdress($adressid)
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT *
-  FROM morada
-  WHERE idmorada = ?
-  ");
+    SELECT *
+    FROM morada
+    WHERE idmorada = ?
+    ");
   $stmt->execute(array($adressid));
   return $stmt->fetch();
 }
@@ -108,10 +108,10 @@ function createImagemUtilizador($file,$name)
   global $conn;
   $stmt = $conn->prepare
   ("
-  INSERT INTO imagemutilizador (localizacao)
-  VALUES ( ?)
-  RETURNING idimagemutilizador
-  ");
+    INSERT INTO imagemutilizador (localizacao)
+    VALUES ( ?)
+    RETURNING idimagemutilizador
+    ");
   $stmt->execute(array($path));
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
   return $result['idimagemutilizador'];
@@ -125,41 +125,41 @@ function editProfile()
   $oldData =  getUserById($_SESSION['userid']);
 
   if(isset($_POST['first-name']) && $_POST['first-name'] != "")
-  $newFirstName = $_POST['first-name'];
+    $newFirstName = $_POST['first-name'];
   else
-  $newFirstName =$oldData['nomeproprio'];
+    $newFirstName =$oldData['nomeproprio'];
 
 
   if(isset($_POST['last-name']) && $_POST['last-name'] != "")
-  $newLastName = $_POST['last-name'];
+    $newLastName = $_POST['last-name'];
   else
-  $newLastName =$oldData['sobrenome'];
+    $newLastName =$oldData['sobrenome'];
 
   if(isset($_POST['optionsRadios']) && $_POST['optionsRadios'] != "")
-  $newGender = $_POST['optionsRadios'];
+    $newGender = $_POST['optionsRadios'];
   else
-  $newGender =$oldData['genero'];
+    $newGender =$oldData['genero'];
 
   if(isset($_POST['birthDate']) && $_POST['birthDate'] != "")
-  $newBirthDate = $_POST['birthDate'];
+    $newBirthDate = $_POST['birthDate'];
   else
-  $newBirthDate =$oldData['datanascimento'];
+    $newBirthDate =$oldData['datanascimento'];
 
   if(isset($_POST['email'])  && $_POST['email'] != "")
-  $newEmail = $_POST['email'];
+    $newEmail = $_POST['email'];
   else
-  $newEmail =$oldData['email'];
+    $newEmail =$oldData['email'];
 
   if(isset($_POST['phoneNumber'])  && $_POST['phoneNumber'] != "")
-  $newPhone = $_POST['phoneNumber'];
+    $newPhone = $_POST['phoneNumber'];
   else
-  $newPhone =$oldData['telefone'];
+    $newPhone =$oldData['telefone'];
 
 
   if(isset($_POST['descricao'])  && $_POST['descricao'] != "")
-  $newDescricao = $_POST['descricao'];
+    $newDescricao = $_POST['descricao'];
   else
-  $newDescricao = $oldData['descricao'];
+    $newDescricao = $oldData['descricao'];
 
   if(isset($_POST['password']) && isset($_POST['confirmpassword']))
   {
@@ -170,10 +170,10 @@ function editProfile()
       $hash = hash('sha256',$salt.  $_POST['password'] .$salt);
     }
     else
-    $newPassword =$oldData['palavrapasse'];
+      $newPassword =$oldData['palavrapasse'];
   }
   else
-  $newPassword =$oldData['palavrapasse'];
+    $newPassword =$oldData['palavrapasse'];
 
 
   if(!empty($_FILES['profilePic']['tmp_name']))
@@ -194,19 +194,19 @@ function editProfile()
 
 
   if(!empty($_FILES['coverPic']['tmp_name']))
-  $newCover = createImagemUtilizador($_FILES['coverPic'],'coverImage');
+    $newCover = createImagemUtilizador($_FILES['coverPic'],'coverImage');
   else if($oldData['idImagemCapa'] == "")
-  $newCover = 2;
+    $newCover = 2;
   else
-  $newCover = $oldData['idImagemCapa'];
+    $newCover = $oldData['idImagemCapa'];
 
   global $conn;
   $stmt = $conn->prepare
   ("
-  UPDATE utilizador
-  SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, descricao = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
-  WHERE idutilizador = ?
-  ");
+    UPDATE utilizador
+    SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, descricao = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
+    WHERE idutilizador = ?
+    ");
 
   $stmt->execute(array($newPassword,$newFirstName,$newLastName,$newGender,$newDescricao,$newEmail, $newPhone , $newBirthDate, $newPic, $newCover, $_SESSION['userid']));
 
@@ -216,10 +216,10 @@ function createResidence($line1, $line2, $city, $postCode){
   global $conn;
   $stmt = $conn->prepare
   ("
-  INSERT INTO Morada(idCidade,linha1,linha2,codPostal)
-  VALUES(?,?,?,?)
-  RETURNING idmorada
-  ");
+    INSERT INTO Morada(idCidade,linha1,linha2,codPostal)
+    VALUES(?,?,?,?)
+    RETURNING idmorada
+    ");
   $stmt->execute(array($city,$line1,$line2,$postCode));
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
   return $result['idmorada'];
@@ -232,10 +232,10 @@ function changeResidence(){
   global $conn;
   $stmt = $conn->prepare
   ("
-  UPDATE utilizador
-  SET idmorada = ?
-  WHERE idutilizador = ?
-  ");
+    UPDATE utilizador
+    SET idmorada = ?
+    WHERE idutilizador = ?
+    ");
   $stmt->execute(array($idMorada,$_SESSION['userid']));
 
 }
@@ -247,20 +247,20 @@ function changeShiping(){
   global $conn;
   $stmt = $conn->prepare
   ("
-  UPDATE utilizador
-  SET idship = ?
-  WHERE idutilizador = ?
-  ");
+    UPDATE utilizador
+    SET idship = ?
+    WHERE idutilizador = ?
+    ");
   $stmt->execute(array($idMorada,$_SESSION['userid']));
 }
 
 function getimagemUtilizador($id){
   global $conn;
   $stmt = $conn->prepare("
-  SELECT idimagemutilizador, localizacao
-  FROM imagemutilizador
-  WHERE imagemutilizador = ?
-  ");
+    SELECT idimagemutilizador, localizacao
+    FROM imagemutilizador
+    WHERE imagemutilizador = ?
+    ");
   $stmt->execute(array($id));
   return $stmt->fetch()['localizacao'];
 }
@@ -268,10 +268,10 @@ function getimagemUtilizador($id){
 function getcategoriasUtilizador($id){
   global $conn;
   $stmt = $conn->prepare("
-  SELECT DISTINCT tipo, categoria.idcategoria, leilao.idcategoria, idleiloeiro
-  FROM categoria, leilao
-  WHERE  idleiloeiro = ? AND categoria.idcategoria = leilao.idcategoria
-  ");
+    SELECT DISTINCT tipo, categoria.idcategoria, leilao.idcategoria, idleiloeiro
+    FROM categoria, leilao
+    WHERE  idleiloeiro = ? AND categoria.idcategoria = leilao.idcategoria
+    ");
   $stmt->execute(array($id));
 
   return $stmt->fetchAll();
@@ -284,57 +284,71 @@ function getMoradaProfile($id)
     FROM morada, cidade, pais
     WHERE  idmorada = ? AND morada.idcidade = cidade.idcidade AND cidade.idpais = pais.idpais
     ");
-    $stmt->execute(array($id));
-    return $stmt->fetch();
-  }
+  $stmt->execute(array($id));
+  return $stmt->fetch();
+}
 
-  function getLastAuctions($id){
-    global $conn;
-    $stmt = $conn->prepare("
+function getLastAuctions($id){
+  global $conn;
+  $stmt = $conn->prepare("
     SELECT idleilao, nome, descricao, precoinicial, datalimite
     FROM leilao
     WHERE  idleiloeiro = ?
     LIMIT 6;
     ");
-    $stmt->execute(array($id));
+  $stmt->execute(array($id));
 
-    return $stmt->fetchAll();
-  }
+  return $stmt->fetchAll();
+}
 
-  function getAuctionsProfile($leiloes){
-    $array = array();
+function leiloes_addlicitacao($leiloes){
+  $array = array();
 
-    foreach($leiloes as $leilao)
-    {
-      global $conn;
-      $stmt = $conn->prepare("
+  foreach($leiloes as $leilao)
+  {
+    global $conn;
+    $stmt = $conn->prepare("
       SELECT max(preco), idutilizador, COUNT(*)
       FROM licitacao
       WHERE  idleilao = ?
       GROUP BY licitacao.idutilizador
       ");
-      $stmt->execute(array($leilao['idleilao']));
-      $result =$stmt->fetch();
+    $stmt->execute(array($leilao['idleilao']));
+    $result =$stmt->fetch();
 
-      if(empty($result))
-      {
-        $leilao['preco'] = 0;
-        $leilao['idutilizador'] = 0;
-        $leilao['count'] = 0;
-      }
-      else
-      {
-        $leilao['preco'] = $result['preco'];
-        $leilao['idutilizador'] = $result['idutilizador'];
-        $leilao['count'] = $result['count'];
-      }
-      $array[] = $leilao;
-
-
+    if(empty($result))
+    {
+      $leilao['preco'] = 0;
+      $leilao['idutilizador'] = 0;
+      $leilao['count'] = 0;
     }
+    else
+    {
+      $leilao['preco'] = $result['preco'];
+      $leilao['idutilizador'] = $result['idutilizador'];
+      $leilao['count'] = $result['count'];
+    }
+    $array[] = $leilao;
 
-    return $array;
 
   }
 
-  ?>
+  return $array;
+}
+
+function getRecentAuctions(){
+  global $conn;
+  $stmt = $conn->prepare("
+    SELECT *
+    FROM leilao
+    ORDER BY datadepublicacao DESC
+    LIMIT 6;
+    ");
+  $stmt->execute(array());
+
+  return $stmt->fetchAll();
+}
+
+
+
+?>

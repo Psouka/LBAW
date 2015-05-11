@@ -25,8 +25,15 @@ if(isset($_GET['id'])) {
 
 
 	$leiloes =  getLastAuctions($_GET['id']);
-	$licitacoes = getAuctionsProfile($leiloes);
+	$licitacoes = leiloes_addlicitacao($leiloes);
+
+	$biggerAuction = $licitacoes[0];
+	unset($licitacoes[0]);
+
+
 	$smarty->assign('leiloes', $licitacoes);
+	$smarty->assign('biggerAuction', $biggerAuction);
+
 
 	//print_r(array_combine($leiloes,$licitacoes));
 	//print_r($leiloes);
