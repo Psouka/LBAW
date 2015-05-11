@@ -67,5 +67,6 @@ function verifyEmail($toemail, $fromemail, $getdetails = false){
 	}
 }
 
-print_r(verifyEmail('ei12179@fe.up.pt', 'my.email.address@my-domain.com', true));
+
+print_r(verifyEmail('p4sousa@gmail.com', 'my.email.address@my-domain.com', true));
 ?>

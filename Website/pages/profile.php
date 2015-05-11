@@ -16,6 +16,23 @@ if(isset($_GET['id'])) {
 	$categorias = getcategoriasUtilizador($_GET['id']);
 
 	$smarty->assign('categories',$categorias);
+	$smarty->assign('TITLE', 'Profile');
+
+	$morada = getMoradaProfile($profile['idmorada']);
+	$smarty->assign('morada', $morada);
+	$ship = getMoradaProfile($profile['idship']);
+	$smarty->assign('ship', $morada);
+
+
+	$leiloes =  getLastAuctions($_GET['id']);
+	$licitacoes = getLiciatacoes($leiloes);
+	$smarty->assign('leiloes', $licitacoes);
+
+	//print_r(array_combine($leiloes,$licitacoes));
+	//print_r($leiloes);
+	//print_r($licitacoes);
+
+	$smarty->display ('users/profile.tpl');
 }
-$smarty->display ('users/profile.tpl');
+
 ?>

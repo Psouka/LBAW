@@ -10,9 +10,9 @@ $ship = getAdress($prof['idship']);
 $countries = getCountries();
 
 
-$smarty->assign('profile', $prof[0]);
-$smarty->assign('from', $from[0]);
-$smarty->assign('ship', $ship[0]);
+$smarty->assign('profile', $prof);
+$smarty->assign('from', $from);
+$smarty->assign('ship', $ship);
 $smarty->assign('countries', $countries);
 $smarty->assign('nrAdress', 0);
 $smarty->assign('TITLE', 'Settings');

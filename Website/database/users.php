@@ -83,7 +83,7 @@ function getUserById($userid)
   WHERE idutilizador = ?
   ");
   $stmt->execute(array($userid));
-  return $stmt->fetchAll();
+  return $stmt->fetch();
 }
 
 function getAdress($adressid)
@@ -96,7 +96,7 @@ function getAdress($adressid)
   WHERE idmorada = ?
   ");
   $stmt->execute(array($adressid));
-  return $stmt->fetchAll();
+  return $stmt->fetch();
 }
 
 function createImagemUtilizador($file,$name)
@@ -123,9 +123,6 @@ function editProfile()
 {
 
   $oldData =  getUserById($_SESSION['userid']);
-
-  $oldData = $oldData[0];
-
 
   if(isset($_POST['first-name']) && $_POST['first-name'] != "")
   $newFirstName = $_POST['first-name'];
@@ -166,7 +163,7 @@ function editProfile()
 
   if(isset($_POST['password']) && isset($_POST['confirmpassword']))
   {
-    if($_POST['confirmpassword'] === $_POST['password'] && $_POST['confirmpassword'] != "")
+    if($_POST['confirmpassword'] === $_POST['password'] && $_POST['confirmpassword'] !== "")
     {
       $salt = uniqid(mt_rand(), true);
       //  $salt = sprintf("$2a$%02d$", $cost) . $salt;
@@ -258,26 +255,87 @@ function changeShiping(){
 }
 
 function getimagemUtilizador($id){
- global $conn;
- $stmt = $conn->prepare("
-    SELECT idimagemutilizador, localizacao
-    FROM imagemutilizador
-    WHERE imagemutilizador = ?
-    ");
- $stmt->execute(array($id));
- return $stmt->fetch()['localizacao'];
+  global $conn;
+  $stmt = $conn->prepare("
+  SELECT idimagemutilizador, localizacao
+  FROM imagemutilizador
+  WHERE imagemutilizador = ?
+  ");
+  $stmt->execute(array($id));
+  return $stmt->fetch()['localizacao'];
 }
 
 function getcategoriasUtilizador($id){
- global $conn;
- $stmt = $conn->prepare("
-    SELECT DISTINCT tipo, categoria.idcategoria, leilao.idcategoria, idleiloeiro
-    FROM categoria, leilao
-    WHERE  idleiloeiro = ? AND categoria.idcategoria = leilao.idcategoria
-    ");
- $stmt->execute(array($id));
+  global $conn;
+  $stmt = $conn->prepare("
+  SELECT DISTINCT tipo, categoria.idcategoria, leilao.idcategoria, idleiloeiro
+  FROM categoria, leilao
+  WHERE  idleiloeiro = ? AND categoria.idcategoria = leilao.idcategoria
+  ");
+  $stmt->execute(array($id));
 
- return $stmt->fetchAll();
+  return $stmt->fetchAll();
 }
 
-?>
+function getMoradaProfile($id)
+{
+  global $conn;
+  $stmt = $conn->prepare(" SELECT pais.nome AS nomepais, cidade.nome AS nomecidade
+    FROM morada, cidade, pais
+    WHERE  idmorada = ? AND morada.idcidade = cidade.idcidade AND cidade.idpais = pais.idpais
+    ");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+  }
+
+  function getLastAuctions($id){
+    global $conn;
+    $stmt = $conn->prepare("
+    SELECT idleilao, nome, descricao, precoinicial
+    FROM leilao
+    WHERE  idleiloeiro = ?
+    LIMIT 6;
+    ");
+    $stmt->execute(array($id));
+
+    return $stmt->fetchAll();
+  }
+
+  function getLiciatacoes($leiloes){
+    $licitacao = array();
+
+    $i = 0;
+    $array = array();
+
+    foreach($leiloes as $leilao)
+    {
+      global $conn;
+      $stmt = $conn->prepare("
+      SELECT max(preco), idutilizador
+      FROM licitacao
+      WHERE  idleilao = ?
+      GROUP BY licitacao.idutilizador
+      ");
+      $stmt->execute(array($leilao['idleilao']));
+      $result =$stmt->fetch();
+
+      if(empty($result))
+      {
+        $leilao['preco'] = 0;
+        $leilao['idutilizador'] = 0;
+      }
+      else
+      {
+        $leilao['preco'] = $result['preco'];
+        $leilao['idutilizador'] = $result['idutilizador'];
+      }
+      $array[] = $leilao;
+
+
+    }
+
+    return $array;
+
+  }
+
+  ?>

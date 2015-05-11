@@ -12,16 +12,12 @@
      <div class="panel-body">
       <img class="img-responsive" src="url( {$imagem.Perfil} );" alt="">
       <br>
-      <p>Centered in <b>Porto, Portugal</b></p>
-      <p>Ships from <b>London, UK</b></p>
+      <p>Centered in <b> {$morada.nomecidade} , {$morada.nomepais} </b></p>
+      <p>Ships from <b> {$ship.nomecidade} , {$ship.nomepais} </b></p>
 
-      <p>Seller Rating: <b>
+      <p> <b> Rating: </b> <b>
         <a href="#">400 <span class="glyphicon glyphicon-thumbs-up"></span></a>
         <a href="#">90 <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
-        <br>
-        Buyer Rating: <b>
-        <a href="#">10 <span class="glyphicon glyphicon-thumbs-up"></span></a>
-        <a href="#">0 <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
       </p>
       Member since {$dataRegisto}
     </div>
@@ -91,14 +87,24 @@
     </div>
   </div>
 
+
+  {foreach $leiloes as $leilao}
   <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
       <img src="http://placehold.it/300x150" alt="">
       <div class="caption">
-        <h4 class="pull-right">$24.99</h4>
-        <h4><a href="item.php">Second Product</a>
+        <h4 class="pull-right">
+          {if $leilao.preco eq 0}
+          {$leilao.precoinicial}
+          {else}
+          {$leilao.preco}
+          {/if}
+
+
         </h4>
-        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h4><a href="item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>
+        </h4>
+        <p>{$leilao.descricao}</p>
       </div>
       <div class="ratings">
         <p class="pull-right">15 bids</p>
@@ -112,94 +118,9 @@
       </div>
     </div>
   </div>
+  {/foreach}
 
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-        <h4 class="pull-right">$64.99</h4>
-        <h4><a href="#">Third Product</a>
-        </h4>
-        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="ratings">
-        <p class="pull-right">12 reviews</p>
-        <p>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-        </p>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-        <h4 class="pull-right">$74.99</h4>
-        <h4><a href="#">Fourth Product</a>
-        </h4>
-        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="ratings">
-        <p class="pull-right">31 reviews</p>
-        <p>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-        <h4 class="pull-right">$84.99</h4>
-        <h4><a href="#">Fifth Product</a>
-        </h4>
-        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="ratings">
-        <p class="pull-right">6 reviews</p>
-        <p>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-        <h4 class="pull-right">$94.99</h4>
-        <h4><a href="#">Sixth Product</a>
-        </h4>
-        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="ratings">
-        <p class="pull-right">18 reviews</p>
-        <p>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-        </p>
-      </div>
-    </div>
-  </div>
 
 </div>
 
