@@ -25,7 +25,7 @@ if(isset($_GET['id'])) {
 
 
 	$leiloes =  getLastAuctions($_GET['id']);
-	$licitacoes = getLiciatacoes($leiloes);
+	$licitacoes = getAuctionsProfile($leiloes);
 	$smarty->assign('leiloes', $licitacoes);
 
 	//print_r(array_combine($leiloes,$licitacoes));

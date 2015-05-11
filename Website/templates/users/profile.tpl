@@ -99,15 +99,13 @@
           {else}
           {$leilao.preco}
           {/if}
-
-
         </h4>
         <h4><a href="item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>
         </h4>
         <p>{$leilao.descricao}</p>
       </div>
       <div class="ratings">
-        <p class="pull-right">15 bids</p>
+        <p class="pull-right">{$leilao.count} bids</p>
         <p>
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>

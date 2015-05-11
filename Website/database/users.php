@@ -291,7 +291,7 @@ function getMoradaProfile($id)
   function getLastAuctions($id){
     global $conn;
     $stmt = $conn->prepare("
-    SELECT idleilao, nome, descricao, precoinicial
+    SELECT idleilao, nome, descricao, precoinicial, datalimite
     FROM leilao
     WHERE  idleiloeiro = ?
     LIMIT 6;
@@ -301,17 +301,14 @@ function getMoradaProfile($id)
     return $stmt->fetchAll();
   }
 
-  function getLiciatacoes($leiloes){
-    $licitacao = array();
-
-    $i = 0;
+  function getAuctionsProfile($leiloes){
     $array = array();
 
     foreach($leiloes as $leilao)
     {
       global $conn;
       $stmt = $conn->prepare("
-      SELECT max(preco), idutilizador
+      SELECT max(preco), idutilizador, COUNT(*)
       FROM licitacao
       WHERE  idleilao = ?
       GROUP BY licitacao.idutilizador
@@ -323,11 +320,13 @@ function getMoradaProfile($id)
       {
         $leilao['preco'] = 0;
         $leilao['idutilizador'] = 0;
+        $leilao['count'] = 0;
       }
       else
       {
         $leilao['preco'] = $result['preco'];
         $leilao['idutilizador'] = $result['idutilizador'];
+        $leilao['count'] = $result['count'];
       }
       $array[] = $leilao;
 
