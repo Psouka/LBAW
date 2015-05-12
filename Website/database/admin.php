@@ -1,7 +1,7 @@
 <?php
 
 include_once ('../config/init.php');
-if(isset($_GET['userLimit']) && isset($_GET['userStart']) && isset($_GET['userWord']))
+if(isset($_POST['userLimit']) && isset($_POST['userStart']) && isset($_POST['userWord']))
 {
 
   global $conn;
@@ -12,13 +12,13 @@ if(isset($_GET['userLimit']) && isset($_GET['userStart']) && isset($_GET['userWo
     LIMIT ?
     OFFSET ?
     ");
-  $stmt->execute(array('%'.$_GET['userWord'].'%',$_GET['userLimit'],$_GET['userStart']));
+  $stmt->execute(array('%'.$_POST['userWord'].'%',$_POST['userLimit'],$_POST['userStart']));
 
   $result = $stmt->fetchAll();
-  print_r($result);
+  echo json_encode($result);
 }
 
-else if(isset($_GET['userLimit']) && isset($_GET['userStart']))
+else if(isset($_POST['userLimit']) && isset($_POST['userStart']))
 {
     
   global $conn;
@@ -28,13 +28,13 @@ else if(isset($_GET['userLimit']) && isset($_GET['userStart']))
     LIMIT ?
     OFFSET ?
     ");
-  $stmt->execute(array($_GET['userLimit'],$_GET['userStart']));
+  $stmt->execute(array($_POST['userLimit'],$_POST['userStart']));
 
   $result = $stmt->fetchAll();
-  print_r($result);
+  echo json_encode($result);
 }
 
-else if(isset($_GET['leiloesLimit']) && isset($_GET['leiloesStart']) && isset($_GET['leiloesWord']))
+else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']) && isset($_POST['leiloesWord']))
 {
   
   global $conn;
@@ -45,13 +45,13 @@ else if(isset($_GET['leiloesLimit']) && isset($_GET['leiloesStart']) && isset($_
     LIMIT ?
     OFFSET ?
     ");
-  $stmt->execute(array('%'.$_GET['leiloesWord'].'%',$_GET['leiloesLimit'],$_GET['leiloesStart']));
+  $stmt->execute(array('%'.$_POST['leiloesWord'].'%',$_POST['leiloesLimit'],$_POST['leiloesStart']));
 
   $result = $stmt->fetchAll();
-  print_r($result);
+  echo json_encode($result);
 }
 
-else if(isset($_GET['leiloesLimit']) && isset($_GET['leiloesStart']))
+else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
 {
 
   global $conn;
@@ -61,10 +61,10 @@ else if(isset($_GET['leiloesLimit']) && isset($_GET['leiloesStart']))
     LIMIT ?
     OFFSET ?
     ");
-  $stmt->execute(array($_GET['leiloesLimit'],$_GET['leiloesStart']));
+  $stmt->execute(array($_POST['leiloesLimit'],$_POST['leiloesStart']));
 
   $result = $stmt->fetchAll();
-  print_r($result);
+  echo json_encode($result);
 }
 
 

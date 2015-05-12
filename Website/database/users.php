@@ -7,7 +7,6 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
   //  $salt = sprintf("$2a$%02d$", $cost) . $salt;
   $hash = hash('sha256',$salt. $password .$salt);
 
-
   global $conn;
   $stmt = $conn->prepare
   ("
@@ -291,9 +290,10 @@ function getMoradaProfile($id)
 function getLastAuctions($id){
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idleilao, nome, descricao, precoinicial, datalimite
+    SELECT *
     FROM leilao
     WHERE  idleiloeiro = ?
+    ORDER BY datadepublicacao DESC
     LIMIT 6;
     ");
   $stmt->execute(array($id));

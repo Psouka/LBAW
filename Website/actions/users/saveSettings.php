@@ -9,5 +9,5 @@ else if(isset($_POST['ship']))
 else
   editProfile();
 
-//  header ('Location: ' . $BASE_URL . '/pages/settings.php');
+ header ('Location: ' . $BASE_URL . '/pages/settings.php');
 ?>
