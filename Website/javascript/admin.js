@@ -62,14 +62,16 @@ $.each(data, function(i, value) {
 
 
 
-function firstList(){
+function firstListU(){
 $.post("../database/admin.php", { 
 	userLimit: uLimit,
 	userStart: uStart
 }, function(data) {
 	completeHtmlUsers(data);
 }, "json");
+}
 
+function firstListA(){
 $.post("../database/admin.php", { 
 	leiloesLimit: uLimit,
 	leiloesStart: uStart
@@ -78,8 +80,12 @@ $.post("../database/admin.php", {
 }, "json");
 }
 
+
 function wordSearchUser(){
 var word = $('#wordUser').val();
+if(word == "")
+	firstListU();
+
 
 $.post("../database/admin.php", { 
 	userLimit: uLimit,
@@ -92,6 +98,8 @@ $.post("../database/admin.php", {
 
 function wordSearchAuction(){
 var word = $('#wordAuction').val();
+if(word == "")
+	firstListA();
 
 $.post("../database/admin.php", { 
 	leiloesLimit: uLimit,
@@ -104,7 +112,8 @@ $.post("../database/admin.php", {
 
 $(document).ready(function(){
 
-firstList();
+firstListA();
+firstListU();
 
 
 $('#wordUser').keypress(function(e) {

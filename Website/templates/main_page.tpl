@@ -73,7 +73,7 @@
                       {$leilao.preco}
                       {/if}
                   </h4>
-                  <h4><a href="item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>
+                  <h4><a href="pages/item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>
                   </h4>
                   <p>{$leilao.descricao}</p>
               </div>
