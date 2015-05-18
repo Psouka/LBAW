@@ -8,35 +8,35 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">Title</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="title" id="card-holder-name" placeholder="Title of the auction">
+                    <input type="text" class="form-control" name="title" id="card-holder-name" placeholder="Title of the auction" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-number">Description</label>
                 <div class="col-sm-9">
-                    <textarea type="text" class="form-control" name="description" id="card-number" placeholder="Description of the product"></textarea>
+                    <textarea type="text" class="form-control" name="description" id="card-number" placeholder="Description of the product" required></textarea>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">Starting bid</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="startingBid" id="card-holder-name" placeholder="Value">
+                    <input type="text" class="form-control" name="startingBid" id="card-holder-name" placeholder="Value" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">Buyout</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="buyout" id="card-holder-name" placeholder="Value">
+                    <input type="text" class="form-control" name="buyout" id="card-holder-name" placeholder="Value" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="card-holder-name">Category</label>
                 <div class="col-sm-9">
-                    <select class="form-control" name="category">
+                    <select class="form-control" name="category" required>
                         {foreach $categories as $categorie}
                         <option value="{$categorie.idcategoria}">{$categorie.tipo}</option>
                         {/foreach}
@@ -50,14 +50,14 @@
                     </p>
                 </label>
                 <div class="col-sm-9 input-group" id="small-padding-horizontal">
-                    <input type="file" name="upload[]" multiple>
+                    <input type="file" name="upload[]" multiple required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
                 <div class="col-sm-4">
-                    <input type="date" placeholder="Expiration date" name="expirationDate" class="form-control">
+                    <input type="date" placeholder="Expiration date" name="expirationDate" class="form-control" required>
                 </div>
             </div>
 

@@ -1,6 +1,13 @@
 <?php
 
-include_once ('../config/init.php');
+include_once ('../../config/init.php');
+
+function getUserActions($users)
+{
+
+}
+
+
 if(isset($_POST['userLimit']) && isset($_POST['userStart']) && isset($_POST['userWord']))
 {
 
@@ -20,7 +27,7 @@ if(isset($_POST['userLimit']) && isset($_POST['userStart']) && isset($_POST['use
 
 else if(isset($_POST['userLimit']) && isset($_POST['userStart']))
 {
-    
+
   global $conn;
   $stmt = $conn->prepare("
     SELECT idutilizador, utilizador, nomeproprio, sobrenome
@@ -36,7 +43,7 @@ else if(isset($_POST['userLimit']) && isset($_POST['userStart']))
 
 else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']) && isset($_POST['leiloesWord']))
 {
-  
+
   global $conn;
   $stmt = $conn->prepare("
     SELECT idleilao, idleiloeiro, idcategoria, nome

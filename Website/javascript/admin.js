@@ -25,7 +25,6 @@ $.each(data, function(i, value) {
 		</div>\
 		</div>\
 		</div>'
-
 		);
 
 	count++;
@@ -63,7 +62,7 @@ $.each(data, function(i, value) {
 
 
 function firstListU(){
-$.post("../database/admin.php", { 
+$.post("../actions/admin/admin.php", {
 	userLimit: uLimit,
 	userStart: uStart
 }, function(data) {
@@ -72,7 +71,7 @@ $.post("../database/admin.php", {
 }
 
 function firstListA(){
-$.post("../database/admin.php", { 
+$.post("../actions/admin/admin.php", {
 	leiloesLimit: uLimit,
 	leiloesStart: uStart
 }, function(data) {
@@ -87,7 +86,7 @@ if(word == "")
 	firstListU();
 
 
-$.post("../database/admin.php", { 
+$.post("../actions/admin/admin.php", {
 	userLimit: uLimit,
 	userStart: uStart,
 	userWord: word
@@ -101,7 +100,7 @@ var word = $('#wordAuction').val();
 if(word == "")
 	firstListA();
 
-$.post("../database/admin.php", { 
+$.post("../actions/admin/admin.php", {
 	leiloesLimit: uLimit,
 	leiloesStart: uStart,
 	leiloesWord: word
@@ -129,4 +128,3 @@ $('#wordAuction').keypress(function(e) {
 });
 
 });
-

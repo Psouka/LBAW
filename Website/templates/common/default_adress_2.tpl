@@ -21,7 +21,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="textinput">Country</label>
   <div class="col-sm-10">
-    <select id="country2" name="country" class="form-control">
+    <select id="country2" name="country" class="form-control" required>
       {foreach $countries as $country}
       <option value="{$country.idpais}">{$country.nome}</option>
       {/foreach}
@@ -34,7 +34,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="textinput">City</label>
   <div class="col-sm-10">
-    <select id="city2" name="city" class="form-control">
+    <select id="city2" name="city" class="form-control" required>
     </select>
   </div>
 </div>

@@ -32,14 +32,14 @@
                 </li>
             </ul>
         </div>
-        <div class="collapse small-margin-bottom no-padding" id="collapsedSearch">
+        <form class="collapse small-margin-bottom no-padding" id="collapsedSearch">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-                <a href="searchResults.php" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                <a href="pages/search.php" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
               </span>
             </div>
-        </div>
+        </form>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->

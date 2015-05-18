@@ -258,7 +258,7 @@ function getimagemUtilizador($id){
   $stmt = $conn->prepare("
     SELECT idimagemutilizador, localizacao
     FROM imagemutilizador
-    WHERE imagemutilizador = ?
+    WHERE idimagemutilizador = ?
     ");
   $stmt->execute(array($id));
   return $stmt->fetch()['localizacao'];

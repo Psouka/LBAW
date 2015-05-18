@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="Username" name="username" class="form-control">
+                            <input type="text" placeholder="Username" name="username" class="form-control" required>
                         </div>
                     </div>
 
@@ -24,109 +24,126 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" placeholder="Password" name="password" class="form-control">
+                            <input type="password" placeholder="Password" name="password" class="form-control" required>
                         </div>
                     </div>
 
-                    <!-- Button -->
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </div>
+                    {if $errorL neq ''}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Error!</strong>
+                      {$errorL}
+                  </div>
+                  {/if}
+                  <!-- Button -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </div>
                     </div>
+                </div>
 
-                </fieldset>
-            </form>
-        </div>
-        
-        <!-- Register Form -->
-        <div class="col-md-6">
-            <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/register.php" method="post">
-                <fieldset>
-
-                    <!-- Register -->
-                    <legend class="text-left">Register</legend>
-
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Username</label>
-                        <div class="col-sm-10">
-                            <input type="text" placeholder="Username" name="username" class="form-control">
-                        </div>
-                    </div>
-
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" placeholder="Password" name="password" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Firstname</label>
-                        <div class="col-sm-10">
-                            <input type="text" placeholder="Firstname" name="firstname" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Lastname</label>
-                        <div class="col-sm-10">
-                            <input type="text" placeholder="Lastname" name="lastname" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Genre</label>
-                        <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Male" checked>Male</label></div>
-                        <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Female">Female</label></div>
-                    </div>
-                    
-                    
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">E-mail</label>
-                        <div class="col-sm-10">
-                            <input type="email" placeholder="E-mail" name="email" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Mobile Number</label>
-                        <div class="col-sm-10">
-                            <input type="number" placeholder="9** *** ***" name="mobile" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <!-- Text input -->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="textinput">Birthdate</label>
-                        <div class="col-sm-10">
-                            <input type="date" placeholder="**/**/**" name="birthdate" class="form-control">
-                        </div>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </form>
-        </div>
+            </fieldset>
+        </form>
     </div>
+
+    <!-- Register Form -->
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/register.php" method="post">
+            <fieldset>
+
+                <!-- Register -->
+                <legend class="text-left">Register</legend>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Username" name="username" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" placeholder="Password" name="password" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Firstname</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Firstname" name="firstname" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Lastname</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Lastname" name="lastname" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Genre</label>
+                    <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Male" checked>Male</label></div>
+                    <div class="radio col-sm-5"><label><input type="radio" name="genre" value="Female">Female</label></div>
+                </div>
+
+
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">E-mail</label>
+                    <div class="col-sm-10">
+                        <input type="email" placeholder="E-mail" name="email" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Mobile Number</label>
+                    <div class="col-sm-10">
+                        <input type="number" placeholder="9** *** ***" name="mobile" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Birthdate</label>
+                    <div class="col-sm-10">
+                        <input type="date" placeholder="**/**/**" name="birthdate" class="form-control" required>
+                    </div>
+                </div>
+
+                {if $errorR neq ''}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Error!</strong>
+                      {foreach from=$errorR item=error}
+                      <li>{$error}</li>
+                      {/foreach}
+                  </div>
+                  {/if}
+
+                <!-- Button -->
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
 
 </div>
 <!-- Main Page Content -->
