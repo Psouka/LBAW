@@ -41,5 +41,9 @@ if(isset($_GET['id'])) {
 
 	$smarty->display ('users/profile.tpl');
 }
+else
+    {
+        header ('Location: ' . $BASE_URL . 'pages/404.php');
+    }
 
 ?>

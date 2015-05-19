@@ -159,7 +159,6 @@ CREATE TABLE Comentario(
 	idComentario BIGSERIAL PRIMARY KEY,
 	idUtilizador BIGINT REFERENCES Utilizador(idUtilizador),
 	idLeilao BIGINT REFERENCES Leilao(idLeilao),
-	assunto TEXT NOT NULL CHECK (length(assunto) < 50),
 	texto TEXT CHECK (length(texto) < 300),
 	data DATE NOT NULL
 	);

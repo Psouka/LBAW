@@ -64,7 +64,7 @@
 
                     <p>{$auction.descricao}</p>
                     <br>
-                    <div class="input-group">
+                    <div class="input-group" action="{$BASE_URL}actions/auctions/login.php" method="post">
                       <input type="text" class="form-control" placeholder="Place bid...">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Bid!</button>

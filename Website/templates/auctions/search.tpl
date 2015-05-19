@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-md-2">
-            <!-- Blog Categories Well -->
+            <!-- Sort -->
             <div class="well">
                 <h4>Sort</h4>
                 <select class="form-control">
@@ -65,31 +65,30 @@
               <!-- /.row -->
           </div>
 
-
-            <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Categories</h4>
-                <select class="form-control">
-                  <option>Any</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-              </select>
-              <!-- /.row -->
-          </div>
-
-          <!-- Side Widget Well -->
+          <!--  Categories  -->
           <div class="well">
-            <h4>Price Range</h4>
-            <p>Min:</p>
-            <input type="text" class="form-control" placeholder="Min">
-            <p>Max:</p>
-            <input type="text" class="form-control" placeholder="Max">
-        </div>
+            <h4>Categories</h4>
+            <select class="form-control">
+              <option>Any</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+          </select>
+          <!-- /.row -->
+      </div>
 
+      <!-- Side Widget Well -->
+      <div class="well">
+        <h4>Price Range</h4>
+        <p>Min:</p>
+        <input type="text" class="form-control" placeholder="Min">
+        <p>Max:</p>
+        <input type="text" class="form-control" placeholder="Max">
     </div>
+
+</div>
 </div>
 
 </div>
