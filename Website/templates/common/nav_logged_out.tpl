@@ -23,14 +23,17 @@
                 </li>
             </ul>
         </div>
-        <div class="collapse small-margin-bottom no-padding" id="collapsedSearch">
+        <form class="collapse small-margin-bottom no-padding" id="collapsedSearch" action="{$BASE_URL}pages/search.php" method="get">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              
               <span class="input-group-btn">
-                <a href="{$BASE_URL}pages/search.php" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                <input name="text" type="text" class="form-control" placeholder="Search for...">
+                <button href="#" class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
               </span>
             </div>
-        </div>
+        </form>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->

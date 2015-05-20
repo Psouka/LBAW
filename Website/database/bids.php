@@ -12,7 +12,7 @@ function getBiddersByAuctionId ($auctionid)
     return $stmt->fetchAll ();
 }
 
-function createBid($idAuction,$idBidder,$idUtilizador,$preco)
+function createBid($idAuction,$preco)
 {
    global $conn;
    $stmt = $conn->prepare
@@ -22,7 +22,7 @@ function createBid($idAuction,$idBidder,$idUtilizador,$preco)
     RETURNING idliciacao
     ");
    $currentdate = date("Y-m-d");
-   $stmt->execute(array($idAuction,$idBidder, $preco,$currentdate));
+   $stmt->execute(array($idAuction,$_SESSION['userid'], $preco,$currentdate));
 
    $result = $stmt->fetchAll();
    return $result;

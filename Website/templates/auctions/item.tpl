@@ -64,12 +64,12 @@
 
                     <p>{$auction.descricao}</p>
                     <br>
-                    <div class="input-group" action="{$BASE_URL}actions/auctions/login.php" method="post">
-                      <input type="text" class="form-control" placeholder="Place bid...">
+                    <form class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
+                      <input type="number" type="text" class="form-control" placeholder="Place bid...">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Bid!</button>
                       </span>
-                    </div><!-- /input-group -->
+                    </form><!-- /input-group -->
                 </div>
                 <div class="ratings">
                     <h4>{$auction.nomeproprio}'s rating: </h4>
@@ -88,12 +88,19 @@
 
             <div class="well"> <!-- comments -->
 
-                <div class="container">
                   <div class="row">
-                    <div class="col-md-8">
+
+                      <div class="leaveComment">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
                         <h2 class="page-header">
                             Comments
-                            <a href="#" class="pull-right btn btn-default btn-sm"><i class="fa fa-reply"></i>Reply</a>
                         </h2>
                         <section class="comment-list">
                           <!-- First Comment -->
