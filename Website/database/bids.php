@@ -19,12 +19,12 @@ function createBid($idAuction,$preco)
    ("
     INSERT INTO licitacao ( idleilao, idutilizador, preco, data)
     VALUES ( ?, ?, ?, ?)
-    RETURNING idliciacao
     ");
    $currentdate = date("Y-m-d");
+
    $stmt->execute(array($idAuction,$_SESSION['userid'], $preco,$currentdate));
 
-   $result = $stmt->fetchAll();
+   $result = $stmt->fetch();
    return $result;
 }
 ?>

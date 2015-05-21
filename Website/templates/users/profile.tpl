@@ -67,7 +67,7 @@
           <br>
           <small class="ratings no-padding">{$biggerAuction.count}</small>
         </h4>
-        <h4><a href="#">{$biggerAuction.nome}</a></h4>
+        <h4><a href="item.php?id={$biggerAuction.idleilao}">{$biggerAuction.nome}</a></h4>
         <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {$biggerAuction.datalimite}</h4>
 
         <p>{$biggerAuction.descricao} </p>

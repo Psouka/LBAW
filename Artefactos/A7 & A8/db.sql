@@ -116,6 +116,12 @@ CREATE TABLE Leilao(
 CREATE INDEX Leilao_index ON public.Leilao USING btree(idLeilao ASC NULLS LAST);
 
 
+CREATE TABLE leilaoVencedor(
+idUtilizador BIGINT REFERENCES UtilizadorNormal(idUtilizadorNormal),
+idLeilao BIGINT REFERENCES Leilao(idLeilao)
+);
+
+
 CREATE TABLE Licitacao(
 	idLicitacao BIGSERIAL PRIMARY KEY,
 	idLeilao BIGINT REFERENCES Leilao(idLeilao),

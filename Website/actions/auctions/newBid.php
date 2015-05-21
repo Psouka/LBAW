@@ -5,7 +5,7 @@ include_once ('../../database/bids.php');
 if(isset($_POST['idAuction']) && isset($_POST['preco']))
 {
 
-createBid($_POST['idAuction'],$_POST['preco'])
+createBid($_POST['idAuction'],$_POST['preco']);
 }
 
 
