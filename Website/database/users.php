@@ -256,12 +256,12 @@ function changeShiping(){
 function getimagemUtilizador($id){
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idimagemutilizador, localizacao
+    SELECT localizacao
     FROM imagemutilizador
     WHERE idimagemutilizador = ?
     ");
   $stmt->execute(array($id));
-  return $stmt->fetch()['localizacao'];
+  return $stmt->fetch();
 }
 
 function getcategoriasUtilizador($id){

@@ -9,8 +9,11 @@ if(isset($_GET['id'])) {
 	$smarty->assign ('profile', $profile);
 	//Imagens do Perfil
 	$imagem = array();
-	$imagem['Capa'] = getimagemUtilizador($profile['idImagemCapa']);
-	$imagem['Perfil'] = getimagemUtilizador($profile['idImagemPerfil']);
+	echo $profile['idImagemCapa'];
+	echo '.';
+	echo $profile['idImagemPerfil'];
+	$imagem['Capa'] = getimagemUtilizador($profile['idimagemcapa']);
+	$imagem['Perfil'] = getimagemUtilizador($profile['idimagemperfil']);
 	$smarty->assign('imagem',$imagem);
 	//Categorias dos Leiloes do Utilizador
 	$categorias = getcategoriasUtilizador($_GET['id']);
@@ -37,7 +40,7 @@ if(isset($_GET['id'])) {
 
 	//print_r(array_combine($leiloes,$licitacoes));
 	//print_r($leiloes);
-	//print_r($licitacoes);
+	//print_r($imagem);
 
 	$smarty->display ('users/profile.tpl');
 }

@@ -25,7 +25,7 @@ try
 
     if (!is_dir('../../' .$upload_dir))
     {
-      mkdir('../../' . $upload_dir, 0744, true);
+      mkdir('../../' . $upload_dir, 0777, true);
     }
 
     for ($index = 0 ; $index < $num_files ; $index++)
@@ -41,7 +41,7 @@ try
         {
             if (@move_uploaded_file($_FILES['upload']['tmp_name'][$index], $upload_file))
             {
-                addImageToAuction ($idleilao, $BASE_URL . $upload_dir  . $index  . '.' . $ext);
+                addImageToAuction ($idleilao, $upload_dir  . $index  . '.' . $ext);
             }
             else
                 print $error_message[$_FILES['upload']['error'][$index]];

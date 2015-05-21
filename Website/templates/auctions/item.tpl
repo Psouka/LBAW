@@ -59,15 +59,17 @@
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
+
+          
           <div class="item active">
-            <img class="slide-image" src="http://placehold.it/800x400" alt="">
+            <img class="slide-image" src="../{$firstImage.localizacao}" alt="">
           </div>
+
+          {foreach $images as $img}
           <div class="item">
-            <img class="slide-image" src="http://placehold.it/800x400" alt="">
-          </div>
-          <div class="item">
-            <img class="slide-image" src="http://placehold.it/800x400" alt="">
-          </div>
+            <img class="slide-image" src="../{$img.localizacao}" alt="">
+            </div>
+          {/foreach}
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
@@ -87,7 +89,7 @@
         <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> DD:HH:SS</h4>
         <h4 class="pull-right">
           Current Value:
-          {$itemPrice}
+          {$itemPrice} €
         </h4>
 
         <p>{$auction.descricao}</p>
@@ -95,7 +97,8 @@
 
 
         <form class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
-          <input name="preco" type="number" class="form-control" placeholder="Place bid...">
+          <input name="precoActual" type="number" value="{$itemPrice}" hidden>
+          <input name="preco" type="number" class="form-control" placeholder="Place bid..." min="{$itemPrice+0.2}" step="0.20">
           <input name="idAuction" type="number" value="{$auction.idleilao}" hidden>
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Bid!</button>
@@ -196,7 +199,7 @@
       {/foreach}
 
 
-      
+
     </section>
   </div>
 </div>

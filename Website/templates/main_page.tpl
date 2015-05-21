@@ -68,9 +68,9 @@
                   <div class="caption">
                     <h4 class="pull-right">
                       {if $leilao.preco eq 0}
-                      {$leilao.precoinicial}
+                      {$leilao.precoinicial} €
                       {else}
-                      {$leilao.preco}
+                      {$leilao.preco} €
                       {/if}
                   </h4>
                   <h4><a href="pages/item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>

@@ -28,7 +28,7 @@ function createImage($file,$path,$name){
   if (!is_dir('../../' .$path))
   {
     echo 'tentar criar pasta';
-    mkdir('../../' .$path, 0744, true);
+    mkdir('../../' .$path, 0777, true);
   }
   else
   echo 'where';

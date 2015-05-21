@@ -1,7 +1,41 @@
 
 {include file='common/header.tpl'}
 <div class="container">
- <div class="jumbotron changeme" style = "url( {$imagem.Capa} );">
+ <div class="jumbotron changeme">
+   <style>
+    .jumbotron{
+      height: 250px;
+      position: relative;
+      background-image: url(../{$imagem.Capa.localizacao});
+      background-position: 0% 25%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+      text-shadow: black 0.1em 0.1em 0.3em ;
+      margin-bottom: 15px;
+      opacity: 1.0;
+      transition: 0.5s;
+    }
+    .changeme:hover{
+      opacity: 0.50;
+      transition: 0.7s;
+    }
+    .wrench{
+      position: absolute;
+      top: 200px;
+      left: 10px;
+      font-size: 3em;
+      opacity: 0.2;
+  }
+    .changeme:hover>.wrench{
+      opacity: 1.0;
+    }
+    #username{
+    position: absolute; 
+    left: 60px; 
+    bottom: -30px;
+    }
+    </style>
    <span class="wrench glyphicon glyphicon-wrench" title="Change this cover"></span>
    <h1 id="username">{$profile.utilizador}</h1>
  </div>
@@ -10,7 +44,7 @@
     <legend><h2>About this user</h1></legend>
     <div class="panel panel-default">
      <div class="panel-body">
-      <img class="img-responsive" src="url( {$imagem.Perfil} );" alt="">
+      <img class="img-responsive" src="../{$imagem.Perfil.localizacao}" alt="">
       <br>
       <p>Centered in <b> {$morada.nomecidade} , {$morada.nomepais} </b></p>
       <p>Ships from <b> {$ship.nomecidade} , {$ship.nomepais} </b></p>
@@ -59,9 +93,9 @@
         <h4 class="pull-right text-right">
           <small class="pull-right">
             {if $biggerAuction.preco eq 0}
-            {$biggerAuction.precoinicial}
+            {$biggerAuction.precoinicial} €
             {else}
-            {$biggerAuction.preco}
+            {$biggerAuction.preco} €
             {/if}
           </small>
           <br>
@@ -101,9 +135,9 @@
       <div class="caption">
         <h4 class="pull-right">
           {if $leilao.preco eq 0}
-          {$leilao.precoinicial}
+          {$leilao.precoinicial} €
           {else}
-          {$leilao.preco}
+          {$leilao.preco} €
           {/if}
         </h4>
         <h4><a href="item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>

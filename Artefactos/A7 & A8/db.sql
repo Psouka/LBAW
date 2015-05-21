@@ -107,8 +107,8 @@ CREATE TABLE Leilao(
 	idCategoria BIGINT REFERENCES Categoria(idCategoria),
 	nome VARCHAR(20) NOT NULL,
 	descricao TEXT NOT NULL,
-	precoInicial MONEY NOT NULL,
-	precoCompraImediata MONEY,
+	precoInicial DECIMAL NOT NULL,
+	precoCompraImediata DECIMAL,
 	dataDePublicacao TIMESTAMP NOT NULL,
 	dataLimite TIMESTAMP NOT NULL,
 	CHECK (dataLimite > dataDePublicacao)
@@ -126,7 +126,7 @@ CREATE TABLE Licitacao(
 	idLicitacao BIGSERIAL PRIMARY KEY,
 	idLeilao BIGINT REFERENCES Leilao(idLeilao),
 	idUtilizador BIGINT REFERENCES UtilizadorNormal(idUtilizadorNormal),
-	preco MONEY NOT NULL,
+	preco DECIMAL NOT NULL,
 	data DATE NOT NULL
 	);
 CREATE INDEX Licitacao_index ON public.Licitacao USING btree(idLicitacao ASC NULLS LAST,idLeilao ASC NULLS LAST,idUtilizador ASC NULLS LAST);

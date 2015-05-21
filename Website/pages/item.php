@@ -9,15 +9,10 @@ $auction = getAuctionById ($auctionid);
 
 if ($auction)
 {
-  // categories [categoria->idcategoria, categoria->tipo]
   $categories = getAllCategories ();
   $smarty->assign ('categories', $categories);
 
-  // auctions [leilao->idleilao, leilao->idleiloeiro, utilizador->nomeproprio, utilizador->rating, leilao->nome, leilao->descricao, licitacao->"lastbid/biggerbid", leilao->precocompraimediata, leilao->datapublicacao, leilao->datalimite]
-  // falta fazer licitacao->biggestbid <----------------------------------------
   $smarty->assign ('auction', $auction);
-
-  // bidders[utilizador->id, utilizador->nome, licitacao->preco]
   $bidders = getBiddersByAuctionId ($auctionid);
 
   $itemPrice = $auction['precoinicial'];
@@ -35,12 +30,17 @@ if ($auction)
     $i++;
     $array[] = $com;
   }
+
   $comments = $array;
 
   $smarty->assign ('comments', $comments);
 
-    $smarty->assign ('itemPrice', $itemPrice);
+  $images = getImages($auctionid);
 
+  $firstImage = $images[0];
+  unset($images[0]);
+  $smarty->assign ('images', $images);
+  $smarty->assign ('firstImage', $firstImage);
 
   $smarty->assign ('itemPrice', $itemPrice);
 

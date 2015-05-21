@@ -82,4 +82,19 @@ function getComments($idAuction){
 
   return $result = $stmt->fetchAll();
 }
+
+
+function getImages($idAuction){
+     global $conn;
+  $stmt = $conn->prepare
+  ("
+  SELECT localizacao
+  FROM imagemleilao
+  WHERE idleilao = ?
+     ");
+
+  $stmt->execute(array($idAuction));
+
+  return $result = $stmt->fetchAll();
+}
 ?>
