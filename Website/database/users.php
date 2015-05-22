@@ -177,8 +177,14 @@ function editProfile()
 
   if(!empty($_FILES['profilePic']['tmp_name']))
   {
-    echo '1';
-    $newPic = createImagemUtilizador($_FILES['profilePic'],'perfilImage');
+    try{
+      $newPic = createImagemUtilizador($_FILES['profilePic'],'perfilImage');
+    }
+    catch (PDOException $e)
+    {
+    $newPic = $oldData['idImagemCapa'];
+    }
+
   }
   else if($oldData['idImagemPerfil'] == "")
   {
@@ -193,7 +199,17 @@ function editProfile()
 
 
   if(!empty($_FILES['coverPic']['tmp_name']))
-    $newCover = createImagemUtilizador($_FILES['coverPic'],'coverImage');
+  {
+    try{
+      $newCover = createImagemUtilizador($_FILES['coverPic'],'coverImage');
+    }
+    catch (PDOException $e)
+    {
+    $newCover = $oldData['idImagemCapa'];
+    }
+
+  }
+
   else if($oldData['idImagemCapa'] == "")
     $newCover = 2;
   else
@@ -339,10 +355,11 @@ function leiloes_addlicitacao($leiloes){
 function getRecentAuctions(){
   global $conn;
   $stmt = $conn->prepare("
-    SELECT *
-    FROM leilao
-    ORDER BY datadepublicacao DESC
-    LIMIT 6;
+  SELECT DISTINCT ON (leilao.idleilao) leilao.*, localizacao
+  FROM leilao, imagemleilao
+  WHERE leilao.idleilao = imagemleilao.idleilao
+  ORDER BY idleilao DESC
+  LIMIT 6;
     ");
   $stmt->execute(array());
 

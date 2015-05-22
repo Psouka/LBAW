@@ -39,12 +39,18 @@
                             <div class="item active">
                                 <img class="slide-image" src="http://placehold.it/800x400" alt="">
                             </div>
+                            {foreach $firstLeiloes as $lei}
+
                             <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x400" alt="">
+                              {if file_exists($lei.localizacao)}
+                              <img class="slide-image" src="{$lei.localizacao}" alt="">
+                              {else}
+                              <img class="slide-image" src="http://placehold.it/800x400" alt="">
+                              {/if}
+
                             </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x400" alt="">
-                            </div>
+                            {/foreach}
+
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -58,13 +64,23 @@
 
             <p class="lead">Last deals</p>
 
-            
+
             <div class="row">
 
              {foreach $leiloes as $leilao}
              <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
+                  <style>
+                  .thumbnail img {
+                    height:150px;
+                    width: 350px;
+                  }
+                  </style>
+                  {if file_exists($leilao.localizacao)}
+                  <img src="{$leilao.localizacao}" alt="">
+                  {else}
                   <img src="http://placehold.it/300x150" alt="">
+                  {/if}
                   <div class="caption">
                     <h4 class="pull-right">
                       {if $leilao.preco eq 0}
