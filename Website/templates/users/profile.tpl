@@ -31,8 +31,8 @@
       opacity: 1.0;
     }
     #username{
-    position: absolute; 
-    left: 60px; 
+    position: absolute;
+    left: 60px;
     bottom: -30px;
     }
     </style>
@@ -88,7 +88,7 @@
 
   <div class="col-sm-8 col-lg-8 col-md-8">
     <div class="thumbnail">
-      <img class="img-responsive" src="http://placehold.it/600x300" alt="">
+      <img class="img-responsive" src="../{$biggerAuction.localizacao}" alt="">
       <div class="caption-full">
         <h4 class="pull-right text-right">
           <small class="pull-right">
@@ -131,7 +131,11 @@
   {foreach $leiloes as $leilao}
   <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
+      {if file_exists($leilao.localizacao)}
+      <img src="{$leilao.localizacao}" alt="">
+      {else}
       <img src="http://placehold.it/300x150" alt="">
+      {/if}
       <div class="caption">
         <h4 class="pull-right">
           {if $leilao.preco eq 0}
@@ -164,12 +168,17 @@
 
 <div class="well"> <!-- comments -->
 
-  <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <h2 class="page-header">
           Reviews
-          <a href="#" class="pull-right btn btn-default btn-sm"><i class="fa fa-reply"></i>Reply</a>
+          <form role="form"  action="" method="post">
+            <div class="form-group">
+              <input name="idAuction" type="number" value="" hidden>
+              <textarea name="textComment" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </h2>
         <section class="comment-list">
           <!-- First Comment -->
@@ -271,7 +280,6 @@
         </section>
       </div>
     </div>
-  </div>
 
 
 </div>

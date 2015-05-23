@@ -306,11 +306,12 @@ function getMoradaProfile($id)
 function getLastAuctions($id){
   global $conn;
   $stmt = $conn->prepare("
-    SELECT *
-    FROM leilao
-    WHERE  idleiloeiro = ?
-    ORDER BY datadepublicacao DESC
-    LIMIT 6;
+
+  SELECT DISTINCT ON (leilao.idleilao) leilao.*, localizacao
+  FROM leilao, imagemleilao
+  WHERE leilao.idleilao = imagemleilao.idleilao AND idleiloeiro = ?
+  ORDER BY idleilao DESC
+  LIMIT 6;
     ");
   $stmt->execute(array($id));
 
@@ -359,7 +360,7 @@ function getRecentAuctions(){
   FROM leilao, imagemleilao
   WHERE leilao.idleilao = imagemleilao.idleilao
   ORDER BY idleilao DESC
-  LIMIT 6;
+  LIMIT 9;
     ");
   $stmt->execute(array());
 

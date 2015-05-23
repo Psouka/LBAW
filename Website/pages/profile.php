@@ -30,8 +30,7 @@ if(isset($_GET['id'])) {
 	$leiloes =  getLastAuctions($_GET['id']);
 	$licitacoes = leiloes_addlicitacao($leiloes);
 
-	$biggerAuction = $licitacoes[0];
-	unset($licitacoes[0]);
+	$biggerAuction = array_shift($licitacoes);
 
 
 	$smarty->assign('leiloes', $licitacoes);
@@ -39,7 +38,7 @@ if(isset($_GET['id'])) {
 
 
 	//print_r(array_combine($leiloes,$licitacoes));
-	//print_r($leiloes);
+	//print_r($biggerAuction);
 	//print_r($imagem);
 
 	$smarty->display ('users/profile.tpl');
