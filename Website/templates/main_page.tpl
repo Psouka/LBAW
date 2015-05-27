@@ -5,7 +5,7 @@
 
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3">		
             <div class="panel-group" id="accordionTwo">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -64,56 +64,51 @@
 
             <p class="lead">Last deals</p>
 
-
             <div class="row">
+				{foreach $leiloes as $leilao}
+				<div class="col-sm-4 col-lg-4 col-md-4">
+					<div class="thumbnail">
+						{if file_exists($leilao.localizacao)}
+						<img src="{$leilao.localizacao}" alt="">
+						{else}
+						<img src="http://placehold.it/300x150" alt="">
+						{/if}
+						<div class="caption">
+							<h4 class="pull-right">
+								{if $leilao.preco eq 0}
+									{$leilao.precoinicial} €
+								{else}
+									{$leilao.preco} €
+								{/if}
+							</h4>
+							<h4>
+								<a href="pages/item.php?id={$leilao.idleilao}">
+									{$leilao.nome}
+								</a>
+							</h4>
+							<p>{$leilao.descricao}</p>
+						</div>
+						<div class="ratings">
+							<p class="pull-right">
+								{$leilao.count} bids
+							</p>
+							<p>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+							</p>
+						</div>
+					</div>
+				</div>
+				{/foreach}
+			</div>
 
-             {foreach $leiloes as $leilao}
-             <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                  <style>
-                  .thumbnail img {
-                    height:150px;
-                    width: 350px;
-                  }
-                  </style>
-                  {if file_exists($leilao.localizacao)}
-                  <img src="{$leilao.localizacao}" alt="">
-                  {else}
-                  <img src="http://placehold.it/300x150" alt="">
-                  {/if}
-                  <div class="caption">
-                    <h4 class="pull-right">
-                      {if $leilao.preco eq 0}
-                      {$leilao.precoinicial} €
-                      {else}
-                      {$leilao.preco} €
-                      {/if}
-                  </h4>
-                  <h4><a href="pages/item.php?id={$leilao.idleilao}"> {$leilao.nome}</a>
-                  </h4>
-                  <p>{$leilao.descricao}</p>
-              </div>
-              <div class="ratings">
-                <p class="pull-right">{$leilao.count} bids</p>
-                <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-              </p>
-          </div>
-      </div>
-  </div>
-  {/foreach}
+		</div>
 
-</div>
-
-</div>
-
-</div>
+	</div>
 
 </div>
 <!-- Main Page Content -->
-
 {include file='common/footer.tpl'}

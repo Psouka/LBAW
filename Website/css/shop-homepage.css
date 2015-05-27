@@ -74,3 +74,9 @@ footer {
 {
     padding: 0px;
 }
+
+.thumbnail img
+{
+	height:150px;
+	width: 350px;
+}
