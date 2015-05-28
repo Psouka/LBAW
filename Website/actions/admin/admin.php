@@ -13,9 +13,11 @@ if(isset($_POST['userLimit']) && isset($_POST['userStart']) && isset($_POST['use
 
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idutilizador, utilizador, nomeproprio, sobrenome
+    SELECT idutilizador, utilizador, nomeproprio, sobrenome,
+    (SELECT COUNT(*) FROM leilao WHERE idutilizador =idleiloeiro) as nrleiloes
     FROM utilizador
     WHERE utilizador LIKE ?
+    GROUP BY utilizador.idutilizador
     LIMIT ?
     OFFSET ?
     ");
@@ -30,10 +32,12 @@ else if(isset($_POST['userLimit']) && isset($_POST['userStart']))
 
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idutilizador, utilizador, nomeproprio, sobrenome
-    FROM utilizador
-    LIMIT ?
-    OFFSET ?
+  SELECT idutilizador, utilizador, nomeproprio, sobrenome,
+  (SELECT COUNT(*) FROM leilao WHERE idutilizador =idleiloeiro) as nrleiloes
+  FROM utilizador
+  GROUP BY utilizador.idutilizador
+  LIMIT ?
+  OFFSET ?
     ");
   $stmt->execute(array($_POST['userLimit'],$_POST['userStart']));
 
@@ -46,9 +50,11 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']) && isset(
 
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idleilao, idleiloeiro, idcategoria, nome
+    SELECT leilao.idleilao, idleiloeiro, idcategoria, nome,precoInicial,
+    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao
     FROM leilao
     WHERE nome LIKE ?
+    GROUP BY leilao.idleilao
     LIMIT ?
     OFFSET ?
     ");
@@ -63,8 +69,10 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
 
   global $conn;
   $stmt = $conn->prepare("
-    SELECT idleilao, idleiloeiro, idcategoria, nome
+    SELECT leilao.idleilao, idleiloeiro, idcategoria, nome ,precoInicial,
+    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao
     FROM leilao
+    GROUP BY leilao.idleilao
     LIMIT ?
     OFFSET ?
     ");
@@ -73,6 +81,5 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
   $result = $stmt->fetchAll();
   echo json_encode($result);
 }
-
 
 ?>
