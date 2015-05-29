@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
                 <div class="col-sm-4">
-                    <input type="date" placeholder="Expiration date" name="expirationDate" class="form-control" required>
+                    <input type="datetime-local" placeholder="Expiration date" name="expirationDate" class="form-control" required>
                 </div>
             </div>
 
