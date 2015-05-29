@@ -1,2 +1,2 @@
-# Ignoring init.php files
-config/
+# Config files
+config/*
