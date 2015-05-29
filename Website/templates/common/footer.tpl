@@ -15,5 +15,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{$BASE_URL}javascript/categories.js"></script>
+
     </body>
 </html>
