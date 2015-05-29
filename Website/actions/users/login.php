@@ -7,13 +7,13 @@
 
     if (isLoginCorrect($username, $password))
     {
-        $_SESSION['username'] = $username;
-        assignSessionAttr();
+        assignSessionAttr($username);
         header ('Location: ' . $BASE_URL);
         exit();
     }
     else
         $_SESSION['errorLogin'] = 'Username and/or Password Invalid.';
+
 
    header ('Location: ' . $BASE_URL . 'pages/sign.php');
 ?>

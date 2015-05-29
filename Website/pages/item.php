@@ -4,11 +4,18 @@ include_once ($BASE_DIR . 'database/categories.php');
 include_once ($BASE_DIR . 'database/auctions.php');
 include_once ($BASE_DIR . 'database/bids.php');
 
+if (isset( $_GET['id']))
+{
+  if($_SESSION['usertype'] != 'normal')
+  {
+    header ('Location: ' . $BASE_URL . 'pages/admin-item.php?id='. $_GET['id']);
+  }
+
+
+
 $auctionid = $_GET['id'];
 $auction = getAuctionById ($auctionid);
 
-if ($auction)
-{
   $categories = getAllCategories ();
   $smarty->assign ('categories', $categories);
 

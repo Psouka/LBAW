@@ -1,5 +1,11 @@
 <?php
 include_once ('../config/init.php');
+
+if(!isset($_SESSION['userid'])) {
+	header ('Location: ' . $BASE_URL . 'index.php');
+	exit();
+}
+
 include_once ('../database/util.php');
 include_once ('../database/users.php');
 

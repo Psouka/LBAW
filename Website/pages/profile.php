@@ -3,6 +3,13 @@ include_once ('../config/init.php');
 include_once ('../database/users.php');
 $profile = "";
 if(isset($_GET['id'])) {
+
+	if($_SESSION['usertype'] != 'normal')
+  {
+    header ('Location: ' . $BASE_URL . 'pages/admin-profile.php?id='. $_GET['id']);
+  }
+
+
 	$profile = getUserById($_GET['id']);
 	$avaliacao = getRating($_GET['id']);
 	$smarty->assign ('avaliacao', $avaliacao);

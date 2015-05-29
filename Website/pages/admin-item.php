@@ -4,11 +4,11 @@ include_once ($BASE_DIR . 'database/categories.php');
 include_once ($BASE_DIR . 'database/auctions.php');
 include_once ($BASE_DIR . 'database/bids.php');
 
-$auctionid = $_GET['id'];
-$auction = getAuctionById ($auctionid);
-
-if ($auction)
+if (isset( $_GET['id']))
 {
+
+  $auctionid = $_GET['id'];
+  $auction = getAuctionById ($auctionid);
   $categories = getAllCategories ();
   $smarty->assign ('categories', $categories);
 
@@ -18,7 +18,7 @@ if ($auction)
   $itemPrice = $auction['precoinicial'];
   foreach ($bidders as $bidd) {
     if($bidd['preco'] > $itemPrice)
-    $itemPrice = $bidd['preco'];
+      $itemPrice = $bidd['preco'];
   }
 
   $comments = getComments($auctionid);

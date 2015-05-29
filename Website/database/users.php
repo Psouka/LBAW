@@ -27,20 +27,36 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
   $stmt->execute(array($result['idutilizador']));
 }
 
-function assignSessionAttr ()
+function assignSessionAttr ($username)
 {
   global $conn;
   $stmt = $conn->prepare
   ("
-    SELECT idUtilizador , utilizador, nomeProprio
-    FROM Utilizador
+    SELECT idutilizador , utilizador, nomeProprio
+    FROM utilizador
     WHERE utilizador = ?
     ");
-  $stmt->execute(array($_SESSION['username']));
+  $stmt->execute(array($username));
   $row = $stmt->fetch();
 
+  $_SESSION['username'] = $row['utilizador'];
   $_SESSION['userid'] = $row['idutilizador'];
   $_SESSION['firstname'] = $row['nomeproprio'];
+
+  $stmt = $conn->prepare
+  ("
+    SELECT idadministrador 
+    FROM administrador
+    WHERE idadministrador = ?
+    ");
+  $stmt->execute(array($_SESSION['userid']));
+  $row = $stmt->fetch();
+
+  if($row)
+    $_SESSION['usertype'] = 'admin';
+  else
+    $_SESSION['usertype'] = 'normal';
+
 }
 
 function isLoginCorrect($username, $password)

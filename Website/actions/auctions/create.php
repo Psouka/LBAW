@@ -2,6 +2,7 @@
 include_once ('../../config/init.php');
 include_once ('../../database/auctions.php');
 
+
 $title = $_POST['title'];
 $description = $_POST['description'];
 $startingBid = $_POST['startingBid'];
