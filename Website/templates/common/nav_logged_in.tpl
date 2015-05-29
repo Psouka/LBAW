@@ -10,9 +10,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{$BASE_URL}"><img alt= "brand" src= "{$BASE_URL}images/logo.png"></a>
+            <a class="navbar-brand" href="{$BASE_URL}"><img alt="brand" src="{$BASE_URL}images/logo.png">
+            </a>
             <a class="navbar-brand pull-right" data-toggle="collapse" href="#collapsedSearch" aria-expanded="false" aria-controls="collapseExample">
-              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,13 +35,12 @@
         </div>
         <form class="collapse small-margin-bottom no-padding" id="collapsedSearch" action="{$BASE_URL}pages/search.php" method="get">
             <div class="input-group">
-              
-              <span class="input-group-btn">
                 <input name="text" type="text" class="form-control" placeholder="Search for...">
-                <button href="#" class="btn btn-default" type="submit">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
-              </span>
+                <span class="input-group-btn">
+                    <button href="#search" class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </span>
             </div>
         </form>
         <!-- /.navbar-collapse -->
