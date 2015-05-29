@@ -182,7 +182,7 @@ function editProfile()
     }
     catch (PDOException $e)
     {
-    $newPic = $oldData['idImagemCapa'];
+    $newPic = $oldData['idImagemPerfil'];
     }
 
   }
@@ -367,6 +367,18 @@ function getRecentAuctions(){
   return $stmt->fetchAll();
 }
 
+function getRating($userid)
+{
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+    SELECT AVG(estrelas)
+    FROM avaliacaoutilizador
+    WHERE idavaliado = ?
+    ");
+  $stmt->execute(array($userid));
+  return $stmt->fetch();
+}
 
 
 ?>

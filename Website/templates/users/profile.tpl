@@ -50,8 +50,14 @@
       <p>Ships from <b> {$ship.nomecidade} , {$ship.nomepais} </b></p>
 
       <p> <b> Rating: </b> <b>
-        <a href="#">400 <span class="glyphicon glyphicon-thumbs-up"></span></a>
-        <a href="#">90 <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
+        {if $avaliacao.estrelas eq ''}
+        <a href="#">No Rating <span class="glyphicon glyphicon-thumbs-up"></span></a>
+        <a href="#"> <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
+        {elseif $avaliacao.estrelas ge 3}
+        <a href="#">$avaliacao.estrelas <span class="glyphicon glyphicon-thumbs-up"></span></a>
+        {else}
+        <a href="#">$avaliacao.estrelas <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
+        {/if}
       </p>
       Member since {$dataRegisto}
     </div>
@@ -87,7 +93,7 @@
  <div class="row">
 
   <div class="col-sm-8 col-lg-8 col-md-8">
-    <div class="thumbnail">
+    <div class="thumbnailBigger">
       <img class="img-responsive" src="../{$biggerAuction.localizacao}" alt="">
       <div class="caption-full">
         <h4 class="pull-right text-right">
@@ -99,7 +105,7 @@
             {/if}
           </small>
           <br>
-          <small class="ratings no-padding">{$biggerAuction.count}</small>
+          <small class="ratings no-padding">{$biggerAuction.count} Bids</small>
         </h4>
         <h4><a href="item.php?id={$biggerAuction.idleilao}">{$biggerAuction.nome}</a></h4>
         <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {$biggerAuction.datalimite}</h4>
@@ -184,7 +190,7 @@
           <!-- First Comment -->
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
+              <figure class="thumbnailReview">
                 <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
                 <figcaption class="text-center">username</figcaption>
               </figure>
@@ -223,7 +229,7 @@
               </div>
             </div>
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
+              <figure class="thumbnailReview">
                 <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
                 <figcaption class="text-center">username</figcaption>
               </figure>
@@ -232,7 +238,7 @@
           <!-- Fourth Comment -->
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
+              <figure class="thumbnailReview">
                 <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
                 <figcaption class="text-center">username</figcaption>
               </figure>
@@ -271,7 +277,7 @@
               </div>
             </div>
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
+              <figure class="thumbnailReview">
                 <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
                 <figcaption class="text-center">username</figcaption>
               </figure>

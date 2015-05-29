@@ -40,7 +40,7 @@
               <a href="#" class="list-group-item">No bidders</a>
               {else}
               {foreach $bidders as $bidder}
-              <a href="#" class="list-group-item"><span class="badge">{$bidder.preco}</span> {$bidder.nomeproprio}</a>
+              <a href="#" class="list-group-item"><span class="badge">{$bidder.preco}€</span> {$bidder.nomeproprio}</a>
               {/foreach}
               {/if}
             </div>
@@ -51,7 +51,7 @@
 
     <div class="col-md-9">
 
-      <div class="thumbnail">
+      <div class="thumbnailCarousel">
        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -60,7 +60,7 @@
         </ol>
         <div class="carousel-inner">
 
-          
+
           <div class="item active">
             <img class="slide-image" src="../{$firstImage.localizacao}" alt="">
           </div>
@@ -146,7 +146,7 @@
           {if $com.line eq 0}
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
+              <figure class="thumbnailUsers">
                 <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
                 <figcaption class="text-center">{$com.utilizador}</figcaption>
               </figure>

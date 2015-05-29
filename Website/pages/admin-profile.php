@@ -41,7 +41,7 @@ if(isset($_GET['id'])) {
 	//print_r($biggerAuction);
 	//print_r($avaliacao);
 
-	$smarty->display ('users/profile.tpl');
+	$smarty->display ('admin/admin-profile.tpl');
 }
 else
     {
