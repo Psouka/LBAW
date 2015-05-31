@@ -11,7 +11,7 @@
 
         <div class="row">
 
-            <div class="col-lg-10">
+            <div class="col-lg-9">
 
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-3 text-center">
@@ -52,7 +52,7 @@
             </section>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-3">
             <!-- Sort -->
             <div class="well">
                 <h4>Sort</h4>
@@ -82,10 +82,7 @@
       <!-- Side Widget Well -->
       <div class="well">
         <h4>Price Range</h4>
-        <p>Min:</p>
-        <input type="text" class="form-control" placeholder="Min">
-        <p>Max:</p>
-        <input type="text" class="form-control" placeholder="Max">
+        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
     </div>
 
 </div>

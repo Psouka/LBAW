@@ -80,3 +80,8 @@ footer {
 	height:150px;
 	width: 350px;
 }
+
+img.slide-image , img .item{
+    height:450px !important;
+    width: 850px;
+}

@@ -51,7 +51,8 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']) && isset(
   global $conn;
   $stmt = $conn->prepare("
     SELECT leilao.idleilao, idleiloeiro, idcategoria, nome,precoInicial,
-    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao
+    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao,
+    (SELECT utilizador FROM utilizador WHERE idleiloeiro = idutilizador) as criador
     FROM leilao
     WHERE nome LIKE ?
     GROUP BY leilao.idleilao
@@ -69,10 +70,10 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
 
   global $conn;
   $stmt = $conn->prepare("
-    SELECT leilao.idleilao, idleiloeiro, idcategoria, nome ,precoInicial,
-    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao
+    SELECT leilao.idleilao, idleiloeiro, idcategoria, nome, precoInicial,
+    (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao,
+    (SELECT utilizador FROM utilizador WHERE idleiloeiro = idutilizador) as criador
     FROM leilao
-    GROUP BY leilao.idleilao
     LIMIT ?
     OFFSET ?
     ");
@@ -81,5 +82,6 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
   $result = $stmt->fetchAll();
   echo json_encode($result);
 }
+
 
 ?>

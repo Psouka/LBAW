@@ -37,7 +37,11 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
+                                {if file_exists($firstLeilao.localizacao)}
+                                <img class="slide-image" src="{$firstLeilao.localizacao}" alt="">
+                                {else}
                                 <img class="slide-image" src="http://placehold.it/800x400" alt="">
+                                {/if}
                             </div>
                             {foreach $firstLeiloes as $lei}
 

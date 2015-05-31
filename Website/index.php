@@ -17,6 +17,9 @@
     $firstLeiloes[] = array_shift($leiloes);
 
   //  print_r($firstLeiloes);
+ $firstLeilao = array_shift($firstLeiloes);
+
+    $smarty->assign('firstLeilao', $firstLeilao);
     $smarty->assign('firstLeiloes', $firstLeiloes);
 	$smarty->assign('leiloes', $leiloes);
 
