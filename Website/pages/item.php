@@ -30,15 +30,7 @@ $auction = getAuctionById ($auctionid);
 
   $comments = getComments($auctionid);
 
-  $array = array();
-  $i = 0;
-  foreach ($comments as $com) {
-    $com['line'] = $i % 2;
-    $i++;
-    $array[] = $com;
-  }
 
-  $comments = $array;
 
   $smarty->assign ('comments', $comments);
 

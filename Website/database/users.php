@@ -121,6 +121,20 @@ function createImagemUtilizador($file,$name)
 
   $path = $BASE_URL . createImage($file,'images/users/'.$_SESSION['username'].'/',$name);
   global $conn;
+
+  $stmt = $conn->prepare
+  ("
+    SELECT idimagemutilizador
+    FROM imagemutilizador
+    WHERE localizacao = ?
+    ");
+  $stmt->execute(array($path));
+  $result = $stmt->fetch();
+
+  if($result)
+    return $result['idimagemutilizador'];
+
+
   $stmt = $conn->prepare
   ("
     INSERT INTO imagemutilizador (localizacao)
@@ -198,11 +212,12 @@ function editProfile()
     }
     catch (PDOException $e)
     {
-    $newPic = $oldData['idImagemPerfil'];
+    
+    $newPic = $oldData['idimagemperfil'];
     }
 
   }
-  else if($oldData['idImagemPerfil'] == "")
+  else if($oldData['idimagemperfil'] == "")
   {
     echo '2';
     $newPic = 1;
@@ -210,7 +225,7 @@ function editProfile()
   else
   {
     echo '3';
-    $newPic = $oldData['idImagemPerfil'];
+    $newPic = $oldData['idimagemperfil'];
   }
 
 
@@ -221,21 +236,21 @@ function editProfile()
     }
     catch (PDOException $e)
     {
-    $newCover = $oldData['idImagemCapa'];
+    $newCover = $oldData['idimagemcapa'];
     }
 
   }
 
-  else if($oldData['idImagemCapa'] == "")
+  else if($oldData['idimagemcapa'] == "")
     $newCover = 2;
   else
-    $newCover = $oldData['idImagemCapa'];
+    $newCover = $oldData['idimagemcapa'];
 
   global $conn;
   $stmt = $conn->prepare
   ("
     UPDATE utilizador
-    SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, descricao = ?, email = ?, telefone = ?, datanascimento = ?, idImagemPerfil = ?, idImagemCapa = ?
+    SET palavrapasse = ?, nomeproprio = ?, sobrenome = ?, genero = ?, descricao = ?, email = ?, telefone = ?, datanascimento = ?, idimagemperfil = ?, idimagemcapa = ?
     WHERE idutilizador = ?
     ");
 

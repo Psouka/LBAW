@@ -73,9 +73,9 @@ function getComments($idAuction){
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT comentario.*, utilizador
-  FROM comentario, utilizador
-  WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador
+  SELECT comentario.*, utilizador, localizacao
+  FROM comentario, utilizador, imagemutilizador
+  WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador AND imagemutilizador.idimagemutilizador = utilizador.idimagemperfil
      ");
 
   $stmt->execute(array($idAuction));

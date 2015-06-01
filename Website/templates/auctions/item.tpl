@@ -68,7 +68,7 @@
           {foreach $images as $img}
           <div class="item">
             <img class="slide-image" src="../{$img.localizacao}" alt="">
-            </div>
+          </div>
           {/foreach}
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -139,71 +139,37 @@
         </h2>
         <section class="comment-list">
 
-
+          <link href="{$BASE_URL}css/comment.css" rel="stylesheet">
           <!--  Comment -->
           {foreach $comments as $com}
 
-          {if $com.line eq 0}
+
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnailUsers">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">{$com.utilizador}</figcaption>
-              </figure>
-            </div>
+              <div class="thumbnailUsers">
+                <img class="img-responsive user-photo" src="{$BASE_URL}{$com.localizacao}">
+              </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+
             <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow left">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <a href="{$BASE_URL}pages/profile.php?id={$com.idutilizador}"><strong>{$com.utilizador}</strong></a>
+                  <span class="text-muted">{$com.data}</span>
+                </div>
                 <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> </div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o">
-                    </i>{$com.data}</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                     {$com.texto}
-                   </p>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </article>
-         {else}
+                  {$com.texto}
+                </div><!-- /panel-body -->
+              </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+          </article>
+          <br>
+          {/foreach}
 
-         <article class="row">
-          <div class="col-md-10 col-sm-10">
-            <div class="panel panel-default arrow right">
-              <div class="panel-body">
-                <header class="text-right">
-                  <div class="comment-user"><i class="fa fa-user"></i></div>
-                  <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o">
-                  </i> {$com.data}</time>
-                </header>
-                <div class="comment-post">
-                  <p>
-                   {$com.texto}
-                 </p>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-2 col-sm-2 hidden-xs">
-          <figure class="thumbnail">
-            <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-            <figcaption class="text-center">{$com.utilizador}</figcaption>
-          </figure>
-        </div>
-      </article>
-
-      {/if}
-      {/foreach}
-
-
-
-    </section>
+        </section>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
 
 </div>

@@ -21,17 +21,7 @@ if (isset( $_GET['id']))
       $itemPrice = $bidd['preco'];
   }
 
-  $comments = getComments($auctionid);
-
-  $array = array();
-  $i = 0;
-  foreach ($comments as $com) {
-    $com['line'] = $i % 2;
-    $i++;
-    $array[] = $com;
-  }
-
-  $comments = $array;
+    $comments = getComments($auctionid);
 
   $smarty->assign ('comments', $comments);
 
