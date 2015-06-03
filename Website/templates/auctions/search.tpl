@@ -32,8 +32,8 @@
                 </div>
             </div>
 			<div class="well row">
-                <h3 class="text-center no-margin"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionOne" href="#collapseOne">Auctions' Filters <span class="caret"></span></a></h3>
-                <div class="panel-collapse collapse in" id="collapseOne">
+                <h3 class="text-center no-margin"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseTwo">Auctions' Filters <span class="caret"></span></a></h3>
+                <div class="panel-collapse collapse in" id="collapseTwo">
                     <div>
                         <h4>Sort</h4>
                         <select class="form-control">
