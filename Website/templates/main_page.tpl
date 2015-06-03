@@ -6,14 +6,14 @@
     <div class="row">
 
         <div class="col-md-3">		
-            <div class="panel-group" id="accordionTwo">
+            <div class="panel-group" id="accordionOne">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseFour">Categorias</a> <span class="caret"></span>
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionOne" href="#collapseCategories">Categories</a> <span class="caret"></span>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse in" id="collapseFour">
+                    <div class="panel-collapse collapse in" id="collapseCategories">
                         <div class="list-group">
                             {foreach $categories as $categorie}
                             <a href="#" class="list-group-item">{$categorie.tipo}</a>

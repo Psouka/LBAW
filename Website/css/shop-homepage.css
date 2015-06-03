@@ -1,16 +1,5 @@
-/*!
- * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    /*
-    background-image: url('../img/background.jpg');
-    background-repeat: no-repeat;
-    background-color: #cdcdcd;
-    */
+    padding-top: 70px;
 }
 
 .slide-image {
@@ -35,10 +24,6 @@ body {
     white-space: nowrap;
 }
 
-.thumbnail img {
-    width: 100%;
-}
-
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
@@ -57,31 +42,74 @@ body {
 footer {
     margin: 50px 0;
 }
-
 /* --- Extra --- */
 
-.no-margin
-{
+.no-margin {
     margin: 0px;
 }
 
-.small-margin-bottom
-{
+.small-margin {
+    margin: 1em;
+}
+
+.small-margin-top {
+    margin-top: 1em;
+}
+
+.small-margin-bottom {
     margin-bottom: 1em;
 }
 
-.no-padding
+.small-margin-left {
+    margin-left: 1em;
+}
+
+.small-margin-right {
+    margin-right: 1em !important;
+}
+
+
+@media (max-width: 768px)
 {
+	.small-margin-right {
+		margin-right: 0px !important;
+	}
+}
+
+.small-margin-vertical {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.no-padding {
     padding: 0px;
 }
 
-.thumbnail img
+@media (max-width: 768px)
 {
-	height:150px;
-	width: 350px;
+	.no-padding-mobile {
+		padding: 0px !important;
+	}
+	
+	.text-center-mobile {
+		text-align: center;
+	}
 }
 
-img.slide-image , img .item{
-    height:450px !important;
+.no-padding-left {
+    padding-left: 0px;
+}
+
+.medium-padding-top {
+	padding-top: 1em;
+}
+
+.no-border {
+	border: 0px;
+}
+
+img.slide-image,
+img .item {
+    height: 450px !important;
     width: 850px;
 }
