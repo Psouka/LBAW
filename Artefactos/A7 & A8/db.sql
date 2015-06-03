@@ -175,9 +175,7 @@ ALTER TABLE public.Comentario CLUSTER ON Comentario_index;
 CREATE TABLE Bloqueio(
 	idBloqueio BIGSERIAL PRIMARY KEY,
 	idAdministrador BIGINT REFERENCES Administrador(idAdministrador),
-	dataInicio DATE NOT NULL,
-	dataFim DATE NOT NULL,
-	CHECK (dataFim > dataInicio)
+	dataInicio DATE NOT NULL
 	);
 CREATE INDEX Bloqueio_index ON public.Bloqueio USING btree(idBloqueio ASC NULLS LAST,idAdministrador ASC NULLS LAST);
 ALTER TABLE public.Bloqueio CLUSTER ON Bloqueio_index;

@@ -1,6 +1,4 @@
 <?php
-
-
 function getCountries()
 {
   global $conn;
@@ -11,10 +9,10 @@ function getCountries()
 
 function getCities()
 {
-	global $conn;
-	$stmt = $conn->prepare ("SELECT * FROM cidade ORDER BY nome");
-	$stmt->execute();
-	return $stmt->fetchAll();
+  global $conn;
+  $stmt = $conn->prepare ("SELECT * FROM cidade ORDER BY nome");
+  $stmt->execute();
+  return $stmt->fetchAll();
 }
 
 if(isset($_GET['idPais']))

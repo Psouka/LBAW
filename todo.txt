@@ -1,0 +1,21 @@
+index
+- Texto no carousel
+- Last minute deals
+
+profile
+- detalhes do user +-
+
+review
+- login redirecciona para review
+- contem rating + comment
+
+search
+- para users + auctions
+- filtros (com buton)
+
+admin
+- action buttons
+	auctions
+		- block/unblock comments
+	profile
+		- block/unblock comments

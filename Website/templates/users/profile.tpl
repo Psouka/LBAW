@@ -51,8 +51,8 @@
 
       <p> <b> Rating: </b> <b>
         {if $avaliacao.estrelas eq ''}
-        <a href="#">No Rating <span class="glyphicon glyphicon-thumbs-up"></span></a>
-        <a href="#"> <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
+        <a href="#">No Rating <!--span class="glyphicon glyphicon-thumbs-up"></span></a>
+        <a href="#"> <span class="glyphicon glyphicon-thumbs-down"></span--></a></b>
         {elseif $avaliacao.estrelas ge 3}
         <a href="#">$avaliacao.estrelas <span class="glyphicon glyphicon-thumbs-up"></span></a>
         {else}
@@ -68,10 +68,10 @@
    <div class="panel panel-default">
     <div class="panel-heading">
      <h4 class="panel-title">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseCategories">Categories</a> <span class="caret"></span>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseFour">Categorias</a> <span class="caret"></span>
     </h4>
   </div>
-  <div class="panel-collapse collapse in" id="collapseCategories">
+  <div class="panel-collapse collapse in" id="collapseFour">
    <div class="list-group">
     {foreach $categories as $categorie}
     <a href="#" class="list-group-item">{$categorie.tipo}</a>
@@ -111,14 +111,6 @@
         <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {$biggerAuction.datalimite}</h4>
 
         <p>{$biggerAuction.descricao} </p>
-        <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Place bid...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Bid!</button>
-          </span>
-        </div><!-- /input-group -->
-      </div>
       <div class="ratings">
         <h4>User rating: </h4>
         <p>
