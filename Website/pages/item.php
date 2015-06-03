@@ -6,7 +6,7 @@ include_once ($BASE_DIR . 'database/bids.php');
 
 if (isset( $_GET['id']))
 {
-  if($_SESSION['usertype'] != 'normal')
+  if($_SESSION['usertype'] == 'admin')
   {
     header ('Location: ' . $BASE_URL . 'pages/admin-item.php?id='. $_GET['id']);
   }

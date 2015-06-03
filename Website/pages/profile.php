@@ -4,7 +4,7 @@ include_once ('../database/users.php');
 $profile = "";
 if(isset($_GET['id'])) {
 
-	if($_SESSION['usertype'] != 'normal')
+	if($_SESSION['usertype'] == 'admin')
   {
     header ('Location: ' . $BASE_URL . 'pages/admin-profile.php?id='. $_GET['id']);
   }
