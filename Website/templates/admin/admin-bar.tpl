@@ -159,25 +159,3 @@
     <!--script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script-->
 </head>
 <body>
-<div id="wrapper">
-      
-      <!-- Sidebar -->
-            <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-      <ul id="sidebar_menu" class="sidebar-nav">
-           <li class="sidebar-brand"><a id="menu-toggle" href="#">Admin<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
-      </ul>
-        <ul class="sidebar-nav" id="sidebar">     
-            <li><a>Block<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
-            <li><a>Unlock<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
-            <li><a>Close<span class="sub_icon glyphicon glyphicon-off"></span></a></li>
-        </ul>
-      </div>
-      
-    </div>
-<script type="text/javascript">
-$("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-});
-</script>

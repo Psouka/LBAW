@@ -28,7 +28,7 @@
 
                 {if $USERTYPE eq 'admin'}
                 <li>
-                    <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
+                    <a href="{$BASE_URL}pages/admin-list.php">Users/Auctions</a>
                 </li>
                 {else}
                 <li>

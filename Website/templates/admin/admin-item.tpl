@@ -1,5 +1,26 @@
+
 {include file='common/header.tpl'}
 {include file='admin/admin-bar.tpl'}
+<div id="wrapper">
+  
+  <!-- Sidebar -->
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul id="sidebar_menu" class="sidebar-nav">
+     <li class="sidebar-brand"><a id="menu-toggle" href="#">Admin<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+   </ul>
+   <ul class="sidebar-nav" id="sidebar">     
+    <li><a href="{$BASE_URL}actions/admin/bloqueio.php?idAuction={$auction.idleilao}">Block<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+    <li><a href="{$BASE_URL}actions/admin/desbloqueio.php?idAuction={$auction.idleilao}">Unlock<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+  </ul>
+</div>
+<script type="text/javascript">
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("active");
+});
+</script>
+</div>
 
 <!-- Page Content -->
 <div class="container">
@@ -56,8 +77,9 @@
      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          {foreach $images as $img}
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          {/foreach}
       </ol>
       <div class="carousel-inner">
 
@@ -135,7 +157,13 @@
               </div><!-- /thumbnail -->
             </div><!-- /col-sm-1 -->
 
+
             <div class="col-md-10 col-sm-10">
+                <form action="{$BASE_URL}actions/admin/bloqueio.php" method="GET">
+                <input name="idComentario" value="{$com.idcomentario}"type="hidden" class="btn btn-danger" >
+
+                <input type="submit" class="btn btn-danger" value="Block" onclick="">
+                </form>
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <a href="{$BASE_URL}pages/profile.php?id={$com.idutilizador}"><strong>{$com.utilizador}</strong></a>
