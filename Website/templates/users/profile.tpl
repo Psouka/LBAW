@@ -124,7 +124,7 @@
       </div>
     </div>
   </div>
-
+</div>
 
   {foreach $leiloes as $leilao}
   <div class="col-sm-4 col-lg-4 col-md-4">

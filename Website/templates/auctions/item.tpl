@@ -17,9 +17,9 @@
             <div class="list-group">
               {foreach $categories as $category}
               {if $category.idcategoria == $auction.idcategoria}
-              <a href="#" class="list-group-item active">{$category.tipo}</a>
+               <a href="{$BASE_URL}pages/search.php?category={$category.idcategoria}" class="list-group-item active">{$category.tipo}</a>
               {else}
-              <a href="#" class="list-group-item">{$category.tipo}</a>
+               <a href="{$BASE_URL}pages/search.php?category={$category.idcategoria}" class="list-group-item">{$category.tipo}</a>
               {/if}
               {/foreach}
             </div>

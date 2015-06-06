@@ -16,7 +16,7 @@
                     <div class="panel-collapse collapse in" id="collapseFour">
                         <div class="list-group">
                             {foreach $categories as $categorie}
-                            <a href="#" class="list-group-item">{$categorie.tipo}</a>
+                            <a href="{$BASE_URL}pages/search.php?category={$categorie.idcategoria}" class="list-group-item">{$categorie.tipo}</a>
                             {/foreach}
                         </div>
                     </div>
