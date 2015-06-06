@@ -9,6 +9,21 @@ if (isset( $_GET['id']))
 
   $auctionid = $_GET['id'];
   $auction = getAuctionById ($auctionid);
+$auction = getAuctionById ($auctionid);
+
+//Our dates
+$date1 = date('m/d/Y h:i:s a', time());
+$date2 = $auction['datalimite'];
+//Convert them to timestamps.
+$date1Timestamp = strtotime($date1);
+$date2Timestamp = strtotime($date2);
+ 
+//Calculate the difference.
+$timeleft = $date2Timestamp - $date1Timestamp;
+ 
+$smarty->assign ('timeleft', $timeleft);
+
+  
   $categories = getAllCategories ();
   $smarty->assign ('categories', $categories);
 

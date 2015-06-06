@@ -84,9 +84,12 @@
           <br>
           <small class="ratings no-padding">{count($bidders)} bids</small>
         </h4>
-
+        <script src="{$BASE_URL}javascript/jquery.js"></script>
+        <script src="{$BASE_URL}javascript/timeleft.js"></script>
         <h4><a href="{$BASE_URL}pages/profile.php?id={$auction.idleiloeiro}">{$auction.nomeproprio}</a>'s <a href="">{$auction.nome}</a></h4>
-        <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> DD:HH:SS</h4>
+        
+        <h4 class="h4time"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> </h4>
+        <input id="time" type="number" value="{$timeleft}" hidden>
         <h4 class="pull-right">
           Current Value:
           {$itemPrice} €
