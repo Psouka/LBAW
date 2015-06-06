@@ -118,15 +118,14 @@ VALUES('/imagesRecebidas/teste5.png','teste5');
 
 -- Utilizador
 
-INSERT INTO Utilizador(utilizador,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
-VALUES('username1','ashe1','primeiroNome1','UltimoNome2','M','descricao1','user1@user.com',912223344,'12/03/1954','12/03/2015',1,1);
+INSERT INTO Utilizador(utilizador,saltpasse,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
+VALUES('username1','salt1','ashe1','primeiroNome1','UltimoNome2','M','descricao1','user1@user.com',912223344,'12/03/1954','12/03/2015',1,1);
 
-INSERT INTO Utilizador(utilizador,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
-VALUES('username0','ashe2','primeiroNome4','UltimoNome3','M','descricao2','user2@user.com',912221344,'12/04/1975','12/03/2015',1,1);
+INSERT INTO Utilizador(utilizador,saltpasse,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
+VALUES('username0','salt2','ashe2','primeiroNome4','UltimoNome3','M','descricao2','user2@user.com',912221344,'12/04/1975','12/03/2015',1,1);
 
-
-INSERT INTO Utilizador(utilizador,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
-VALUES('username2','ashe3','primeiroNome3','UltimoNome4','F','descricao3','user3@user.com',912312344,'12/04/1920','12/03/2014',4,4);
+INSERT INTO Utilizador(utilizador,saltpasse,palavrapasse,nomeProprio,sobrenome,genero, descricao,email,telefone,dataNascimento,dataRegisto,idImagemPerfil,idImagemCapa)
+VALUES('username2','salt3','ashe3','primeiroNome3','UltimoNome4','F','descricao3','user3@user.com',912312344,'12/04/1920','12/03/2014',4,4);
 
 
 --Mensagem
@@ -162,7 +161,7 @@ VALUES(3);
 
 
 INSERT INTO Leilao(idLeiloeiro,nome,descricao,precoInicial,precoCompraImediata,dataDePublicacao,dataLimite)
-VALUES(2,'leilao1','leilao teste nr 1',99.99,100,'2004-10-19 10:23:54','2005-10-19 10:23:54'); -- completar data
+VALUES(2,'leilao1','leilao teste nr 1',99.99,100,'2004-10-19 10:23:54','2015-10-19 10:23:54'); -- completar data
 
 INSERT INTO Leilao(idLeiloeiro,nome,descricao,precoInicial,precoCompraImediata,dataDePublicacao,dataLimite)
 VALUES(2,'leilao2','leilao teste nr 2',99.92,102,'2004-10-19 19:23:54','2005-10-19 20:23:54'); 
@@ -214,22 +213,24 @@ VALUES(1,3,102,'16/03/2015');
 INSERT INTO Licitacao(idLeilao,idUtilizador,preco,data)
 VALUES(1,3,102,'17/04/2015');
 
+INSERT INTO LicitacaoVencedora(idLicitacaoVencedora,idLeilao)
+VALUES(1,3);
 
 -- Comentario
 
-INSERT INTO Comentario(idUtilizador,idLeilao,assunto,texto,data)
-VALUES(1,2,'alerta1','texto sobre alerta','12/01/2015');
+INSERT INTO Comentario(idUtilizador,idLeilao,texto,data)
+VALUES(1,2,'texto sobre alerta','12/01/2015');
 
-INSERT INTO Comentario(idUtilizador,idLeilao,assunto,texto,data)
-VALUES(1,2,'alerta2','texto sobre alerta 2','12/02/2015');
-
-
-INSERT INTO Comentario(idUtilizador,idLeilao,assunto,texto,data)
-VALUES(3,1,'alerta1','texto sobre alerta','12/03/2015');
+INSERT INTO Comentario(idUtilizador,idLeilao,texto,data)
+VALUES(1,2,'texto sobre alerta 2','12/02/2015');
 
 
-INSERT INTO Comentario(idUtilizador,idLeilao,assunto,texto,data)
-VALUES(2,2,'alerta0','texto sobre alerta','12/04/2015');
+INSERT INTO Comentario(idUtilizador,idLeilao,texto,data)
+VALUES(3,1,'texto sobre alerta','12/03/2015');
+
+
+INSERT INTO Comentario(idUtilizador,idLeilao,texto,data)
+VALUES(2,2,'texto sobre alerta','12/04/2015');
 
 --Bloqueio
 
@@ -279,19 +280,3 @@ VALUES(3,1,1,'14/03/2015');
 INSERT INTO AvaliacaoComentario(idAvaliador,idComentario,gosto,data)
 VALUES(3,2,0,'15/03/2015');
 
-
-SELECT * FROM Categoria;
-SELECT * FROM Pais;
-SELECT * FROM Cidade;
-SELECT * FROM Morada;
-SELECT * FROM Mensagem;
-SELECT * FROM ImagemUtilizador;
-SELECT * FROM ImagemLeilao;
-SELECT * FROM Comentario;
-SELECT * FROM Bloqueio;
-SELECT * FROM BloqueioUtilizador;
-SELECT * FROM BloqueioComentario;
-SELECT * FROM Utilizador;
-SELECT * FROM UtilizadorNormal;
-SELECT * FROM Leilao;
-SELECT * FROM Licitacao;
