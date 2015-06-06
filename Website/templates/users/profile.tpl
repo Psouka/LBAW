@@ -91,8 +91,9 @@
 
 
  <div class="row">
-
+{if $biggerAuction}
   <div class="col-sm-8 col-lg-8 col-md-8">
+
     <div class="thumbnailBigger">
       <img class="img-responsive" src="../{$biggerAuction.localizacao}" alt="">
       <div class="caption-full">
@@ -125,6 +126,7 @@
     </div>
   </div>
 </div>
+ {/if}
 
   {foreach $leiloes as $leilao}
   <div class="col-sm-4 col-lg-4 col-md-4">

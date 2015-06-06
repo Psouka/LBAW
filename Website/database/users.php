@@ -10,12 +10,12 @@ function createUser($username, $password, $firstname, $lastname, $genre, $email,
   global $conn;
   $stmt = $conn->prepare
   ("
-    INSERT INTO utilizador ( utilizador, saltpasse, palavrapasse, nomeproprio, sobrenome, genero, email, telefone, datanascimento, dataregisto)
-    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO utilizador ( utilizador, saltpasse, palavrapasse, nomeproprio, sobrenome, genero, email, telefone, datanascimento, dataregisto,idimagemperfil,idimagemcapa)
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)
     RETURNING idutilizador
     ");
   $currentdate = date("Y-m-d");
-  $stmt->execute(array($username,$salt,$hash, $firstname, $lastname, $genre, $email, $mobile, $birthdate, $currentdate));
+  $stmt->execute(array($username,$salt,$hash, $firstname, $lastname, $genre, $email, $mobile, $birthdate, $currentdate,1,2));
 
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

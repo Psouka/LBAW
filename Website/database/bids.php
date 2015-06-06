@@ -7,6 +7,7 @@ function getBiddersByAuctionId ($auctionid)
         SELECT licitacao.idutilizador, utilizador.nomeproprio, licitacao.preco
         FROM licitacao, utilizador
         WHERE licitacao.idleilao = ? AND utilizador.idutilizador = licitacao.idutilizador
+        ORDER BY  licitacao.preco DESC
         ");
     $stmt->execute(array($auctionid));
     return $stmt->fetchAll ();

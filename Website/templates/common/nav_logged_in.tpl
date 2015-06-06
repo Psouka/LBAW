@@ -25,9 +25,16 @@
                 <li>
                     <a href="{$BASE_URL}pages/settings.php">Settings</a>
                 </li>
+
+                {if $USERTYPE eq 'admin'}
                 <li>
                     <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
                 </li>
+                {else}
+                <li>
+                    <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
+                </li>
+                {/if}
                 <li>
                     <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
                 </li>

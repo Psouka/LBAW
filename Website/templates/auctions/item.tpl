@@ -55,8 +55,9 @@
        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          {foreach $images as $img}
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          {/foreach}
         </ol>
         <div class="carousel-inner">
 
@@ -98,7 +99,7 @@
         <p>{$auction.descricao}</p>
         <br>
 
-
+        {if $auction.idleiloeiro neq $USERID}
         <form class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
           <input name="precoActual" type="number" value="{$itemPrice}" hidden>
           <input name="preco" type="number" class="form-control" placeholder="Place bid..." min="{$itemPrice+0.2}" step="0.20">
@@ -107,6 +108,8 @@
             <button class="btn btn-default" type="submit">Bid!</button>
           </span>
         </form><!-- /input-group -->
+        {/if}
+
       </div>
       <div class="ratings">
         <h4>{$auction.nomeproprio}'s rating: </h4>
