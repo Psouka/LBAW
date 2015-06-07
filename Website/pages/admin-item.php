@@ -22,9 +22,7 @@ if(checkBlockUser($auction['idleiloeiro']) || checkBlockAuction($auction['idleil
   $blocked = true;
 
 $smarty->assign ('blocked', $blocked);
-  
 
-  
 
 //Our dates
 $date1 = date('m/d/Y h:i:s a', time());

@@ -8,7 +8,8 @@ function getUserAuctions($leiloesLimit,$leiloesStart,$iduser)
   $stmt = $conn->prepare("
     SELECT leilao.*,
     (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao,
-    (SELECT  COUNT(*) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as nrlicitacao   
+    (SELECT  COUNT(*) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as nrlicitacao,
+    (SELECT  idbloqueio FROM bloqueioleilao WHERE leilao.idleilao = bloqueioleilao .idleilao) as bloqueio
     FROM leilao
     WHERE leilao.idleiloeiro = ?
     GROUP BY leilao.idleilao
@@ -135,9 +136,10 @@ function getCommentsAuction($idAuction){
   global $conn;
   $stmt = $conn->prepare
   ("
-  SELECT comentario.*, utilizador, localizacao
-  FROM comentario, utilizador, imagemutilizador
-  WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador AND imagemutilizador.idimagemutilizador = utilizador.idimagemperfil
+  SELECT comentario.*, utilizador, localizacao,
+ (SELECT  idbloqueio FROM bloqueiocomentario WHERE comentario.idcomentario = bloqueiocomentario .idcomentario) as bloqueio
+FROM comentario, utilizador, imagemutilizador
+WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador AND imagemutilizador.idimagemutilizador = utilizador.idimagemperfil
      ");
 
   $stmt->execute(array($idAuction));

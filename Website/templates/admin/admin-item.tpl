@@ -163,11 +163,17 @@ $("#menu-toggle").click(function(e) {
 
 
             <div class="col-md-10 col-sm-10">
+               {if $com.bloqueio eq ''}
                 <form action="{$BASE_URL}actions/admin/bloqueio.php" method="GET">
                 <input name="idComentario" value="{$com.idcomentario}"type="hidden" class="btn btn-danger" >
-
                 <input type="submit" class="btn btn-danger" value="Block" onclick="">
                 </form>
+                 {else}
+                 <form action="{$BASE_URL}actions/admin/desbloqueio.php" method="GET">
+                <input name="idComentario" value="{$com.idcomentario}"type="hidden" class="btn btn-danger" >
+                <input type="submit" class="btn btn-danger" value="Unlock" onclick="">
+                </form>
+                {/if}
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <a href="{$BASE_URL}pages/profile.php?id={$com.idutilizador}"><strong>{$com.utilizador}</strong></a>

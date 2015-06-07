@@ -20,5 +20,6 @@ else if(isset($_GET['idAuction']))
 {
 	unlockAuction($_GET['idAuction']);
 }
-
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+		exit();
 ?>

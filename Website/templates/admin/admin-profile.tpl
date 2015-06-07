@@ -149,11 +149,18 @@ $("#menu-toggle").click(function(e) {
             {/if}
 
             <td>
+              {if $leilao.bloqueio eq ''}
               <form action="{$BASE_URL}actions/admin/bloqueio.php" method="GET">
                 <input name="idAuction" value="{$leilao.idleilao}"type="hidden" class="btn btn-danger" >
 
                 <input type="submit" class="btn btn-danger" value="Block" onclick="">
                 </form>
+                {else}
+                <form action="{$BASE_URL}actions/admin/desbloqueio.php" method="GET">
+                <input name="idAuction" value="{$leilao.idleilao}"type="hidden" class="btn btn-danger" >
+                <input type="submit" class="btn btn-danger" value="Unlock" onclick="">
+                </form>
+                {/if}
                 </td>
               </tr>
               {/foreach}
