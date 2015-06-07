@@ -8,10 +8,20 @@ if(isset($_GET['id'])) {
 	if($_SESSION['usertype'] != 'admin')
 	{
 		header ('Location: ' . $BASE_URL . 'pages/profile.php?id=' . $_GET['id']);
+		exit();
 	}
 
 	$profile = getUserById($_GET['id']);
 	$avaliacao = getRating($_GET['id']);
+
+	$blocked = false;
+
+	if(checkBlockUser($_GET['id']) )
+		$blocked = true;
+
+	$smarty->assign ('blocked', $blocked);
+
+
 	$smarty->assign ('avaliacao', $avaliacao);
 
 	$dataRegisto =  date("Y-m-d", time($profile['dataRegisto']));
@@ -43,8 +53,8 @@ if(isset($_GET['id'])) {
 	$smarty->display ('admin/admin-profile.tpl');
 }
 else
-    {
-        header ('Location: ' . $BASE_URL . 'pages/404.php');
-    }
+{
+	header ('Location: ' . $BASE_URL . 'pages/404.php');
+}
 
 ?>

@@ -25,15 +25,25 @@ if(checkBlockUser($auction['idleiloeiro']) || checkBlockAuction($auction['idleil
 
 $smarty->assign ('blocked', $blocked);
 //Our dates
-$date1 = date('m/d/Y h:i:s a', time());
+
+$date1 = date('m/d/Y H:i:s', time());
+
 $date2 = $auction['datalimite'];
+//echo $date1;
+//echo $date2;
+
 //Convert them to timestamps.
 $date1Timestamp = strtotime($date1);
 $date2Timestamp = strtotime($date2);
  
 //Calculate the difference.
 $timeleft = $date2Timestamp - $date1Timestamp;
- 
+
+// echo $timeleft;
+// echo  $auction['datalimite'];
+
+
+
 $smarty->assign ('timeleft', $timeleft);
 
 

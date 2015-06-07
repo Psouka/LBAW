@@ -5,13 +5,26 @@ include_once ($BASE_DIR . 'database/auctions.php');
 include_once ($BASE_DIR . 'database/bids.php');
 include_once ($BASE_DIR . 'database/admin.php');
 
+if($_SESSION['usertype'] != 'admin')
+  {
+    header ('Location: ' . $BASE_URL . 'pages/404.php');
+  }
 
 if (isset( $_GET['id']))
 {
-
-  $auctionid = $_GET['id'];
+$auctionid = $_GET['id'];
   $auction = getAuctionById ($auctionid);
 $auction = getAuctionById ($auctionid);
+
+$blocked = false;
+
+if(checkBlockUser($auction['idleiloeiro']) || checkBlockAuction($auction['idleilao']))
+  $blocked = true;
+
+$smarty->assign ('blocked', $blocked);
+  
+
+  
 
 //Our dates
 $date1 = date('m/d/Y h:i:s a', time());

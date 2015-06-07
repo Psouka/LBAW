@@ -10,8 +10,12 @@
      <li class="sidebar-brand"><a id="menu-toggle" href="#">Admin<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
    </ul>
    <ul class="sidebar-nav" id="sidebar">     
+
+    {if $blocked eq false}
     <li><a href="{$BASE_URL}actions/admin/bloqueio.php?idUser={$profile.idutilizador}">Block<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+    {else}
     <li><a href="{$BASE_URL}actions/admin/desbloqueio.php?idUser={$profile.idutilizador}">Unlock<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+    {/if}
   </ul>
 </div>
 <script type="text/javascript">

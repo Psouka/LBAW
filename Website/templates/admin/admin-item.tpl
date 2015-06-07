@@ -9,9 +9,13 @@
     <ul id="sidebar_menu" class="sidebar-nav">
      <li class="sidebar-brand"><a id="menu-toggle" href="#">Admin<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
    </ul>
-   <ul class="sidebar-nav" id="sidebar">     
+   <ul class="sidebar-nav" id="sidebar">   
+
+   {if $blocked eq false}
     <li><a href="{$BASE_URL}actions/admin/bloqueio.php?idAuction={$auction.idleilao}">Block<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+    {else}
     <li><a href="{$BASE_URL}actions/admin/desbloqueio.php?idAuction={$auction.idleilao}">Unlock<span class="sub_icon glyphicon glyphicon-lock"></span></a></li>
+    {/if}
   </ul>
 </div>
 <script type="text/javascript">

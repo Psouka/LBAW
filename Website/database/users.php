@@ -396,6 +396,7 @@ function getRecentAuctions(){
   AND NOT EXISTS (SELECT bloqueioutilizador.* 
                    FROM  bloqueioutilizador
                    WHERE  bloqueioutilizador.idutilizador = leilao.idleiloeiro)
+  AND leilao.datalimite > CURRENT_TIMESTAMP 
   ORDER BY idleilao DESC
   LIMIT 9;
     ");
