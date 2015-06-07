@@ -81,6 +81,7 @@ CREATE TABLE Utilizador(
 	idShip BIGINT REFERENCES Morada(idMorada)
 	CHECK ( age(dataNascimento) >= interval '18' year)
 	);
+CREATE INDEX utilizador_gin_index ON public.Utilizador USING GIN(to_tsvector('english', nomeProprio || ' ' || sobrenome));
 CREATE INDEX Utilizador_index ON public.Utilizador USING btree(idUtilizador ASC NULLS LAST,idImagemPerfil ASC NULLS LAST,idImagemCapa ASC NULLS LAST);
 ALTER TABLE public.Utilizador CLUSTER ON Utilizador_index;
 
@@ -113,6 +114,7 @@ CREATE TABLE Leilao(
 	dataLimite TIMESTAMP NOT NULL,
 	CHECK (dataLimite > dataDePublicacao)
 	);
+CREATE INDEX leilao_gin_index ON public.Leilao USING GIN(to_tsvector('english', nome));
 CREATE INDEX Leilao_index ON public.Leilao USING btree(idLeilao ASC NULLS LAST);
 
 
