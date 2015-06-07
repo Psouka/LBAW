@@ -3,6 +3,8 @@ include_once ('../config/init.php');
 include_once ($BASE_DIR . 'database/categories.php');
 include_once ($BASE_DIR . 'database/auctions.php');
 include_once ($BASE_DIR . 'database/bids.php');
+include_once ($BASE_DIR . 'database/admin.php');
+
 
 if (isset( $_GET['id']))
 {
@@ -36,7 +38,7 @@ $smarty->assign ('timeleft', $timeleft);
       $itemPrice = $bidd['preco'];
   }
 
-    $comments = getComments($auctionid);
+    $comments = getCommentsAuction($auctionid);
 
   $smarty->assign ('comments', $comments);
 

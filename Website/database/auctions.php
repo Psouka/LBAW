@@ -76,6 +76,12 @@ function getComments($idAuction){
   SELECT comentario.*, utilizador, localizacao
   FROM comentario, utilizador, imagemutilizador
   WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador AND imagemutilizador.idimagemutilizador = utilizador.idimagemperfil
+  AND NOT EXISTS (SELECT bloqueiocomentario.* 
+                   FROM  bloqueiocomentario
+                   WHERE  bloqueiocomentario.idcomentario = comentario.idcomentario)
+  AND NOT EXISTS (SELECT bloqueioutilizador.* 
+                   FROM  bloqueioutilizador
+                   WHERE  bloqueioutilizador.idutilizador = comentario.idutilizador)
      ");
 
   $stmt->execute(array($idAuction));

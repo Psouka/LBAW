@@ -4,20 +4,21 @@ include_once ('../../database/admin.php');
 
 if($_SESSION['usertype']  != 'admin')
 {
+	echo 'no admin';
 	exit();
 }
 
-if(isset($_POST['idComentario']))
+if(isset($_GET['idComentario']))
 {
-	unlockComment($_POST['idComentario']);
+	unlockComment($_GET['idComentario']);
 }
-else if(isset($_POST['idUser']))
+else if(isset($_GET['idUser']))
 {
-	unlockUser($_POST['idUser']);
+	unlockUser($_GET['idUser']);
 }
-else if(isset($_POST['idAuction']))
+else if(isset($_GET['idAuction']))
 {
-	unlockAuction($_POST['idAuction']);
+	unlockAuction($_GET['idAuction']);
 }
 
 ?>

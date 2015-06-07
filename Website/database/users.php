@@ -390,6 +390,12 @@ function getRecentAuctions(){
   SELECT DISTINCT ON (leilao.idleilao) leilao.*, localizacao
   FROM leilao, imagemleilao
   WHERE leilao.idleilao = imagemleilao.idleilao
+  AND NOT EXISTS (SELECT bloqueioleilao.* 
+                   FROM  bloqueioleilao
+                   WHERE  bloqueioleilao.idleilao = leilao.idleilao)
+  AND NOT EXISTS (SELECT bloqueioutilizador.* 
+                   FROM  bloqueioutilizador
+                   WHERE  bloqueioutilizador.idutilizador = leilao.idleiloeiro)
   ORDER BY idleilao DESC
   LIMIT 9;
     ");

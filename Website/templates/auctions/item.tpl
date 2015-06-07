@@ -99,7 +99,12 @@
         <p>{$auction.descricao}</p>
         <br>
 
-        {if $auction.idleiloeiro neq $USERID}
+        {if $blocked eq true}
+        <h4 class="pull-right">
+          BLOCKED
+        </h4>
+
+        {elseif $auction.idleiloeiro neq $USERID}
         <form class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
           <input name="precoActual" type="number" value="{$itemPrice}" hidden>
           <input name="preco" type="number" class="form-control" placeholder="Place bid..." min="{$itemPrice+0.2}" step="0.20">

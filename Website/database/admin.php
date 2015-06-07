@@ -21,11 +21,25 @@ function getUserAuctions($leiloesLimit,$leiloesStart,$iduser)
 }
 
 
+function checkBlockUser($idUser){
+   global $conn;
+  $stmt = $conn->prepare(" SELECT * FROM bloqueioutilizador WHERE idutilizador = ?");
+  $stmt->execute(array($idUser));
+  return $stmt->fetch();
+}
+
+function checkBlockAuction($idleilao){
+   global $conn;
+  $stmt = $conn->prepare(" SELECT * FROM bloqueioleilao WHERE idleilao = ?");
+  $stmt->execute(array($idleilao));
+  return $stmt->fetch();
+}
+
+
 function blockComment($idComment){
 
 global $conn;
 
- $conn->beginTransaction();
  $stmt = $conn->prepare("
   INSERT INTO bloqueio(idadministrador,datainicio)
   VALUES (?,?)
@@ -40,13 +54,23 @@ global $conn;
   VALUES (?,?)");
  $stmt->execute(array($result['idbloqueio'],$idComment));
 
- return $conn->commit() == true;
 }
+
+function unlockComment($idComment){
+  global $conn;
+
+ $stmt = $conn->prepare("
+  DELETE FROM bloqueiocomentario
+  WHERE idcomentario = ?
+  ");
+  $stmt->execute(array($idComment));
+}
+
+
 
 function blockUser($idUser){
  global $conn;
 
- $conn->beginTransaction();
  $stmt = $conn->prepare("
   INSERT INTO bloqueio(idadministrador,datainicio)
   VALUES (?,?)
@@ -61,7 +85,17 @@ function blockUser($idUser){
   VALUES (?,?)");
  $stmt->execute(array($result['idbloqueio'],$idUser));
 
- return $conn->commit() == true;
+}
+
+function unlockUser($idUser){
+  global $conn;
+
+ $stmt = $conn->prepare("
+  DELETE FROM bloqueioutilizador
+  WHERE idutilizador = ?
+  ");
+  $stmt->execute(array($idUser));
+
 }
 
 
@@ -69,7 +103,6 @@ function blockAuction($idAuction){
 
   global $conn;
 
- $conn->beginTransaction();
  $stmt = $conn->prepare("
   INSERT INTO bloqueio(idadministrador,datainicio)
   VALUES (?,?)
@@ -84,7 +117,32 @@ function blockAuction($idAuction){
   VALUES (?,?)");
  $stmt->execute(array($result['idbloqueio'],$idAuction));
 
- return $conn->commit() == true;
+}
+
+function unlockAuction($idAuction){
+  global $conn;
+
+ $stmt = $conn->prepare("
+  DELETE FROM bloqueioleilao
+  WHERE idleilao = ?
+  ");
+  $stmt->execute(array($idAuction));
+}
+
+
+
+function getCommentsAuction($idAuction){
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+  SELECT comentario.*, utilizador, localizacao
+  FROM comentario, utilizador, imagemutilizador
+  WHERE idleilao = ? AND comentario.idutilizador = utilizador.idutilizador AND imagemutilizador.idimagemutilizador = utilizador.idimagemperfil
+     ");
+
+  $stmt->execute(array($idAuction));
+
+  return $result = $stmt->fetchAll();
 }
 
 ?>
