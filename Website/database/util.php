@@ -1,16 +1,17 @@
 <?php
-function getCountries()
-{
-  global $conn;
-  $stmt = $conn->prepare ("SELECT * FROM pais ORDER BY nome");
-  $stmt->execute();
-  return $stmt->fetchAll();
-}
 
 function getCities()
 {
   global $conn;
   $stmt = $conn->prepare ("SELECT * FROM cidade ORDER BY nome");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+function getCountries()
+{
+  global $conn;
+  $stmt = $conn->prepare ("SELECT * FROM pais ORDER BY nome");
   $stmt->execute();
   return $stmt->fetchAll();
 }
@@ -53,7 +54,17 @@ if( @move_uploaded_file( $file['tmp_name'], '../../' . $target))
 else
 echo 'sadDay';
 
+}
 
+function sendPassword($email,$newPassword)
+{
+$to = $email;
+$subject = 'Reset Passowrd';
+$message = "Your new password: $newPassword. You can change on Settings.\r\n Cumps";
+$headers = 'From: Leiloes <leiloes@bairrada.com>' . "\r\n";
+'Reply-To: no-reply@reply.com' . "\r\n" .
+'X-Mailer: PHP/' . phpversion();
+mail($to, $subject, $message, $headers);
 
 }
 

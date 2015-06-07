@@ -46,6 +46,38 @@
 
             </fieldset>
         </form>
+        <form class="form-horizontal" role="form" action="{$BASE_URL}actions/users/resetPass.php" method="post">
+                <fieldset>
+
+                    <!-- Login -->
+                    <legend class="text-right">Reset Password</legend>
+
+                    <!-- Text input -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Username" name="username" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <!-- Text input -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">E-mail</label>
+                        <div class="col-sm-10">
+                            <input type="email" placeholder="Email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                  <!-- Button -->
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
     </div>
 
     <!-- Register Form -->

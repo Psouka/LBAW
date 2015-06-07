@@ -418,5 +418,28 @@ function getRating($userid)
   return $stmt->fetch();
 }
 
+function resetPass($username,$email){
+  $newpass = substr(md5(microtime()),rand(0,26),6);
+  $salt = uniqid(mt_rand(), true);
+  $hash = hash('sha256',$salt. $newpass .$salt);
+
+  global $conn;
+  $stmt = $conn->prepare
+  ("
+    UPDATE utilizador
+    SET palavrapasse = ?, saltpasse = ?
+    WHERE email = ? AND utilizador = ?
+    RETURNING idutilizador
+    ");
+
+  $stmt->execute(array($hash,$salt,$email,$username));
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  if($result)
+  return $newpass;
+else
+  return 'notUpdated';
+}
+
 
 ?>
