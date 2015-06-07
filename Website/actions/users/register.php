@@ -2,6 +2,12 @@
 include_once ('../../config/init.php');
 include_once ($BASE_DIR . 'database/users.php');
 
+$_POST['username'] = htmlspecialchars($_POST['username'], ENT_COMPAT, 'UTF-8');
+$_POST['firstname'] = htmlspecialchars($_POST['firstname'], ENT_COMPAT, 'UTF-8');
+$_POST['lastname'] = htmlspecialchars($_POST['lastname'], ENT_COMPAT, 'UTF-8');
+$_POST['email'] = htmlspecialchars($_POST['email'], ENT_COMPAT, 'UTF-8');
+
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 $firstname = $_POST['firstname'];

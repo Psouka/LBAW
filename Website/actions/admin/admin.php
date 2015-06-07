@@ -52,6 +52,7 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']) && isset(
   $stmt = $conn->prepare("
     SELECT leilao.idleilao, idleiloeiro, idcategoria, nome,precoInicial,
     (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao,
+    (SELECT  COUNT(*) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as nrlicitacao,
     (SELECT utilizador FROM utilizador WHERE idleiloeiro = idutilizador) as criador
     FROM leilao
     WHERE nome LIKE ?
@@ -72,6 +73,7 @@ else if(isset($_POST['leiloesLimit']) && isset($_POST['leiloesStart']))
   $stmt = $conn->prepare("
     SELECT leilao.idleilao, idleiloeiro, idcategoria, nome, precoInicial,
     (SELECT  max(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as licitacao,
+    (SELECT  COUNT(*) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as nrlicitacao,
     (SELECT utilizador FROM utilizador WHERE idleiloeiro = idutilizador) as criador
     FROM leilao
     LIMIT ?

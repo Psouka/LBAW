@@ -1,7 +1,7 @@
 function updateTime() {
-	console.log ( '#timeleft updated' );
+	//console.log ( '#timeleft updated' );
 	var seconds_left = $( "#time" ).val();
-	console.log(seconds_left);
+	//console.log(seconds_left);
 
 	if(seconds_left< 0)
 	{

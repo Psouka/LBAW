@@ -2,6 +2,8 @@
 include_once ('../../config/init.php');
 include_once ('../../database/auctions.php');
 
+$_POST['title'] = htmlspecialchars($_POST['title'], ENT_COMPAT, 'UTF-8');
+$_POST['description'] = htmlspecialchars($_POST['description'], ENT_COMPAT, 'UTF-8');
 
 $title = $_POST['title'];
 $description = $_POST['description'];

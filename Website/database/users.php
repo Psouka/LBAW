@@ -3,6 +3,7 @@
 function createUser($username, $password, $firstname, $lastname, $genre, $email, $mobile, $birthdate)
 {
 
+
   $salt = uniqid(mt_rand(), true);
   //  $salt = sprintf("$2a$%02d$", $cost) . $salt;
   $hash = hash('sha256',$salt. $password .$salt);

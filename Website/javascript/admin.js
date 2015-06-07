@@ -43,14 +43,13 @@ $.each(data, function(i, value) {
 		preco = value.precoinicial;
 	}
 
-
 	$("#listAuctions").append(
 	'<div class="panel-group" id="accordionAuction'+i+'">\
 	<div class="panel panel-default">\
 	<div class="panel-heading">\
 	<h4 class="panel-title">\
 	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionAuction'+i+'" href="#collapseAuction'+i+'">'+ value.nome +' <span class="caret">\
-	</span></a><span class="badge pull-right">Price: ' + preco +' €</span><span class="badge pull-right">4 bids</span><!--span class="badge pull-right" style=" background-color: red;">Reported</span-->\
+	</span></a><span class="badge pull-right">Price: ' + preco +' €</span><span class="badge pull-right">' + value.nrlicitacao +' bids</span><!--span class="badge pull-right" style=" background-color: red;">Reported</span-->\
 	</h4>\
 	</div>\
 	<div class="panel-collapse collapse" id="collapseAuction'+i+'">\
@@ -65,8 +64,6 @@ $.each(data, function(i, value) {
 		);
 });
 }
-
-
 
 function firstListU(){
 $.post("../actions/admin/admin.php", {

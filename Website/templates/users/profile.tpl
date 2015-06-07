@@ -165,124 +165,37 @@
 
 
 </div>
-
 <div class="well"> <!-- comments -->
 
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="page-header">
-          Reviews
-          <form role="form"  action="" method="post">
-            <div class="form-group">
-              <input name="idAuction" type="number" value="" hidden>
-              <textarea name="textComment" class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </h2>
-        <section class="comment-list">
-          <!-- First Comment -->
+          <link href="{$BASE_URL}css/comment.css" rel="stylesheet">
+            <section class="comment-list">
+
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnailReview">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
+              <div class="thumbnailUsers">
+                <img class="img-responsive user-photo" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg">
+              </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+
             <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow left">
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <a href="{$BASE_URL}pages/profile.php?id={$com.idutilizador}"><strong>That Guy</strong></a>
+                  <span class="text-muted"> Dec 16, 2014</span>
                 </div>
-              </div>
-            </div>
-          </article>
-          <!-- Third Comment -->
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
                 <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnailReview">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
+                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div><!-- /panel-body -->
+              </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
           </article>
-          <!-- Fourth Comment -->
-          <article class="row">
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnailReview">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-10 col-sm-10 col-xs-12">
-              <div class="panel panel-default arrow left">
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <!-- Fifth Comment -->
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnailReview">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
+          <br>
+
         </section>
-      </div>
-    </div>
 
 
-</div>
+
+            </div>
 <!-- /.well -->
 
 </div>
