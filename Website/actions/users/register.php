@@ -42,7 +42,7 @@ catch (PDOException $e)
 if (isLoginCorrect($username, $password))
 {
     $_SESSION['username'] = $username;
-    assignSessionAttr();
+    assignSessionAttr($username);
     header ('Location: ' . $BASE_URL);
     exit();
 
