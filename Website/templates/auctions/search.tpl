@@ -123,7 +123,7 @@
                                 {/if}
                                 </h5>
                             <h5 class="no-margin text-center-mobile"><span class="glyphicon glyphicon-calendar span-padding" aria-hidden="true"></span> {date("d/m/Y", strtotime($auction.datalimite))} <span class="glyphicon glyphicon-time span-padding" aria-hidden="true"></span> {date("h:m:s", strtotime($auction.datalimite))}</h5>
-                            <h5 class="no-margin text-center-mobile"><span class="glyphicon glyphicon-tags span-padding" aria-hidden="true"></span> {$auction.nomecategoria}</h5>
+                            <h5 class="no-margin text-center-mobile"><span class="glyphicon glyphicon-tags span-padding" aria-hidden="true"></span> {$auction.tipo}</h5>
                         </div>
                     </div>
                 </legend>

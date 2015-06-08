@@ -27,7 +27,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title"
+                <h4 class="panel-title">
                     <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseA2">Why can't I register an account?</a>
                 </h4>
             </div>
@@ -40,7 +40,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title"
+                <h4 class="panel-title">
                     <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseA3">How is this different from other auctions websites?</a>
                 </h4>
             </div>
@@ -154,52 +154,10 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseB6">
-                        My auction / comment has disappeared! Where did it go?</a>
-                </h4>
-            </div>
-            <div id="collapseB6" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Because of inappropriate content, some auctions or comments are blocked by administrators. If you think your auction or comment has been wrongly blocked, contact us at lbaw1443@fe.up.pt. We'll reply within 48 hours.
-                </div>
-            </div>
-        </div>
-
-         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseB7">
-                        My auction / comment has disappeared! Where did it go?</a>
-                </h4>
-            </div>
-            <div id="collapseB7" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Because of inappropriate content, some auctions or comments are blocked by administrators. If you think your auction or comment has been wrongly blocked, contact us at lbaw1443@fe.up.pt. We'll reply within 48 hours.
-                </div>
-            </div>
-        </div>
-
-         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseB7">
-                        My auction / comment has disappeared! Where did it go?</a>
-                </h4>
-            </div>
-            <div id="collapseB7" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Because of inappropriate content, some auctions or comments are blocked by administrators. If you think your auction or comment has been wrongly blocked, contact us at lbaw1443@fe.up.pt. We'll reply within 48 hours.
-                </div>
-            </div>
-        </div>
-
-         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseB8">
                         Why isn't anybody bidding my auction?</a>
                 </h4>
             </div>
-            <div id="collapseB8" class="panel-collapse collapse">
+            <div id="collapseB6" class="panel-collapse collapse">
                 <div class="panel-body">
                     Good marketing is the key. Make sure your auction description is rich and share your auction link as much as you can.
                 </div>

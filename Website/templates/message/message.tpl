@@ -40,8 +40,8 @@
                             </tr>
                             {foreach $sended as $message}
                                  <tr>
-                                    <td>{$message.assunto}</td>
-                                    <td>{$message.emissor}</td>
+                                    <td><a href="message.php?id={$message.idmensagem}">{$message.assunto}</td>
+                                    <td>{$message.idemissor}</td>
                                     <td>{$message.data}</td>
                                  </tr>
                             {/foreach}
@@ -56,8 +56,9 @@
                 </hgroup>
                 <div class="table-responsive">
                     <h2>{$message.assunto}</h2>
+                    <h4>{$message.utilizador}</h4>
                     <h4>{$message.data}</h4>
-                    <p>{$message.texto}</p>
+                    <textarea name="text" placeholder="{$message.texto}" rows="5" readonly></textarea>
                 </div>
             </div>
         {/if}

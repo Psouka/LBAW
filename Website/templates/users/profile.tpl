@@ -36,7 +36,6 @@
     bottom: -30px;
   }
   </style>
-  <span class="wrench glyphicon glyphicon-wrench" title="Change this cover"></span>
   <h1 id="username">{$profile.utilizador}</h1>
 </div>
 <div class="row">
