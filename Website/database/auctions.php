@@ -31,7 +31,8 @@ function getAuctionById ($auctionid)
     global $conn;
     $stmt = $conn->prepare
     ("
-        SELECT leilao.idleilao, leilao.idleiloeiro, utilizador.nomeproprio, leilao.nome, leilao.descricao, leilao.precoinicial, leilao.precocompraimediata, leilao.datadepublicacao, leilao.datalimite
+        SELECT leilao.idleilao, leilao.idleiloeiro, utilizador.nomeproprio, leilao.nome, leilao.descricao, leilao.precoinicial, leilao.precocompraimediata, leilao.datadepublicacao, leilao.datalimite,
+        (SELECT AVG(estrelas) FROM avaliacaoutilizador WHERE idleiloeiro = avaliacaoutilizador.idavaliado) as estrelas
         FROM leilao, utilizador
         WHERE leilao.idleilao = ? AND leilao.idleiloeiro = utilizador.idutilizador
         ");

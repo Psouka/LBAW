@@ -12,12 +12,8 @@ if (isset( $_GET['id']))
     header ('Location: ' . $BASE_URL . 'pages/admin-item.php?id='. $_GET['id']);
   }
 
-
-
 $auctionid = $_GET['id'];
 $auction = getAuctionById ($auctionid);
-
-
 $blocked = false;
 
 if(checkBlockUser($auction['idleiloeiro']) || checkBlockAuction($auction['idleilao']))

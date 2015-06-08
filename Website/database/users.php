@@ -390,7 +390,8 @@ function leiloes_addlicitacao($leiloes){
 function getRecentAuctions(){
   global $conn;
   $stmt = $conn->prepare("
-  SELECT DISTINCT ON (leilao.idleilao) leilao.*, localizacao
+  SELECT DISTINCT ON (leilao.idleilao) leilao.*, localizacao,
+  (SELECT AVG(estrelas) FROM avaliacaoutilizador WHERE idleiloeiro = avaliacaoutilizador.idavaliado) as estrelas
   FROM leilao, imagemleilao
   WHERE leilao.idleilao = imagemleilao.idleilao
   AND NOT EXISTS (SELECT bloqueioleilao.* 

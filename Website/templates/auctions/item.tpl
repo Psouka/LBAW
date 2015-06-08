@@ -105,7 +105,7 @@
         </h4>
 
         {elseif $auction.idleiloeiro neq $USERID}
-        <form class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
+        <form id="bet" class="input-group" action="{$BASE_URL}actions/auctions/newBid.php" method="post">
           <input name="precoActual" type="number" value="{$itemPrice}" hidden>
           <input name="preco" type="number" class="form-control" placeholder="Place bid..." min="{$itemPrice+0.2}" step="0.20">
           <input name="idAuction" type="number" value="{$auction.idleilao}" hidden>
@@ -120,13 +120,12 @@
         <h4>{$auction.nomeproprio}'s rating: </h4>
         <a href="#" class="pull-right">Report this auction</a>
         <p>
-          {for $index = 1 to $auction.rating}
+          {if round($auction.estrelas) gt 0}
+          {round($auction.estrelas)}
           <span class="glyphicon glyphicon-star"></span>
-          {/for}
-          {for $index = 1 to 5 - $auction.rating}
-          <span class="glyphicon glyphicon-star-empty"></span>
-          {/for}
-          {$auction.rating} stars
+          {else}
+          No rating
+          {/if}
         </p>
       </div>
     </div>

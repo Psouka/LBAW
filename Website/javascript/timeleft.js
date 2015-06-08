@@ -1,10 +1,11 @@
 function updateTime() {
 	//console.log ( '#timeleft updated' );
-	var seconds_left = $( "#time" ).val();
+	var seconds_left = $("#time").val();
 	//console.log(seconds_left);
 
 	if(seconds_left< 0)
 	{
+		$("#bet").remove(); 
 		var span = '<h4 class="h4time"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> ENDED </h4>';
 	$( ".h4time" ).replaceWith( span);
 	return;

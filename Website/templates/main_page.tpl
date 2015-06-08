@@ -122,11 +122,14 @@
     {$leilao.count} bids
 </p>
 <p>
+  {if $leilao.estrelas gt 0}
+  {round($leilao.estrelas)}
+
     <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
+    {else}
+    No rating
+    {/if}
+
 </p>
 </div>
 </div>

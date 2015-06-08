@@ -18,9 +18,13 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
             <ul class="nav navbar-nav window-right">
                 <li>
                     <a href="{$BASE_URL}pages/sign.php">Sign in or Sign up</a>
+                </li>
+                <li>
+                    <a href="{$BASE_URL}pages/faq.php">FAQ</a>
                 </li>
             </ul>
         </div>

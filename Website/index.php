@@ -11,9 +11,10 @@
     $leiloes =  getRecentAuctions();
     $leiloes = leiloes_addlicitacao($leiloes);
 
+
     $firstLeiloes = array();
 
-    for($i = 0; $i < 3; $i++)
+   for($i = 0; $i < 3; $i++)
     $firstLeiloes[] = array_shift($leiloes);
 
   //  print_r($firstLeiloes);
@@ -22,6 +23,5 @@
     $smarty->assign('firstLeilao', $firstLeilao);
     $smarty->assign('firstLeiloes', $firstLeiloes);
 	$smarty->assign('leiloes', $leiloes);
-
-  $smarty->display ('main_page.tpl');
+    $smarty->display ('main_page.tpl');
 ?>
