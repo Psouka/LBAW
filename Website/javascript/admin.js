@@ -55,7 +55,7 @@ $.each(data, function(i, value) {
 	<div class="panel-collapse collapse" id="collapseAuction'+i+'">\
 	<div class="list-group">\
 	<a href="item.php?id='+ value.idleilao +' " class="list-group-item active">Auction Page</a>\
-	<a href="profile.php?id='+ value.idleiloeiro +' " class="list-group-item"><span class="badge">€ Bid</span> '+ value.criador + '</a>\
+	<a href="profile.php?id='+ value.idleiloeiro +' " class="list-group-item"><span class="badge">Auctioneer</span> '+ value.criador + '</a>\
 	</div>\
 	</div>\
 	</div>\

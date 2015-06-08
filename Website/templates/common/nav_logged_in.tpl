@@ -26,6 +26,12 @@
                     <a href="{$BASE_URL}pages/settings.php">Settings</a>
                 </li>
 
+                {if $USERTYPE eq 'normal'}
+                <li>
+                    <a href="{$BASE_URL}pages/review.php">Reviews</a>
+                </li>
+                {/if}
+
                 {if $USERTYPE eq 'admin'}
                 <li>
                     <a href="{$BASE_URL}pages/admin-list.php">Users/Auctions</a>

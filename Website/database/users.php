@@ -152,6 +152,8 @@ function createImagemUtilizador($file,$name)
 function editProfile()
 {
 
+  
+
   $oldData =  getUserById($_SESSION['userid']);
 
   if(isset($_POST['first-name']) && $_POST['first-name'] != "")
@@ -442,5 +444,37 @@ else
   return 'notUpdated';
 }
 
+function getReviewsTodo($id)
+{
+   global $conn;
+  $stmt = $conn->prepare
+  ("
+    SELECT DISTINCT ON (avaliacaoutilizador.idlicitacaovencedora) avaliacaoutilizador.*, licitacao.preco, licitacao.idlicitacao, leilao.nome, leilao.idleilao,
+(SELECT nomeproprio FROM utilizador WHERE utilizador.idutilizador = avaliacaoutilizador.idavaliador) as avaliador,
+(SELECT nomeproprio FROM utilizador WHERE utilizador.idutilizador = avaliacaoutilizador.idavaliado) as avaliado
+FROM avaliacaoutilizador, licitacao, leilao
+WHERE avaliacaoutilizador.idlicitacaovencedora= licitacao.idlicitacao  AND leilao.idleilao = licitacao.idleilao
+AND avaliacaoutilizador.estrelas IS NULL
+AND avaliacaoutilizador.idavaliador = ?
+
+
+    ");
+
+  $stmt->execute(array($id));
+  return $stmt->fetchAll();
+}
+
+
+function updateReview($idlicitacao,$stars,$textComment,$idavaliador){
+global $conn;
+  $stmt = $conn->prepare
+  ("
+    UPDATE avaliacaoutilizador
+    SET estrelas = ?, texto = ?
+    WHERE idlicitacaovencedora = ? idavaliador = ? 
+    ");
+
+  $stmt->execute(array($stars,$textComment,$idlicitacao,$idavaliador));
+}
 
 ?>
