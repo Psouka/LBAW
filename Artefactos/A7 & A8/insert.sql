@@ -234,14 +234,14 @@ VALUES(2,2,'texto sobre alerta','12/04/2015');
 
 --Bloqueio
 
-INSERT INTO Bloqueio(idAdministrador,dataInicio,dataFim)
-VALUES(1,'12/03/2015','13/03/2015');
+INSERT INTO Bloqueio(idAdministrador,dataInicio)
+VALUES(1,'12/03/2015');
 
-INSERT INTO Bloqueio(idAdministrador,dataInicio,dataFim)
-VALUES(1,'13/03/2015','14/03/2015');
+INSERT INTO Bloqueio(idAdministrador,dataInicio)
+VALUES(1,'13/03/2015');
 
-INSERT INTO Bloqueio(idAdministrador,dataInicio,dataFim)
-VALUES(1,'14/03/2015','15/03/2015');
+INSERT INTO Bloqueio(idAdministrador,dataInicio)
+VALUES(1,'14/03/2015');
 
 
 -- BloqueioUtilizador

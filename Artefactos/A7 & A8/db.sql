@@ -115,6 +115,8 @@ CREATE TABLE Leilao(
 	CHECK (dataLimite > dataDePublicacao)
 	);
 CREATE INDEX leilao_gin_index ON public.Leilao USING GIN(to_tsvector('english', nome));
+ALTER TABLE Leilao ADD COLUMN leilao_gin_index tsvector;
+UPDATE Leilao SET leilao_gin_index = to_tsvector('english', nome);
 CREATE INDEX Leilao_index ON public.Leilao USING btree(idLeilao ASC NULLS LAST);
 
 
@@ -207,9 +209,11 @@ ALTER TABLE public.BloqueioLeilao CLUSTER ON BloqueioLeilao_index;
 CREATE TABLE AvaliacaoUtilizador(
 	idAvaliador BIGINT REFERENCES UtilizadorNormal(idUtilizadorNormal),
 	idAvaliado BIGINT REFERENCES UtilizadorNormal(idUtilizadorNormal),
-	estrelas BIGINT NOT NULL CHECK (estrelas >= 0 AND estrelas <= 5),
+	idLicitacaoVencedora BIGINT REFERENCES LicitacaoVencedora(idLicitacaoVencedora),
+	estrelas BIGINT,
+	texto TEXT,
 	data DATE NOT NULL,
-	PRIMARY KEY(idAvaliador, idAvaliado),
+	PRIMARY KEY(idAvaliador, idAvaliado, idLicitacaoVencedora),
 	CHECK (idAvaliador != idAvaliado)
 	);
 CREATE INDEX AvaliacaoUtilizador_index ON public.AvaliacaoUtilizador USING btree(idAvaliador ASC NULLS LAST,idAvaliado ASC NULLS LAST);
