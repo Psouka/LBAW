@@ -11,7 +11,8 @@ if(isset($_GET['id'])) {
 
 
 	$profile = getUserById($_GET['id']);
-	$avaliacao = getRating($_GET['id']);
+	$avaliacao = round(getRating($_GET['id'])['avg']);
+
 	$smarty->assign ('avaliacao', $avaliacao);
 
 	$dataRegisto =  date("Y-m-d", time($profile['dataRegisto']));

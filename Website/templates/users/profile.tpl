@@ -50,13 +50,13 @@
       <p>Ships from <b> {$ship.nomecidade} , {$ship.nomepais} </b></p>
 
       <p> <b> Rating: </b> <b>
-        {if $avaliacao.estrelas eq ''}
+        {if $avaliacao eq ''}
         <a href="#">No Rating <!--span class="glyphicon glyphicon-thumbs-up"></span></a>
         <a href="#"> <span class="glyphicon glyphicon-thumbs-down"></span--></a></b>
-        {elseif $avaliacao.estrelas ge 3}
-        <a href="#">$avaliacao.estrelas <span class="glyphicon glyphicon-thumbs-up"></span></a>
+        {elseif $avaliacao ge 3}
+        <a href="#">{$avaliacao} Stars <span class="glyphicon glyphicon-thumbs-up"></span></a>
         {else}
-        <a href="#">$avaliacao.estrelas <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
+        <a href="#">{$avaliacao} Stars <span class="glyphicon glyphicon-thumbs-down"></span></a></b>
         {/if}
       </p>
       Member since {$dataRegisto}

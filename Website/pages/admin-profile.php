@@ -12,7 +12,7 @@ if(isset($_GET['id'])) {
 	}
 
 	$profile = getUserById($_GET['id']);
-	$avaliacao = getRating($_GET['id']);
+	$avaliacao = round(getRating($_GET['id'])['avg']);
 
 	$blocked = false;
 
