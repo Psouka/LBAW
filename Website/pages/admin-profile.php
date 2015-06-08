@@ -49,6 +49,10 @@ if(isset($_GET['id'])) {
 	//print_r(array_combine($leiloes,$licitacoes));
 	//print_r($biggerAuction);
 	//print_r($avaliacao);
+	$reviews =  getReviews($_GET['id']);
+	//print_r($reviews);
+	$smarty->assign('reviews',$reviews);
+
 
 	$smarty->display ('admin/admin-profile.tpl');
 }

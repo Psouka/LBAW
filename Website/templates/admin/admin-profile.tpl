@@ -173,38 +173,50 @@ $("#menu-toggle").click(function(e) {
 
         <div class="row">
 
-          <div class="well"> <!-- comments -->
+<br>
+<br>
+<div class="well"> <!-- comments -->
 
-          <link href="{$BASE_URL}css/comment.css" rel="stylesheet">
-            <section class="comment-list">
+  <link href="{$BASE_URL}css/comment.css" rel="stylesheet">
 
-          <article class="row">
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <div class="thumbnailUsers">
-                <img class="img-responsive user-photo" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg">
-              </div><!-- /thumbnail -->
-            </div><!-- /col-sm-1 -->
+  {foreach $reviews as $review}
+  <section class="comment-list">
 
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <a href="{$BASE_URL}pages/profile.php?id={$com.idutilizador}"><strong>That Guy</strong></a>
-                  <span class="text-muted"> Dec 16, 2014</span>
-                </div>
-                <div class="panel-body">
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div><!-- /panel-body -->
-              </div><!-- /panel panel-default -->
-            </div><!-- /col-sm-5 -->
-          </article>
-          <br>
+    <article class="row">
+      <div class="col-md-2 col-sm-2 hidden-xs">
+        <div class="thumbnailUsers">
+          <img class="img-responsive user-photo" src="{$BASE_URL}{$review.localizacao}">
+        </div><!-- /thumbnail -->
+      </div><!-- /col-sm-1 -->
 
-        </section>
+      <div class="col-md-10 col-sm-10">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="{$BASE_URL}pages/profile.php?id={$review.idavaliador}"><strong>{$review.avaliador}</strong></a>
+            -
+            <a href="{$BASE_URL}pages/item.php?id={$review.idleilao}"><strong>{$review.nome}</strong></a>
+
+            <span class="text-muted"> {$review.data}</span>
+            {if $review.estrelas ge 3}
+            <a href="#"> {$review.estrelas} Stars <span class="glyphicon glyphicon-thumbs-up"></span></a>
+            {else}
+            <a href="#">{$review.estrelas} Stars <span class="glyphicon glyphicon-thumbs-down"> </span></a>
+            {/if}
+          </div>
+          <div class="panel-body">
+           {$review.texto}
+         </div><!-- /panel-body -->
+       </div><!-- /panel panel-default -->
+     </div><!-- /col-sm-5 -->
+   </article>
+   <br>
+
+ </section>
+ {/foreach}
 
 
 
-            </div>
-            <!-- /.well -->
+</div>
 
           </div>
 
