@@ -91,7 +91,7 @@
 </div>
 </div>
 
-<p class="lead">Last deals</p>
+<p class="lead">Newest deals</p>
 
 <div class="row">
     {foreach $leiloes as $leilao}

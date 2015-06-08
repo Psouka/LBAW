@@ -20,17 +20,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav window-right">
                 <li>
-                    <a href="{$BASE_URL}pages/profile.php?id={$USERID}">{$FIRSTNAME} + {$USERNAME} + {$USERID}</a>
+                    <a href="{$BASE_URL}pages/profile.php?id={$USERID}">{$FIRSTNAME} </a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}pages/settings.php">Settings</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
-                </li>
-                 <li>
                     <a href="{$BASE_URL}pages/message.php">Message</a>
                 </li>
+
+                {if $USERTYPE eq 'normal'}
+                <li>
+                    <a href="{$BASE_URL}pages/review.php">Reviews</a>
+                </li>
+                {/if}
+
+                {if $USERTYPE eq 'admin'}
+                <li>
+                    <a href="{$BASE_URL}pages/admin-list.php">Users/Auctions</a>
+                </li>
+                {else}
+                <li>
+                    <a href="{$BASE_URL}pages/create-item.php">Create auction</a>
+                </li>
+                {/if}
                 <li>
                     <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
                 </li>

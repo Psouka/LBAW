@@ -141,7 +141,7 @@ function searchAllAuctions($searchtext)
     global $conn;
   $stmt = $conn->prepare
   ("
-    SELECT leilao.*, categoria.tipo, localizacao, nomeproprio,
+    SELECT DISTINCT ON (leilao.idleilao) leilao.*, categoria.tipo, localizacao, nomeproprio,
     (SELECT MAX(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as bid
     FROM categoria, imagemleilao, utilizador, leilao
   WHERE
@@ -162,7 +162,7 @@ function searchAuctionsTextCat($searchtext,$categoria)
     global $conn;
   $stmt = $conn->prepare
   ("
-    SELECT leilao.*, categoria.tipo, localizacao, nomeproprio,
+    SELECT DISTINCT ON (leilao.idleilao) leilao.*, categoria.tipo, localizacao, nomeproprio,
     (SELECT MAX(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as bid
     FROM categoria, imagemleilao, utilizador, leilao
   WHERE
@@ -184,7 +184,7 @@ function searchAuctionsCat($categoria)
     global $conn;
   $stmt = $conn->prepare
   ("
-    SELECT leilao.*, categoria.tipo, localizacao, nomeproprio,
+    SELECT DISTINCT ON (leilao.idleilao) leilao.*, categoria.tipo, localizacao, nomeproprio,
     (SELECT MAX(preco) FROM licitacao WHERE licitacao.idleilao = leilao.idleilao) as bid
     FROM categoria, imagemleilao, utilizador, leilao
   WHERE imagemleilao.idleilao = leilao.idleilao
@@ -195,4 +195,6 @@ function searchAuctionsCat($categoria)
   $stmt->execute(array($categoria));
   return $result = $stmt->fetchAll();
 }
+
+
 ?>
