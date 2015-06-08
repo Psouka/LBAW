@@ -1,17 +1,21 @@
 <?php
 
-function createMessage ($idReceptor, $assunto, $texto)
+function createMessage ($idEmissor, $idReceptor, $assunto, $texto)
 {
     global $conn;
     $stmt = $conn->prepare
     ("
         INSERT INTO mensagem(idemissor, idreceptor, assunto, texto, data)
         VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+       	RETURNING idmensagem
         ");
-    $stmt->execute(array($_SESSION['userid'], $idReceptor, $assunto, $texto);
+    $stmt->execute(array($idEmissor, $idReceptor, $assunto, $texto));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['idmensagem'];
+
 }
 
-function getMessageSend ($numMessages, $offset)
+function getMessageSend ($idEmissor)
 {
     global $conn;
     $stmt = $conn->prepare
@@ -19,13 +23,12 @@ function getMessageSend ($numMessages, $offset)
         SELECT * FROM mensagem 
         WHERE idemissor = ?
         ORDER BY data
-        LIMIT ? OFFSET ?
         ");
-    $stmt->execute(array($_SESSION['userid'], $numMessages, $offset);
+    $stmt->execute(array($idEmissor));
     return $stmt->fetchAll();
 }
 
-function getMessageReceive ($numMessages, $offset)
+function getMessageReceive ($idReceptor)
 {
     global $conn;
     $stmt = $conn->prepare
@@ -33,22 +36,23 @@ function getMessageReceive ($numMessages, $offset)
         SELECT * FROM mensagem 
         WHERE idreceptor = ?
         ORDER BY data
-        LIMIT ? OFFSET ?
         ");
-    $stmt->execute(array($_SESSION['userid'], $numMessages, $offset);
+    $stmt->execute(array($idReceptor));
     return $stmt->fetchAll();
 }
 
-function getMessage ($idMessage)
+function getMessage ($idUtilizador, $idMessage)
 {
     global $conn;
     $stmt = $conn->prepare
     ("
         SELECT * FROM mensagem 
         WHERE idmensagem = ?
-        ");
-    $stmt->execute(array($idMessage);
-    return $stmt->fetchAll();
+        AND idemissor = ?
+        OR idreceptor = ?
+    ");
+    $stmt->execute(array($idMessage, $idUtilizador, $idUtilizador));
+    return $stmt->fetch();
 }
 
 ?>
