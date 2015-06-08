@@ -497,4 +497,27 @@ global $conn;
   $stmt->execute(array($stars,$textComment,$idlicitacao,$idavaliador));
 }
 
+ function searchUsers($searchtext)    
+    {
+        global $conn;
+        $stmt = $conn->prepare
+        ("
+            SELECT utilizador.*, localizacao, cidade.nome as cidade, pais.nome as pais
+            FROM (((SELECT utilizador.*, AVG(estrelas) as rating
+            FROM utilizador LEFT JOIN avaliacaoutilizador
+            ON utilizador.idutilizador = avaliacaoutilizador.idavaliado
+            WHERE (
+            utilizador.nomeproprio @@to_tsquery(?) OR
+            utilizador.sobrenome @@to_tsquery(?) OR
+            utilizador.descricao @@to_tsquery(?)
+            )
+            GROUP BY utilizador.idutilizador
+            ) as utilizador JOIN morada USING(idmorada)) JOIN cidade USING(idcidade)) JOIN pais USING(idpais), imagemutilizador
+            WHERE utilizador.idimagemperfil = imagemutilizador.idimagemutilizador
+        ");
+        $stmt->execute(array($searchtext, $searchtext, $searchtext));
+        return $results = $stmt->fetchAll();
+    }
+
+
 ?>
