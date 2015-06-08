@@ -9,9 +9,11 @@ $conn->exec('SET SCHEMA \'public\''); //FIXED
 function cronAuction() {
     $outdated_auctions = getAuctionEnd();
     foreach ($outdated_auctions as $auction) {
-        $licitacao = getWinner($auction['idLeilao']);
-        addWinner($idAuction, $idBid);
-        addReview($licitacao['idUtilizador'], $auction['idLeiloeiro'], $licitacao['idLicitacao']);
+        $licitacao = getWinner($auction['idleilao']);
+        if(!$licitacao)
+            continue;
+        addWinner($auction['idleilao'], $licitacao['idlicitacao']);
+        addReview($licitacao['idutilizador'], $auction['idleiloeiro'], $licitacao['idlicitacao']);
     }
 }
 
@@ -20,18 +22,18 @@ function getAuctionEnd()
     global $conn;
     $stmt = $conn->prepare
     ("
-        SELECT idLeilao, idLeiloeiro
+        SELECT idleilao, idleiloeiro
         FROM 
         (
-            SELECT idLeilao, idLeiloeiro
-                FROM Leilao
-                WHERE Leilao.dataLimite <= CURRENT_TIMESTAMP
-        ) AS OUTDATED_TABLE
+            SELECT idleilao, idleiloeiro
+                FROM leilao
+                WHERE leilao.datalimite <= CURRENT_TIMESTAMP
+        ) AS outdated_table
         WHERE NOT EXISTS
         (
-            SELECT LicitacaoVencedora.idLeilao
-                FROM LicitacaoVencedora
-                WHERE LicitacaoVencedora.idLeilao = OUTDATED_TABLE.idLeilao
+            SELECT licitacaovencedora.idleilao
+                FROM licitacaovencedora
+                WHERE licitacaovencedora.idleilao = outdated_table.idleilao
         )
         ");
     $stmt->execute();
@@ -43,9 +45,9 @@ function getWinner($idAuction)
     global $conn;
     $stmt = $conn->prepare
     ("
-        SELECT idLicitacao, idUtilizador
-        FROM Licitacao
-        WHERE Licitacao.idLeilao = ?
+        SELECT idlicitacao, idutilizador
+        FROM licitacao
+        WHERE licitacao.idleilao = ?
         ORDER BY preco DESC
         LIMIT 1
         ");
@@ -58,7 +60,7 @@ function addWinner($idAuction, $idBid)
     global $conn;
     $stmt = $conn->prepare
     ("
-        INSERT INTO LicitacaoVencedora (idLicitacaoVencedora,idLeilao)
+        INSERT INTO licitacaovencedora (idlicitacaovencedora,idleilao)
         VALUES (?, ?)
         ");
     $stmt->execute(array($idBid, $idAuction));
@@ -70,13 +72,13 @@ function addReview($idAvaliador, $idAvaliado, $idLicitacaoVencedora)
     global $conn;
     $stmt = $conn->prepare
     ("
-        INSERT INTO AvaliacaoUtilizador(idAvaliador, idAvaliado, idLicitacaoVencedora, data)
+        INSERT INTO avaliacaoutilizador(idavaliador, idavaliado, idlicitacaovencedora, data)
         VALUES (?, ?, ?, CURRENT_TIMESTAMP)
         ");
     $stmt->execute(array($idAvaliador, $idAvaliado, $idLicitacaoVencedora));
     $stmt = $conn->prepare
     ("
-        INSERT INTO AvaliacaoUtilizador(idAvaliador, idAvaliado, idLicitacaoVencedora, data)
+        INSERT INTO avaliacaoutilizador(idavaliador, idavaliado, idlicitacaovencedora, data)
         VALUES (?, ?, ?, CURRENT_TIMESTAMP)
         ");
     $stmt->execute(array($idAvaliado, $idAvaliador, $idLicitacaoVencedora));

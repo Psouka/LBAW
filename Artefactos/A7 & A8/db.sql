@@ -133,7 +133,8 @@ ALTER TABLE public.Licitacao CLUSTER ON Licitacao_index;
 
 CREATE TABLE LicitacaoVencedora(
 	idLicitacaoVencedora BIGSERIAL REFERENCES Licitacao(idLicitacao),
-	idLeilao BIGINT REFERENCES Leilao(idLeilao)
+	idLeilao BIGINT REFERENCES Leilao(idLeilao),
+	PRIMARY KEY(idLicitacaoVencedora)
 	);
 CREATE INDEX LicitacaoVencedora_index ON public.LicitacaoVencedora USING btree(idLicitacaoVencedora ASC NULLS LAST);
 
